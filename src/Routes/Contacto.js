@@ -1,7 +1,11 @@
+import Footer from "../Components/Footer/Footer";
 
 function Contacto(){
     return (
-        <h1>Hola mundo Contacto</h1>
+        <div>
+            <h1>Hola mundo Contacto</h1>
+            <Footer/>
+        </div>
     )
 }
 export default Contacto;

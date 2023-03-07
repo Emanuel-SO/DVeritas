@@ -1,7 +1,11 @@
+import Footer from "../Components/Footer/Footer";
 
 function Nosotros(){
     return (
-        <h1>Hola mundo Nosotros</h1>
+        <div>
+            <h1>Hola mundo Nosotros</h1>
+            <Footer/>
+        </div>
     )
 }
 export default Nosotros;
