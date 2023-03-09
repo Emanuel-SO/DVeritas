@@ -15,18 +15,7 @@ import Avatar from "@mui/material/Avatar";
 import AssignmentIcon from "@mui/icons-material/Assignment";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
-// import SvgIcon from "@mui/material/SvgIcon";
-import Tooltip from '@mui/material/Tooltip';
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import Button from '@mui/material/Button';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import AppBar from '@mui/material/AppBar';
-import { useTheme } from '@mui/material/styles';
-
+import Tooltip from "@mui/material/Tooltip";
 
 const AboutUs = () => {
   const aboutme = data.map((item) => <AboutMe {...item} />);
@@ -38,7 +27,6 @@ const AboutUs = () => {
           display: "flex",
           justifyContent: "space-evenly",
           flexWrap: "wrap",
-          
         }}
       >
         {""}
@@ -54,13 +42,11 @@ const AboutMe = (props) => {
       <CardContent
         /* ESTILO GENERAL DE LA TARJETA */
         sx={{
-          
           bgcolor: "#276678",
-
           m: 2,
           p: 0,
           borderRadius: "16px",
-          minWidth: 360,
+          minWidth: 200,
           maxWidth: 550,
           color: "#f6f5f5",
           textAlign: "center",
@@ -75,7 +61,6 @@ const AboutMe = (props) => {
             borderTopRightRadius: "16px",
             borderTopLeftRadius: "16px",
             borderBottom: 1,
-            
           }}
         ></Box>
         {/* AVATAR */}
@@ -94,16 +79,16 @@ const AboutMe = (props) => {
 
           {/* ENLACE A REDES (GitHub, Linkedin, CV)*/}
           <Box
-            sx={{ width: "100%", display: "flex", justifyContent: "center" }}
+            sx={{ width: "100%", display: "flex", justifyContent: "space-evenly", flexWrap:"wrap" }}
           >
             {/* ENLACE GITHUB */}
             <Link href={props.gitHub} target="_blank">
               <Avatar
                 sx={{
                   bgcolor: common[500],
-                  marginRight: 3,
+                 
                   marginBottom: 2,
-                  marginTop: 0,
+                  marginTop: 1,
                   width: 60,
                   height: 60,
                 }}
@@ -118,7 +103,7 @@ const AboutMe = (props) => {
                   bgcolor: blue[500],
 
                   marginBottom: 2,
-                  marginTop: 0,
+                  marginTop: 1,
                   width: 60,
                   height: 60,
                 }}
@@ -131,9 +116,9 @@ const AboutMe = (props) => {
               <Avatar
                 sx={{
                   bgcolor: green[500],
-                  marginLeft: 3,
+                
                   marginBottom: 2,
-                  marginTop: 0,
+                  marginTop: 1,
                   width: 60,
                   height: 60,
                 }}
@@ -144,12 +129,16 @@ const AboutMe = (props) => {
           </Box>
 
           {/* HEADLINE */}
-          <Typography sx={{ mb: 1.5, fontSize: 20, marginTop: 1 }}>
+          <Typography sx={{ mb: 1.5, fontSize: 20, marginBottom: 3 }}>
             {props.headline}
           </Typography>
 
           {/* ABOUTME */}
-          <Typography sx={{ mb: 1.5, marginTop: 3 }}>
+          <Divider>
+            <Chip label="ABOUT ME" color="warning" />
+          </Divider>
+
+          <Typography sx={{ mb: 1.5, marginTop: 1, marginBottom: 3 }}>
             {props.aboutMe}
           </Typography>
         </Box>
@@ -157,122 +146,183 @@ const AboutMe = (props) => {
         {/* SKILLS */}
         {/* TECHNICAL SKILLS */}
 
-   
-
-        <Grid container sx={{ marginTop: 1 }}>
-          <Grid xs={6}>
-          {/* <Accordion> */}
-        {/* <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1a-content"
-          id="panel1a-header"
-        > */}
+        <Grid container sx={{ marginTop: 2 }}>
+          <Grid xs={12}>
             <Divider>
-              <Chip label="TECHNICAL SKILLS" />
+              <Chip label="TECHNICAL SKILLS" color="primary" />
             </Divider>
-{/* 
-        </AccordionSummary>
-        <AccordionDetails> */}
-            <Grid xs={12} sx={{display:"flex", justifyContent:"space-evenly", m:2}}>
 
-            <img
-              src={props.techSOne}
-              alt={props.techSOne}
-             width={60}
-             height={60}
-            />
-          
+            <Grid
+              xs={12}
+              sx={{
+                display: "flex",
+                justifyContent: "space-evenly",
+                marginTop: 3,
+                marginBottom: 5,
+              }}
+            >
+              <Grid
+                container
+                xs={6}
+                sx={{
+                  display: "flex",
+                  justifyContent: "space-evenly",
+                  marginLeft: 2,
+                  marginRight: 2,
+                }}
+              >
+                <Grid
+                  xs={12}
+                  sx={{ display: "flex", justifyContent: "space-evenly", flexWrap:"wrap" }}
+                >
+                  <Tooltip arrow title={props.techSOneTooltip}>
+                    <img
+                      src={props.techSOne}
+                      alt={props.techSOneTooltip}
+                      width={45}
+                      height={45}
+                    />
+                  </Tooltip>
+                  <Tooltip arrow title={props.techSTwoTooltip}>
+                    <img
+                      src={props.techSTwo}
+                      alt={props.techSTwoTooltip}
+                      width={45}
+                      height={45}
+                    />
+                  </Tooltip>
+                  <Tooltip arrow title={props.techSThreeTooltip}>
+                    <img
+                      src={props.techSThree}
+                      alt={props.techSThreeTooltip}
+                      width={45}
+                      height={45}
+                    />
+                  </Tooltip>
+                  <Tooltip arrow title={props.techSFourTooltip}>
+                    <img
+                      src={props.techSFour}
+                      alt={props.techSFourTooltip}
+                      width={45}
+                      height={45}
+                    />
+                  </Tooltip>
+                </Grid>
+              </Grid>
 
-                     
-
-            <img
-              src={props.techSTwo}
-              alt={props.techSTwo}
-              width={60}
-              height={60}
-            />
-          
-          </Grid>
-          <Grid xs={12} sx={{display:"flex", justifyContent:"space-evenly", m:2}}>
-
-            <img
-              src={props.techSThree}
-              alt={props.techSThree}
-              width={60}
-              height={60}
-            />
- 
-
-
-
-            <img
-              src={props.techSFour}
-              alt={props.techSFour}
-              width={60}
-              height={60}
-            />
-            
-    
+              <Grid
+                container
+                xs={3}
+                sx={{
+                  display: "flex",
+                  justifyContent: "space-evenly",
+                  marginLeft: 2,
+                  marginRight: 2,
+                }}
+              >
+                <Grid
+                  xs={12}
+                  sx={{ display: "flex", justifyContent: "space-evenly", flexWrap:"wrap" }}
+                >
+                  <Tooltip title={props.techSFiveTooltip}>
+                    <img
+                      src={props.techSFive}
+                      alt={props.techSFiveTooltip}
+                      width={45}
+                      height={45}
+                    />
+                  </Tooltip>
+                  <Tooltip arrow title={props.techSSixTooltip}>
+                    <img
+                      src={props.techSSix}
+                      alt={props.techSSixTooltip}
+                      width={45}
+                      height={45}
+                    />
+                  </Tooltip>
+                </Grid>
+              </Grid>
+              <Grid
+                container
+                xs={3}
+                sx={{
+                  display: "flex",
+                  justifyContent: "space-evenly",
+                  flexWrap: "wrap",
+                  marginLeft: 2,
+                  marginRight: 2,
+                }}
+              >
+                <Grid
+                  xs={12}
+                  sx={{ display: "flex", justifyContent: "space-evenly", flexWrap:"wrap" }}
+                >
+                  <Tooltip arrow title={props.techSSevenTooltip}>
+                    <img
+                      src={props.techSSeven}
+                      alt={props.techSSevenTooltip}
+                      width={45}
+                      height={45}
+                    />
+                  </Tooltip>
+                  <Tooltip arrow title={props.techSEightTooltip}>
+                    <img
+                      src={props.techSEight}
+                      alt={props.techSEightTooltip}
+                      width={45}
+                      height={45}
+                    />
+                  </Tooltip>
+                </Grid>
+              </Grid>
             </Grid>
-            {/* </AccordionDetails>
-      </Accordion> */}
           </Grid>
+
           {/* SOFT SKILLS */}
-          <Grid xs={6}>
-
-          <Accordion>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1a-content"
-          id="panel1a-header"
-        >
+          <Grid xs={12}>
             <Divider>
-              <Chip label="SOFT SKILLS" />
+              <Chip label="SOFT SKILLS" color="error" />
             </Divider>
-
-        </AccordionSummary>
-        <AccordionDetails>
-       
-              
-              <Grid xs={12} sx={{display:"flex", justifyContent:"space-evenly", m:2}}>
-              <img
-                src={props.SoftSOne}
-                alt={props.SoftSOne}
-                width={60}
-                height={60}
-              />
-
-              <img
-                src={props.SoftSTwo}
-                alt={props.SoftSTwo}
-                width={60}
-                height={60}
-                />
-</Grid>
-<Grid xs={12} sx={{display:"flex", justifyContent:"space-evenly", m:2}}>
-              <img
-                src={props.SoftSThree}
-                alt={props.SoftSThree}
-                width={60}
-                height={60}
-              />
-            <Tooltip title={"Prueba1"}>
+            <Grid
+              xs={12}
+              sx={{ display: "flex", justifyContent: "space-evenly", m: 1, flexWrap: "wrap",
+            }}
+            >
+              <Tooltip arrow title={props.SoftSOneTooltip}>
                 <img
-                  src={props.SoftSFour}
-                  alt={props.SoftSFour}
+                  src={props.SoftSOne}
+                  alt={props.SoftSOneTooltip}
                   width={60}
                   height={60}
-                /> 
-                </Tooltip>
+                />
+              </Tooltip>
+              <Tooltip arrow title={props.SoftSTwoTooltip}>
+                <img
+                  src={props.SoftSTwo}
+                  alt={props.SoftSTwoTooltip}
+                  width={60}
+                  height={60}
+                />
+              </Tooltip>
+              <Tooltip arrow title={props.SoftSThreeTooltip}>
+                <img
+                  src={props.SoftSThree}
+                  alt={props.SoftSThreeTooltip}
+                  width={60}
+                  height={60}
+                />
+              </Tooltip>
+              <Tooltip arrow title={props.SoftSFourTooltip}>
+                <img
+                  src={props.SoftSFour}
+                  alt={props.SoftSFourTooltip}
+                  width={60}
+                  height={60}
+                />
+              </Tooltip>
             </Grid>
-            </AccordionDetails>
-      </Accordion>
-        
           </Grid>
         </Grid>
-
-
-
       </CardContent>
     </React.Fragment>
   );
