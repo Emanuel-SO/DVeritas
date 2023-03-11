@@ -27,12 +27,13 @@ function Contact() {
         >
             <div>
 
-                <Typography variant="h4" gutterBottom style={{ fontFamily: "monospace", marginTop: "50px" }}>
+                <Typography variant="h3" gutterBottom style={{ fontFamily: "lato", marginTop: "50px", marginBottom: "30px" }}>
                     Contactanos
                 </Typography>
-                <div style={{ marginBottom: "20px" }}>
+                <div style={{ marginBottom: "50px", fontSize: "20px"}}>
                     Comparte tus comentarios o sugerencias al equipo de JavaWizards.
                 </div>
+
 
                 <div>
                     <TextField
@@ -68,7 +69,7 @@ function Contact() {
 
                 <Stack spacing={1} direction="row" sx={{ justifyContent: 'center' }}>
 
-                    <Button variant="contained" sx={{ margin: '16px', width: '300px', height: '40px', fontFamily: 'monospace' }}>
+                    <Button variant="contained" sx={{ margin: '16px', width: '250px', height: '50px', fontFamily: 'monospace', marginTop: "50px" }}>
                         Enviar
                     </Button>
 
