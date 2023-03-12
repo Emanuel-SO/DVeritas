@@ -5,7 +5,7 @@ import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
-import imgbackground from "./img/fondoimg.jpg";
+import imgbackground from "./img/background/fondoimg.jpg";
 import Chip from "@mui/material/Chip";
 import Grid from "@mui/material/Grid";
 import Divider from "@mui/material/Divider";
@@ -16,11 +16,36 @@ import AssignmentIcon from "@mui/icons-material/Assignment";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import Tooltip from "@mui/material/Tooltip";
+import javawizardsIcon from "./img/background/javawizardsIcon.png";
 
 const AboutUs = () => {
   const aboutme = data.map((item) => <AboutMe {...item} />);
   return (
     <Box>
+      <Box>
+        <Grid
+          container
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            paddingX: 7,
+            paddingY: 2,
+            marginY: 3,
+          }}
+        >
+          <Typography className="lato" variant="h3" color="#276678">
+            ACERCA DE NOSOTROS
+          </Typography>
+          <img
+            src={javawizardsIcon}
+            alt="JavaWizardsIcon"
+            width={207}
+            height={60}
+          />
+        </Grid>
+      </Box>
+
       <Card
         id="card"
         sx={{
@@ -75,18 +100,24 @@ const AboutMe = (props) => {
         {/* SECCIÓN CONTENIDO: NOMBRE, ENLACE A REDES (GitHub, Linkedin, CV), HEADLINE, ABOUTME */}
         <Box sx={{ p: 0, marginTop: 10, marginLeft: 7, marginRight: 7 }}>
           {/* NOMBRE */}
-          <Typography sx={{ fontSize: 27 }}>{props.name}</Typography>
+          <Typography className="lato" sx={{ fontSize: 27 }}>
+            {props.name}
+          </Typography>
 
           {/* ENLACE A REDES (GitHub, Linkedin, CV)*/}
           <Box
-            sx={{ width: "100%", display: "flex", justifyContent: "space-evenly", flexWrap:"wrap" }}
+            sx={{
+              width: "100%",
+              display: "flex",
+              justifyContent: "space-evenly",
+              flexWrap: "wrap",
+            }}
           >
             {/* ENLACE GITHUB */}
             <Link href={props.gitHub} target="_blank">
               <Avatar
                 sx={{
                   bgcolor: common[500],
-                 
                   marginBottom: 2,
                   marginTop: 1,
                   width: 60,
@@ -101,7 +132,6 @@ const AboutMe = (props) => {
               <Avatar
                 sx={{
                   bgcolor: blue[500],
-
                   marginBottom: 2,
                   marginTop: 1,
                   width: 60,
@@ -116,7 +146,6 @@ const AboutMe = (props) => {
               <Avatar
                 sx={{
                   bgcolor: green[500],
-                
                   marginBottom: 2,
                   marginTop: 1,
                   width: 60,
@@ -129,16 +158,27 @@ const AboutMe = (props) => {
           </Box>
 
           {/* HEADLINE */}
-          <Typography sx={{ mb: 1.5, fontSize: 20, marginBottom: 3 }}>
+          <Typography
+            className="lato"
+            sx={{ mb: 1.5, fontSize: 20, marginBottom: 3 }}
+          >
             {props.headline}
           </Typography>
 
           {/* ABOUTME */}
           <Divider>
-            <Chip label="ABOUT ME" color="warning" />
+            <Chip className="lato" label="ABOUT ME" color="warning" />
           </Divider>
 
-          <Typography sx={{ mb: 1.5, marginTop: 1, marginBottom: 3 }}>
+          <Typography
+            className="lato"
+            sx={{
+              mb: 1.5,
+              marginTop: 1,
+              marginBottom: 3,
+              textAlign: "justify",
+            }}
+          >
             {props.aboutMe}
           </Typography>
         </Box>
@@ -146,10 +186,10 @@ const AboutMe = (props) => {
         {/* SKILLS */}
         {/* TECHNICAL SKILLS */}
 
-        <Grid container sx={{ marginTop: 2 }}>
-          <Grid xs={12}>
+        <Grid id="skills" container sx={{ marginTop: 2 }}>
+          <Grid id="techSkills" xs={12}>
             <Divider>
-              <Chip label="TECHNICAL SKILLS" color="primary" />
+              <Chip className="lato" label="TECHNICAL SKILLS" color="primary" />
             </Divider>
 
             <Grid
@@ -163,7 +203,7 @@ const AboutMe = (props) => {
             >
               <Grid
                 container
-                xs={6}
+                xs={5}
                 sx={{
                   display: "flex",
                   justifyContent: "space-evenly",
@@ -173,38 +213,42 @@ const AboutMe = (props) => {
               >
                 <Grid
                   xs={12}
-                  sx={{ display: "flex", justifyContent: "space-evenly", flexWrap:"wrap" }}
+                  sx={{
+                    display: "flex",
+                    justifyContent: "space-evenly",
+                    flexWrap: "wrap",
+                  }}
                 >
                   <Tooltip arrow title={props.techSOneTooltip}>
                     <img
                       src={props.techSOne}
                       alt={props.techSOneTooltip}
-                      width={45}
-                      height={45}
+                      width={37}
+                      height={37}
                     />
                   </Tooltip>
                   <Tooltip arrow title={props.techSTwoTooltip}>
                     <img
                       src={props.techSTwo}
                       alt={props.techSTwoTooltip}
-                      width={45}
-                      height={45}
+                      width={37}
+                      height={37}
                     />
                   </Tooltip>
                   <Tooltip arrow title={props.techSThreeTooltip}>
                     <img
                       src={props.techSThree}
                       alt={props.techSThreeTooltip}
-                      width={45}
-                      height={45}
+                      width={37}
+                      height={37}
                     />
                   </Tooltip>
                   <Tooltip arrow title={props.techSFourTooltip}>
                     <img
                       src={props.techSFour}
                       alt={props.techSFourTooltip}
-                      width={45}
-                      height={45}
+                      width={37}
+                      height={37}
                     />
                   </Tooltip>
                 </Grid>
@@ -212,7 +256,7 @@ const AboutMe = (props) => {
 
               <Grid
                 container
-                xs={3}
+                xs={2}
                 sx={{
                   display: "flex",
                   justifyContent: "space-evenly",
@@ -222,29 +266,33 @@ const AboutMe = (props) => {
               >
                 <Grid
                   xs={12}
-                  sx={{ display: "flex", justifyContent: "space-evenly", flexWrap:"wrap" }}
+                  sx={{
+                    display: "flex",
+                    justifyContent: "space-evenly",
+                    flexWrap: "wrap",
+                  }}
                 >
                   <Tooltip title={props.techSFiveTooltip}>
                     <img
                       src={props.techSFive}
                       alt={props.techSFiveTooltip}
-                      width={45}
-                      height={45}
+                      width={37}
+                      height={37}
                     />
                   </Tooltip>
                   <Tooltip arrow title={props.techSSixTooltip}>
                     <img
                       src={props.techSSix}
                       alt={props.techSSixTooltip}
-                      width={45}
-                      height={45}
+                      width={37}
+                      height={37}
                     />
                   </Tooltip>
                 </Grid>
               </Grid>
               <Grid
                 container
-                xs={3}
+                xs={5}
                 sx={{
                   display: "flex",
                   justifyContent: "space-evenly",
@@ -255,22 +303,50 @@ const AboutMe = (props) => {
               >
                 <Grid
                   xs={12}
-                  sx={{ display: "flex", justifyContent: "space-evenly", flexWrap:"wrap" }}
+                  sx={{
+                    display: "flex",
+                    justifyContent: "space-evenly",
+                    flexWrap: "wrap",
+                  }}
                 >
                   <Tooltip arrow title={props.techSSevenTooltip}>
                     <img
                       src={props.techSSeven}
                       alt={props.techSSevenTooltip}
-                      width={45}
-                      height={45}
+                      width={37}
+                      height={37}
                     />
                   </Tooltip>
                   <Tooltip arrow title={props.techSEightTooltip}>
                     <img
                       src={props.techSEight}
                       alt={props.techSEightTooltip}
-                      width={45}
-                      height={45}
+                      width={37}
+                      height={37}
+                    />
+                  </Tooltip>
+                  <Tooltip arrow title={props.techSNineTooltip}>
+                    <img
+                      src={props.techSNine}
+                      alt={props.techSNineTooltip}
+                      width={37}
+                      height={37}
+                    />
+                  </Tooltip>
+                  <Tooltip arrow title={props.techSTenTooltip}>
+                    <img
+                      src={props.techSTen}
+                      alt={props.techSTenTooltip}
+                      width={37}
+                      height={37}
+                    />
+                  </Tooltip>
+                  <Tooltip arrow title={props.techSElevenTooltip}>
+                    <img
+                      src={props.techSEleven}
+                      alt={props.techSElevenTooltip}
+                      width={37}
+                      height={37}
                     />
                   </Tooltip>
                 </Grid>
@@ -279,14 +355,18 @@ const AboutMe = (props) => {
           </Grid>
 
           {/* SOFT SKILLS */}
-          <Grid xs={12}>
+          <Grid id="softSkills" xs={12}>
             <Divider>
-              <Chip label="SOFT SKILLS" color="error" />
+              <Chip className="lato" label="SOFT SKILLS" color="error" />
             </Divider>
             <Grid
               xs={12}
-              sx={{ display: "flex", justifyContent: "space-evenly", m: 1, flexWrap: "wrap",
-            }}
+              sx={{
+                display: "flex",
+                justifyContent: "space-evenly",
+                m: 1,
+                flexWrap: "wrap",
+              }}
             >
               <Tooltip arrow title={props.SoftSOneTooltip}>
                 <img
