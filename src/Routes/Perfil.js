@@ -7,7 +7,6 @@ import BannerPub from '../Components/Perfil/BannerPub/BannerPub'
 function Perfil() {
     return (
       <div>
-        <h1>Hola Perfil</h1>
         <ImgUser />
         <ButtonUserConf />
         <BannerPub />
