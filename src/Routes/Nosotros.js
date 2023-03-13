@@ -1,7 +1,15 @@
 
-function Nosotros(){
-    return (
-        <h1>Hola mundo Nosotros</h1>
-    )
+import AboutUs from '../Components/Nosotros/Nosotros'
+import Footer from "../Components/Footer/Footer";
+
+function Nosotros() {
+  return (
+    <>
+      <AboutUs/>
+      <Footer/>
+    </>
+  )
 }
-export default Nosotros;
+    
+
+      
