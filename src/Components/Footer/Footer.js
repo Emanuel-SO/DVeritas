@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 import './Footer.css';
 
-
+// sx={{ display:{lg:'none', xs: 'block'} }}
  
 function Footer(){
     return (
@@ -20,21 +20,21 @@ function Footer(){
                 <List>
                     <Grid container spacing={2}>
                         <Grid item xs={6}>
-                            <ListItem disablePadding>
-                                <Link to="/" className="link-decoration">
+                            <ListItem disablePadding sx={{  justifyContent: "center" }}>
+                                <Link to="/" className="link-decoration" >
                                     <ListItemButton>
                                         <ListItemText primary="Inicio" sx={{color: "#D3E0EA"}}/>
                                     </ListItemButton>
                                 </Link>
                             </ListItem>
-                            <ListItem disablePadding>
+                            <ListItem disablePadding sx={{  justifyContent: "center" }}>
                                 <Link to="/publicaciones" className="link-decoration">
                                     <ListItemButton>
                                         <ListItemText primary="Publicaciones" sx={{color: "#D3E0EA"}}/>
                                     </ListItemButton>
                                 </Link>
                             </ListItem>
-                            <ListItem disablePadding>
+                            <ListItem disablePadding sx={{  justifyContent: "center" }}>
                                 <Link to="/nosotros" className="link-decoration">
                                     <ListItemButton>
                                         <ListItemText primary="Nosotros" sx={{color: "#D3E0EA"}}/>
@@ -43,28 +43,28 @@ function Footer(){
                             </ListItem>
                         </Grid>
                         <Grid item xs={6}>
-                            <ListItem disablePadding>
+                            <ListItem disablePadding sx={{  justifyContent: "center" }}>
                                 <Link to="/contacto" className="link-decoration">
                                     <ListItemButton>
                                         <ListItemText primary="Contacto" sx={{color: "#D3E0EA"}}/>
                                     </ListItemButton>
                                 </Link>
                             </ListItem>
-                            <ListItem disablePadding>
+                            <ListItem disablePadding sx={{  justifyContent: "center" }}>
                                 <Link to="/registrar" className="link-decoration">
                                     <ListItemButton>
                                         <ListItemText primary="Registrarse" sx={{color: "#D3E0EA"}}/>
                                     </ListItemButton>
                                 </Link>
                             </ListItem>
-                            <ListItem disablePadding>
+                            <ListItem disablePadding sx={{  justifyContent: "center" }}>
                                 <Link to="/ingresar" className="link-decoration">
                                     <ListItemButton>
                                         <ListItemText primary="Ingresar" sx={{color: "#D3E0EA"}}/>
                                     </ListItemButton>
                                 </Link>
                             </ListItem>
-                            <ListItem disablePadding>
+                            <ListItem disablePadding sx={{  justifyContent: "center" }}>
                                 <Link className="link-decoration">
                                     <ListItemButton>
                                         <ListItemText primary="Perfil" sx={{color: "#D3E0EA"}}/>
@@ -75,12 +75,12 @@ function Footer(){
                     </Grid>
                 </List>
             </Grid>
-            <Grid item xs={12} sm={4} textAlign="center">
+            <Grid item xs={12} sm={4}>
                 <List>
                     <Grid container>
-                        <Grid item xs={4} sm={12}>
+                        <Grid item xs={4} sm={12} >
                             <Link className="link-decoration">
-                                <ListItem>
+                                <ListItem sx={{  justifyContent: "center" }}>
                                         <ListItemAvatar>
                                             <Avatar sx={{bgcolor: "#276678"}}>
                                                 <LinkedInIcon/>
@@ -91,7 +91,7 @@ function Footer(){
                             </Link>
                         </Grid>
                         <Grid item xs={4} sm={12}>
-                            <Link className="link-decoration">
+                            <a href="https://github.com/LouckGuntz/DVeritas/" target="_blank" rel="noreferrer" className="link-decoration">
                                 <ListItem>
                                     <ListItemAvatar>
                                         <Avatar sx={{bgcolor: "#276678"}}>
@@ -100,10 +100,10 @@ function Footer(){
                                     </ListItemAvatar>
                                     <ListItemText primary="GitHub" sx={{color: "#D3E0EA"}} />
                                 </ListItem>
-                            </Link>
+                            </a>
                         </Grid>
-                        <Grid item xs={4} sm={12}>
-                            <Link className="link-decoration">
+                        <Grid item xs={4} sm={12} >
+                            <Link className="link-decoration" >
                                 <ListItem>
                                     <ListItemAvatar>
                                         <Avatar sx={{bgcolor: "#276678"}}>

@@ -15,6 +15,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Inicio/>}/>
         <Route path="/publicaciones" element={<Publicaciones/>}/>
+        <Route path="/publicaciones/megusta" element={<Publicaciones/>}/>
         <Route path="/contacto"  element={<Contacto/>}/>
         <Route path="/nosotros" element={<Nosotros/>}/>
         <Route path="/registrar" element={<Registrar/>}/>
