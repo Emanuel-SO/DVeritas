@@ -65,7 +65,7 @@ function Footer(){
                                 </Link>
                             </ListItem>
                             <ListItem disablePadding sx={{  justifyContent: "center" }}>
-                                <Link className="link-decoration">
+                                <Link to="/perfil" className="link-decoration">
                                     <ListItemButton>
                                         <ListItemText primary="Perfil" sx={{color: "#D3E0EA"}}/>
                                     </ListItemButton>
