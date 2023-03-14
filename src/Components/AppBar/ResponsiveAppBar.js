@@ -29,7 +29,7 @@ function ResponsiveAppBar() {
   
 
   return (
-    <AppBar position="static" sx={{ bgcolor: "#276678" }}>
+    <AppBar position="static" sx={{ bgcolor: "#276678"}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
@@ -177,7 +177,7 @@ function ResponsiveAppBar() {
             
               
               <Link to="/ingresar" className="link-decoration">
-                <Button variant="contained"  sx={{ my: 2, color: "#D3E0EA", bgcolor:"#1687A7" }}>
+                <Button variant="contained"  sx={{ my: 2, color: "#D3E0EA", bgcolor:"#1687A7" , '&:hover': { bgcolor: '#125E75'} }}>
                   Ingresar
                 </Button>
               </Link>

@@ -1,8 +1,15 @@
+
 import Contact from "../Components/Contact/Contact";
+
+import Footer from "../Components/Footer/Footer";
+
 
 function Contacto() {
     return (
-        <Contact />
+       <div>
+          <Contact />
+           <Footer/>
+        </div>
     )
 
 }
