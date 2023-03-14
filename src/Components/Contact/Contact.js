@@ -26,11 +26,10 @@ function Contact() {
             autoComplete="off"
         >
             <div>
-
-                <Typography variant="h3" gutterBottom style={{ fontFamily: "lato", marginTop: "50px", marginBottom: "30px" }}>
-                    Contactanos
-                </Typography>
-                <div style={{ marginBottom: "50px", fontSize: "20px"}}>
+            <Typography variant="h5" mb={3} sx={{ fontFamily: "Lato, sans-serif", color: "#276678", fontSize: { xs: '2.5rem', sm: '3rem' }, marginTop: '3rem' }}>
+            Contáctanos
+          </Typography>
+                <div style={{ marginBottom: "3rem", fontSize: "1.5rem", fontFamily: "Lato, sans-serif"}}>
                     Comparte tus comentarios o sugerencias al equipo de JavaWizards.
                 </div>
 
