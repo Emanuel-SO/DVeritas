@@ -1,7 +1,11 @@
+import LandingPage from "../Components/Inicio/Inicio"
+
 
 function Inicio(){
     return (
-        <h1>Hola mundo Inicio</h1>
+
+        <LandingPage />
+
     )
 }
 export default Inicio;

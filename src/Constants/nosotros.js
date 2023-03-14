@@ -14,6 +14,8 @@ import unityIcon from "../Components/Nosotros/img/techSIcons/Unity3dIcon.png";
 import fortinetIcon from "../Components/Nosotros/img/techSIcons/fortinetIcon.jpg";
 import windowsServerIcon from "../Components/Nosotros/img/techSIcons/windowsServerIcon.png";
 import pythonIcon from "../Components/Nosotros/img/techSIcons/pythonIcon.png";
+import phpIcon from "../Components/Nosotros/img/techSIcons/phpIcon.png";
+import laravelIcon from "../Components/Nosotros/img/techSIcons/laravelIcon.png";
 import none from "../Components/Nosotros/img/techSIcons/none.png";
 
 // SoftIcons
@@ -21,8 +23,8 @@ import detailOrientation from "../Components/Nosotros/img/softSIcons/atencionAlD
 import communication from "../Components/Nosotros/img/softSIcons/comunicacion.png";
 import growthMindset from "../Components/Nosotros/img/softSIcons/mentalidadDeCrecimiento.png";
 import perseverance from "../Components/Nosotros/img/softSIcons/perseverancia.png";
-import proactivity from "../Components/Nosotros/img/softSIcons/proactividad.png";
-import personalResponsibility from "../Components/Nosotros/img/softSIcons/responsabilidadPersonal.png";
+// import proactivity from "../Components/Nosotros/img/softSIcons/proactividad.png";
+// import personalResponsibility from "../Components/Nosotros/img/softSIcons/responsabilidadPersonal.png";
 import teamwork from "../Components/Nosotros/img/softSIcons/trabajoEnEquipo.png";
 // import orientacionAFuturo from '../Components/Nosotros/img/softSIcons/orientacionAFuturo.png';
 import problemResolution from "../Components/Nosotros/img/softSIcons/problemResolution.png";
@@ -33,19 +35,21 @@ import patience from "../Components/Nosotros/img/softSIcons/patience.png";
 import resilience from "../Components/Nosotros/img/softSIcons/resilience.png";
 import versatility from "../Components/Nosotros/img/softSIcons/versatility.png";
 import activeListening from "../Components/Nosotros/img/softSIcons/activeListening.png";
+import criticalThinking from "../Components/Nosotros/img/softSIcons/criticalThinking.png";
 
 // AvatarIcons
 import hugo from "../Components/Nosotros/img/imgAvatars/hugo.jpeg";
 import heber from "../Components/Nosotros/img/imgAvatars/heber.jpeg";
 import emanuel from "../Components/Nosotros/img/imgAvatars/emanuel.jpeg";
 import asgary from "../Components/Nosotros/img/imgAvatars/asgary.jpeg";
+import aura from "../Components/Nosotros/img/imgAvatars/aura.jpeg";
 
 const data = [
   {
-    avatar: "Aura",
+    avatar: aura,
     name: "Aura Berenice Rodríguez Belmonte",
-    gitHub: "",
-    linkedin: "https://github.com/Aura18R",
+    gitHub: "https://github.com/Aura18R",
+    linkedin: "https://www.linkedin.com/in/aura-rodriguez-3a64b6233/",
     cv: "",
     headline: "Desarrolladora Java Full Stack JR",
     aboutMe:
@@ -128,8 +132,7 @@ const data = [
     linkedin: "https://www.linkedin.com/in/emanuel-saucedo-47a2ba23b/",
     cv: "",
     headline: "Desarrollador Java Full Stack JR",
-    description: "",
-    aboutMe: "",
+    aboutMe: "La tecnologia simpre ha sido algo importante en mi vida y actualmente me estoy preparando como desarrollador FullStack Java.",
     techSOne: htmlIcon,
     techSOneTooltip: "HTML",
     techSTwo: cssIcon,
@@ -146,20 +149,20 @@ const data = [
     techSSevenTooltip: "MySQL",
     techSEight: githubIcon,
     techSEightTooltip: "GitHub",
-    techSNine: none,
-    techSNineTooltip: "",
-    techSTen: none,
-    techSTenTooltip: "",
+    techSNine: phpIcon,
+    techSNineTooltip: "PHP",
+    techSTen: laravelIcon,
+    techSTenTooltip: "Laravel",
     techSEleven: none,
     techSElevenTooltip: "",
-    SoftSOne: perseverance,
-    SoftSOneTooltip: "Perseverancia",
-    SoftSTwo: proactivity,
-    SoftSTwoTooltip: "Proactividad",
-    SoftSThree: personalResponsibility,
-    SoftSThreeTooltip: "Responsabilidad Personal",
-    SoftSFour: teamwork,
-    SoftSFourTooltip: "Trabajo en Equipo",
+    SoftSOne: problemResolution,
+    SoftSOneTooltip: "Resolución de Problemas",
+    SoftSTwo: teamwork,
+    SoftSTwoTooltip: "Trabajo en Equipo",
+    SoftSThree: criticalThinking,
+    SoftSThreeTooltip: "Pensamiento Crítico",
+    SoftSFour: adaptability,
+    SoftSFourTooltip: "Adaptabilidad",
   },
   {
     avatar: heber,

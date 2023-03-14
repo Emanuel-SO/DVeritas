@@ -19,7 +19,9 @@ import Tooltip from "@mui/material/Tooltip";
 import javawizardsIcon from "./img/background/javawizardsIcon.png";
 
 const AboutUs = () => {
+
   const aboutme = data.map((item) => <AboutMe {...item} />);
+  
   return (
     <Box>
       <Box>
@@ -61,6 +63,9 @@ const AboutUs = () => {
   );
 };
 
+
+
+
 const AboutMe = (props) => {
   return (
     <React.Fragment>
@@ -100,7 +105,7 @@ const AboutMe = (props) => {
         {/* SECCIÓN CONTENIDO: NOMBRE, ENLACE A REDES (GitHub, Linkedin, CV), HEADLINE, ABOUTME */}
         <Box sx={{ p: 0, marginTop: 10, marginLeft: 7, marginRight: 7 }}>
           {/* NOMBRE */}
-          <Typography className="lato" sx={{ fontSize: 27 }}>
+          <Typography className="lato" sx={{ fontSize: "1.75rem" }}>
             {props.name}
           </Typography>
 
@@ -160,7 +165,7 @@ const AboutMe = (props) => {
           {/* HEADLINE */}
           <Typography
             className="lato"
-            sx={{ mb: 1.5, fontSize: 20, marginBottom: 3 }}
+            sx={{ mb: 1.5, fontSize: "1.25rem", marginBottom: 3 }}
           >
             {props.headline}
           </Typography>
@@ -398,7 +403,7 @@ const AboutMe = (props) => {
                   alt={props.SoftSFourTooltip}
                   width={60}
                   height={60}
-                />
+                  />
               </Tooltip>
             </Grid>
           </Grid>
