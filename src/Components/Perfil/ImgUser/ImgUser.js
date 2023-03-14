@@ -6,7 +6,7 @@ const ImgUser = () => {
   return (
     <Container sx={{ display: "flex", justifyContent: "center", alignItems: "center", marginTop: "30px" }}>
       <Grid container alignItems="center" spacing={2}>
-        <Grid item xs={12} sm={6} sx={{ textAlign: matches ? "center" : "right" }}>
+        <Grid item xs={6} sm={6} sx={{ textAlign: "right" }}>
                 <Avatar
                     alt="Person"
                     src="https://i0.wp.com/satelitenorte.com.mx/wp-content/uploads/2020/07/personalidad.jpg?fit=1200%2C930&ssl=1"
@@ -15,12 +15,12 @@ const ImgUser = () => {
                     height: matches ? 100 : 150,
                     border: "3px solid #276678",
                     marginLeft: matches ? "auto" : "inherit",
-                    marginRight: matches ? "auto" : "inherit",
+                    marginRight: "0",
                     alignItems: "right"
                     }}
                 />
                 </Grid>
-        <Grid item xs={12} sm={6} sx={{ textAlign: matches ? "center" : "left" }}>
+        <Grid item xs={6} sm={6} sx={{ textAlign: matches ? "left" : "left" }}>
           <Typography
             sx={{
               fontFamily: "Lato, sans-serif",
