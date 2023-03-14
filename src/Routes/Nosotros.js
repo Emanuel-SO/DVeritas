@@ -1,15 +1,16 @@
-import AboutUs from '../Components/Nosotros/Nosotros'
 
+import AboutUs from '../Components/Nosotros/Nosotros'
+import Footer from "../Components/Footer/Footer";
 
 function Nosotros() {
+  return (
+    <>
+      <AboutUs/>
+      <Footer/>
+    </>
+  )
+}
 
-    return (
-
-
-    <AboutUs/>
-
-)
     
-    }
-    
-    export default Nosotros;
+export default Nosotros;
+      

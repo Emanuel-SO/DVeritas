@@ -1,7 +1,17 @@
 
-function Contacto(){
+import Contact from "../Components/Contact/Contact";
+
+import Footer from "../Components/Footer/Footer";
+
+
+function Contacto() {
     return (
-        <h1>Hola mundo Contacto</h1>
+       <div>
+          <Contact />
+           <Footer/>
+        </div>
     )
+
 }
+
 export default Contacto;
