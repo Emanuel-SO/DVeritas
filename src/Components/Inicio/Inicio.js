@@ -17,6 +17,8 @@ import Grid from "@mui/material/Grid";
 const landingPage = () => {
   return (
     <div>
+      {/* ------------------------------- PRIMERA SECCIÓN ------------------------------- */}
+
       <Box
         component="form"
         sx={{
@@ -33,20 +35,24 @@ const landingPage = () => {
           margin: "0 auto", // Center the container horizontally
         }}
       >
+        {/* ------------------------------- TEXTO: PUBLICA SIN TEMOR ------------------------------- */}
+
         <Grid xs={12} sx={{ p: 10 }}>
           <Typography
-            variant="h1"
-            className="latoBold"
-            gutterBottom
+            variant="h1" /* Se agrega una variante h1 que define al texto como un titulo y le da un font size responsive */
+            className="latoBold" /* Se agrega clase latoBold para modificar el diseño en un css externo */
             style={{ marginTop: "50px", color: "#276678" }}
           >
             Publica sin temor
           </Typography>
         </Grid>
+
+        {/* ------------------------------- BOTON INGRESAR ------------------------------- */}
+
         <Grid xs={12} sx={{ p: 10 }}>
-          <Link to="/registrar" className="link-decoration">
+          <Link to="/login" className="link-decoration">
             <Button
-              className="lato"
+              className="lato" /* Se agrega clase lato para modificar el diseño en un css externo */
               sx={{
                 fontSize: "1.25rem",
                 my: 2,
@@ -61,6 +67,8 @@ const landingPage = () => {
         </Grid>
       </Box>
 
+      {/* ------------------------------- SEGUNDA SECCIÓN ------------------------------- */}
+
       <Box
         component="form"
         sx={{
@@ -70,21 +78,24 @@ const landingPage = () => {
           justifyContent: "center",
           textAlign: "center",
           width: "100%",
-          margin: "0 auto", // Center the container horizontally
+          margin: "0 auto", 
         }}
-        noValidate
-        autoComplete="off"
+       
       >
+        {/* ------------------------------- TÍTULO: ¿QUÉ ES D'VERITAS? ------------------------------- */}
+
         <Grid xs={12} sx={{ p: 1 }}>
           <Typography
-            variant="h2"
-            className="latoBold"
-            gutterBottom
+            variant="h2" /* Se agrega una variante h2 que define al texto como un titulo y le da un font size responsive */
+            className="latoBold" /* Se agrega clase latoBold para modificar el diseño en un css externo */
             style={{ marginTop: "50px", color: "#276678" }}
           >
             ¿Qué es D'Veritas?
           </Typography>
         </Grid>
+
+        {/* ------------------------------- TEXTO: DESCRIPCIÓN DE D'VERITAS ------------------------------- */}
+
         <Grid
           container
           xs={12}
@@ -98,7 +109,7 @@ const landingPage = () => {
               }}
             >
               <Typography
-                className="lato"
+                className="lato" /* Se agrega clase lato para modificar el diseño en un css externo */
                 sx={{
                   fontSize: "1.5rem",
                   p: 5,
@@ -129,8 +140,10 @@ const landingPage = () => {
           </Grid>
         </Grid>
       </Box>
+
+      {/* ------------------------------- TERCER SECCIÓN ------------------------------- */}
+
       <Box
-        component="form"
         sx={{
           display: "flex",
           flexDirection: "column",
@@ -138,24 +151,25 @@ const landingPage = () => {
           justifyContent: "center",
           textAlign: "center",
           width: "100%",
-          margin: "0 auto", // Center the container horizontally
+          margin: "0 auto",
         }}
-        noValidate
-        autoComplete="off"
       >
+        {/* ------------------------------- TÍTULO: NUESTRA COMUNIDAD ------------------------------- */}
+
         <Grid xs={12} sx={{ p: 1 }}>
           <Typography
-            variant="h3"
-            className="latoBold"
-            gutterBottom
+            variant="h3" /* Se agrega una variante h3 que define al texto como un titulo y le da un font size responsive */
+            className="latoBold" /* Se agrega clase lato para modificar el diseño en un css externo */
             style={{ marginTop: "50px", color: "#276678" }}
           >
             Nuestra comunidad
           </Typography>
         </Grid>
+        {/* ------------------------------- TEXTO: COMUNIDAD ANONIMA ------------------------------- */}
+
         <Grid xs={12} sx={{ p: 1 }}>
           <Typography
-            className="lato"
+            className="lato" /* Se agrega clase lato para modificar el diseño en un css externo */
             sx={{
               fontSize: "1.5rem",
               paddingBottom: 5,
@@ -167,6 +181,9 @@ const landingPage = () => {
             comentar sus ideas más abtractas sin prejuicios.
           </Typography>
         </Grid>
+
+        {/* ------------------------------- NÚMERO DE USUARIOS ------------------------------- */}
+
         <Grid container xs={12} sx={{ paddingX: 10, paddingY: 4 }}>
           <Grid item xs={12} md={5}>
             <Box
@@ -176,7 +193,7 @@ const landingPage = () => {
               }}
             >
               <Typography
-                className="latoBold"
+                className="latoBold" /* Se agrega clase latoBold para modificar el diseño en un css externo */
                 sx={{
                   fontSize: "1.5rem",
                   color: "#276678",
@@ -184,12 +201,16 @@ const landingPage = () => {
                   maxWidth: "80vh",
                 }}
               >
-                +12,000 <br />
+                +12,000 <br /> {/* Se agrega <br/> para el salto de linea */}
                 USUARIOS
               </Typography>
             </Box>
           </Grid>
+          {/* ------------------------------- GRID PARA AGREGAR UN ESPACIO ENTRE ELEMENTOS. REVISAR ------------------------------- */}
+
           <Grid item xs={12} md={2}></Grid>
+          {/* ------------------------------- NÚMERO DE PUBLICACIONES ------------------------------- */}
+
           <Grid item xs={12} md={5}>
             <Box
               sx={{
@@ -198,7 +219,7 @@ const landingPage = () => {
               }}
             >
               <Typography
-                className="latoBold"
+                className="latoBold" /* Se agrega clase latoBold para modificar el diseño en un css externo */
                 sx={{
                   fontSize: "1.5rem",
                   color: "#276678",
@@ -207,12 +228,14 @@ const landingPage = () => {
                   marginTop: { xs: 5, md: 0 },
                 }}
               >
-                +100,000 <br />
+                +100,000 <br />   {/* Se agrega <br/> para el salto de linea */}
                 PUBLICACIONES
               </Typography>
             </Box>
           </Grid>
         </Grid>
+        {/* ------------------------------- EJEMPLO DE PUBLICACIÓN CON IMAGENES ------------------------------- */}
+
         <Grid container xs={12} sx={{ paddingX: 10 }}>
           <Grid item xs={12} md={6}>
             <Box
@@ -224,12 +247,14 @@ const landingPage = () => {
               }}
             >
               <img
-                className="publicacionImg"
+                className="publicacionImg" /* Se agrega clase publicacionImg para modificar el diseño en un css externo */
                 src={publicationImg}
                 alt="Imagen Contenido"
               />
             </Box>
           </Grid>
+          {/* ------------------------------- EJEMPLO DE PUBLICACIÓN SIN IMAGENES ------------------------------- */}
+
           <Grid item xs={12} md={6}>
             <Box
               sx={{
@@ -240,7 +265,7 @@ const landingPage = () => {
               }}
             >
               <img
-                className="publicacionImg"
+                className="publicacionImg" /* Se agrega clase publicacionImg para modificar el diseño en un css externo */
                 src={publicationNoImg}
                 alt="Imagen Contenido"
               />
@@ -254,7 +279,7 @@ const landingPage = () => {
               }}
             >
               <img
-                className="publicacionImg"
+                className="publicacionImg" /* Se agrega clase publicacionImg para modificar el diseño en un css externo */
                 src={publicationNoImg}
                 alt="Imagen Contenido"
               />

@@ -18,15 +18,18 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import Tooltip from "@mui/material/Tooltip";
 import javawizardsIcon from "./img/background/javawizardsIcon.png";
 
+// Función que va a retornar las tarjetas con la información en la Página Nosotros. Esta es la función que se va a exportar.
 const AboutUs = () => {
-
+  // La función .map() es una función que se utiliza para transformar cada elemento de un array según una función que se proporciona como argumento. En este caso, la función proporcionada como argumento ((item) => <AboutMe {...item} />) toma cada objeto dentro del array data, lo pasa como parametro ((item)) y crea un nuevo componente AboutMe. La sintaxis {...item} se utiliza para pasar cada propiedad del objeto item como una prop al componente AboutMe.
+  // La constante aboutme es un array de componentes AboutMe (Componente con los estilos) creados a partir de los objetos dentro del array data.
   const aboutme = data.map((item) => <AboutMe {...item} />);
-  
+
+  // Debido a que será la función AboutUs la que se exportará. Será el return que podremos visualizar en la página Nosotros
   return (
     <Box>
+      {/* PRIMER SECCIÓN: Se retorna una primer sección con el titulo "ACERCA DE NOSOTROS" y la imagen del logo, ambos con estilos agregados inline */}
       <Box>
         <Grid
-          container
           sx={{
             display: "flex",
             justifyContent: "space-between",
@@ -48,6 +51,7 @@ const AboutUs = () => {
         </Grid>
       </Box>
 
+      {/* SEGUNDA SECCIÓN: Se retorna una segunda sección con las tarjetas guardadas en la constante aboutme y con estilos agregados inline*/}
       <Card
         id="card"
         sx={{
@@ -56,21 +60,19 @@ const AboutUs = () => {
           flexWrap: "wrap",
         }}
       >
-        {""}
         {aboutme}
       </Card>
     </Box>
   );
 };
 
-
-
-
+// Función que recibirá el parametro props mediante la información de cada objeto con "{...item}" (ver constante aboutme en función AboutUs), generando las tarjetas y guardando en la constante aboutme (función AboutUs) el numero de tarjetas según el numero de objetos.
 const AboutMe = (props) => {
   return (
     <React.Fragment>
       <CardContent
-        /* ESTILO GENERAL DE LA TARJETA */
+        /* ------------------------------- ESTILO GENERAL DE LA TARJETA ------------------------------- */
+
         sx={{
           bgcolor: "#276678",
           m: 2,
@@ -78,14 +80,15 @@ const AboutMe = (props) => {
           borderRadius: "16px",
           minWidth: 200,
           maxWidth: 550,
-          color: "#f6f5f5",
           textAlign: "center",
+          color: "#f6f5f5",
         }}
       >
-        {/* IMAGEN DE FONDO (DETRAS DE AVATAR)*/}
+        {/* ------------------------------- IMAGEN DE FONDO (DETRAS DE AVATAR) ------------------------------- */}
+
         <Box
           sx={{
-            backgroundImage: `url(${imgbackground})`,
+            backgroundImage: `url(${imgbackground})`, // Se agrega la imagen imgbackground importada como background para la parte superior de las tarjetas
             p: 6,
             position: "relative",
             borderTopRightRadius: "16px",
@@ -93,23 +96,28 @@ const AboutMe = (props) => {
             borderBottom: 1,
           }}
         ></Box>
+        {/* ------------------------------- AVATAR ------------------------------- */}
         {/* AVATAR */}
         <Box sx={{ display: "flex", justifyContent: "center", m: -8 }}>
           <Avatar
             sx={{ border: 2, width: 110, height: 110 }}
-            alt={props.name}
-            src={props.avatar}
+            alt={props.name} // Mediante props se accede al valor de la propiedad name de los objetos (Miembros de javawizards)
+            src={props.avatar} // Mediante props se accede al valor de la propiedad avatar de los objetos (Miembros de javawizards)
           />
         </Box>
 
-        {/* SECCIÓN CONTENIDO: NOMBRE, ENLACE A REDES (GitHub, Linkedin, CV), HEADLINE, ABOUTME */}
+        {/* ------------------- SECCIÓN CONTENIDO: NOMBRE, ENLACE A REDES (GitHub, Linkedin, CV), HEADLINE, ABOUTME -------------------- */}
+
         <Box sx={{ p: 0, marginTop: 10, marginLeft: 7, marginRight: 7 }}>
-          {/* NOMBRE */}
+          {/* ------------------------------- NOMBRE ------------------------------- */}
+
           <Typography className="lato" sx={{ fontSize: "1.75rem" }}>
-            {props.name}
+            {props.name}{" "}
+            {/* Mediante props se accede al valor de la propiedad name de los objetos (Miembros de javawizards) */}
           </Typography>
 
-          {/* ENLACE A REDES (GitHub, Linkedin, CV)*/}
+          {/* ------------------------------- ICONOS ENLACE A REDES (GitHub, Linkedin, CV) ------------------------------- */}
+
           <Box
             sx={{
               width: "100%",
@@ -118,8 +126,12 @@ const AboutMe = (props) => {
               flexWrap: "wrap",
             }}
           >
-            {/* ENLACE GITHUB */}
+            {/* ------------------------------- ENLACE GITHUB ------------------------------- */}
+
             <Link href={props.gitHub} target="_blank">
+              {" "}
+              {/* Mediante props se accede al enlace de GitHub de cada Miembro de javawizards*/}
+              {/* La etiqueta Avatar le da estilos a una imagen o icono, siendo esta principalmente el circular la imagen y además permitir que se agregue estilo mediante sx al mismo*/}
               <Avatar
                 sx={{
                   bgcolor: common[500],
@@ -129,11 +141,14 @@ const AboutMe = (props) => {
                   height: 60,
                 }}
               >
-                <GitHubIcon />
+                <GitHubIcon /> {/* Icono importado de material UI */}
               </Avatar>
             </Link>
-            {/* ENLACE LINKEDIN */}
+            {/* ------------------------------- ENLACE LINKEDIN ------------------------------- */}
             <Link href={props.linkedin} target="_blank">
+              {" "}
+              {/* Mediante props se accede al enlace de LinkedIn de cada Miembro de javawizards*/}
+              {/* La etiqueta Avatar le da estilos a una imagen o icono, siendo esta principalmente el circular la imagen y además permitir que se agregue estilo mediante sx al mismo*/}
               <Avatar
                 sx={{
                   bgcolor: blue[500],
@@ -143,11 +158,15 @@ const AboutMe = (props) => {
                   height: 60,
                 }}
               >
-                <LinkedInIcon />
+                <LinkedInIcon /> {/* Icono importado de material UI */}
               </Avatar>
             </Link>
-            {/* ENLACE CV */}
+
+            {/* ------------------------------- ENLACE CV ------------------------------- */}
             <Link href={props.cv} target="_blank">
+              {" "}
+              {/* Mediante props se accede al enlace del CV de cada Miembro de javawizards*/}
+              {/* La etiqueta Avatar le da estilos a una imagen o icono, siendo esta principalmente el circular la imagen y además permitir que se agregue estilo mediante sx al mismo*/}
               <Avatar
                 sx={{
                   bgcolor: green[500],
@@ -157,26 +176,27 @@ const AboutMe = (props) => {
                   height: 60,
                 }}
               >
-                <AssignmentIcon />
+                <AssignmentIcon /> {/* Icono importado de material UI */}
               </Avatar>
             </Link>
           </Box>
 
-          {/* HEADLINE */}
+          {/* ------------------------------- HEADLINE ------------------------------- */}
           <Typography
-            className="lato"
+            className="lato" // Se le asigna la clase lato para modificar el estilo mediante CSS externo
             sx={{ mb: 1.5, fontSize: "1.25rem", marginBottom: 3 }}
           >
-            {props.headline}
+            {props.headline}{" "}
+            {/* Mediante props se accede al valor de la propiedad headline de los objetos (Miembros de javawizards) */}
           </Typography>
 
-          {/* ABOUTME */}
+          {/* ------------------------------- ABOUTME  ------------------------------- */}
           <Divider>
             <Chip className="lato" label="ABOUT ME" color="warning" />
           </Divider>
-
+          {/* Mediante props se accede al valor de la propiedad aboutme de los objetos (Miembros de javawizards) */}
           <Typography
-            className="lato"
+            className="lato" // Se le asigna la clase lato para modificar el estilo mediante CSS externo
             sx={{
               mb: 1.5,
               marginTop: 1,
@@ -188,15 +208,25 @@ const AboutMe = (props) => {
           </Typography>
         </Box>
 
-        {/* SKILLS */}
-        {/* TECHNICAL SKILLS */}
-
-        <Grid id="skills" container sx={{ marginTop: 2 }}>
-          <Grid id="techSkills" xs={12}>
-            <Divider>
-              <Chip className="lato" label="TECHNICAL SKILLS" color="primary" />
-            </Divider>
-
+        {/* ------------------------------- TECHNICAL Y SOFT SKILLS  ------------------------------- */}
+        {/* ------------------------------- TECHNICAL SKILLS BACKEND ------------------------------- */}
+        <Box id="skills" container sx={{ marginTop: 2 }}>
+          
+          {/* El parametro container indica que Grid es un elemento padre que contiene elementos hijos (Grid con el parametro item), lo que permite controlar su disposición y estilo.  */}
+          <Grid container id="techSkills" xs={12}>
+         
+            {/* El parametro item indica que Grid es un elemento hijo por lo que será afectado por la disposición y el estilo del componente padre. En Grid con parametro item también se agrega el tamaño de columnas*/}
+            <Grid item xs={12}>
+              {/* Divider es un componente que sirve para separar elementos mediante una linea.*/}
+              <Divider>
+                {/* Chip es un componente que representa una etiqueta. Muestra información compacta. */}
+                <Chip
+                  className="lato"
+                  label="TECHNICAL SKILLS"
+                  color="primary"
+                />
+              </Divider>
+            </Grid>
             <Grid
               xs={12}
               sx={{
@@ -207,7 +237,7 @@ const AboutMe = (props) => {
               }}
             >
               <Grid
-                container
+                item
                 xs={5}
                 sx={{
                   display: "flex",
@@ -217,6 +247,7 @@ const AboutMe = (props) => {
                 }}
               >
                 <Grid
+                  item
                   xs={12}
                   sx={{
                     display: "flex",
@@ -224,43 +255,44 @@ const AboutMe = (props) => {
                     flexWrap: "wrap",
                   }}
                 >
-                  <Tooltip arrow title={props.techSOneTooltip}>
+                  {/* Mediante props se accede al valor de la propiedad oneTooltip y one del objeto nested techSkills de los objetos (Miembros de javawizards) */}
+                  <Tooltip arrow title={props.techSkills.oneTooltip}>
                     <img
-                      src={props.techSOne}
-                      alt={props.techSOneTooltip}
-                      width={37}
-                      height={37}
+                      className="techSkillsImg"
+                      src={props.techSkills.one}
+                      alt={props.techSkills.oneTooltip}
                     />
                   </Tooltip>
-                  <Tooltip arrow title={props.techSTwoTooltip}>
+                  {/* Mediante props se accede al valor de la propiedad twoTooltip y two del objeto nested techSkills de los objetos (Miembros de javawizards) */}
+                  <Tooltip arrow title={props.techSkills.twoTooltip}>
                     <img
-                      src={props.techSTwo}
-                      alt={props.techSTwoTooltip}
-                      width={37}
-                      height={37}
+                      className="techSkillsImg"
+                      src={props.techSkills.two}
+                      alt={props.techSkills.twoTooltip}
                     />
                   </Tooltip>
-                  <Tooltip arrow title={props.techSThreeTooltip}>
+                  {/* Mediante props se accede al valor de la propiedad threeTooltip y three del objeto nested techSkills de los objetos (Miembros de javawizards) */}
+                  <Tooltip arrow title={props.techSkills.threeTooltip}>
                     <img
-                      src={props.techSThree}
-                      alt={props.techSThreeTooltip}
-                      width={37}
-                      height={37}
+                      className="techSkillsImg"
+                      src={props.techSkills.three}
+                      alt={props.techSkills.threeTooltip}
                     />
                   </Tooltip>
-                  <Tooltip arrow title={props.techSFourTooltip}>
+                  {/* Mediante props se accede al valor de la propiedad fourTooltip y four del objeto nested techSkills de los objetos (Miembros de javawizards) */}
+                  <Tooltip arrow title={props.techSkills.fourTooltip}>
                     <img
-                      src={props.techSFour}
-                      alt={props.techSFourTooltip}
-                      width={37}
-                      height={37}
+                      className="techSkillsImg"
+                      src={props.techSkills.four}
+                      alt={props.techSkills.fourTooltip}
                     />
                   </Tooltip>
                 </Grid>
               </Grid>
+              {/* ------------------------------- TECHNICAL SKILLS FRONTEND ------------------------------- */}
 
               <Grid
-                container
+                container /* El parametro container indica que Grid es un elemento padre que contiene elementos hijos (Grid con el parametro item), lo que permite controlar su disposición y estilo.  */
                 xs={2}
                 sx={{
                   display: "flex",
@@ -269,7 +301,9 @@ const AboutMe = (props) => {
                   marginRight: 2,
                 }}
               >
+                {/* El parametro item indica que Grid es un elemento hijo por lo que será afectado por la disposición y el estilo del componente padre. En Grid con parametro item también se agrega el tamaño de columnas*/}
                 <Grid
+                  item
                   xs={12}
                   sx={{
                     display: "flex",
@@ -277,24 +311,27 @@ const AboutMe = (props) => {
                     flexWrap: "wrap",
                   }}
                 >
-                  <Tooltip title={props.techSFiveTooltip}>
+                  {/* Mediante props se accede al valor de la propiedad fiveTooltip y five del objeto nested techSkills de los objetos (Miembros de javawizards) */}
+                  <Tooltip title={props.techSkills.fiveTooltip}>
                     <img
-                      src={props.techSFive}
-                      alt={props.techSFiveTooltip}
-                      width={37}
-                      height={37}
+                      className="techSkillsImg"
+                      src={props.techSkills.five}
+                      alt={props.techSkills.fiveTooltip}
                     />
                   </Tooltip>
-                  <Tooltip arrow title={props.techSSixTooltip}>
+                  {/* Mediante props se accede al valor de la propiedad sixTooltip y six del objeto nested techSkills de los objetos (Miembros de javawizards) */}
+                  <Tooltip arrow title={props.techSkills.sixTooltip}>
                     <img
-                      src={props.techSSix}
-                      alt={props.techSSixTooltip}
-                      width={37}
-                      height={37}
+                      className="techSkillsImg"
+                      src={props.techSkills.six}
+                      alt={props.techSkills.sixTooltip}
                     />
                   </Tooltip>
                 </Grid>
               </Grid>
+
+              {/* ------------------------------- TECHNICAL SKILLS OTHERS ------------------------------- */}
+
               <Grid
                 container
                 xs={5}
@@ -314,57 +351,59 @@ const AboutMe = (props) => {
                     flexWrap: "wrap",
                   }}
                 >
-                  <Tooltip arrow title={props.techSSevenTooltip}>
+                  {/* Mediante props se accede al valor de la propiedad sevenTooltip y seven del objeto nested techSkills de los objetos (Miembros de javawizards) */}
+                  <Tooltip arrow title={props.techSkills.sevenTooltip}>
                     <img
-                      src={props.techSSeven}
-                      alt={props.techSSevenTooltip}
-                      width={37}
-                      height={37}
+                      className="techSkillsImg"
+                      src={props.techSkills.seven}
+                      alt={props.techSkills.sevenTooltip}
                     />
                   </Tooltip>
-                  <Tooltip arrow title={props.techSEightTooltip}>
+                  {/* Mediante props se accede al valor de la propiedad eightTooltip y eight del objeto nested techSkills de los objetos (Miembros de javawizards) */}
+                  <Tooltip arrow title={props.techSkills.eightTooltip}>
                     <img
-                      src={props.techSEight}
-                      alt={props.techSEightTooltip}
-                      width={37}
-                      height={37}
+                      className="techSkillsImg"
+                      src={props.techSkills.eight}
+                      alt={props.techSkills.eightTooltip}
                     />
                   </Tooltip>
-                  <Tooltip arrow title={props.techSNineTooltip}>
+                  {/* Mediante props se accede al valor de la propiedad nineTooltip y nine del objeto nested techSkills de los objetos (Miembros de javawizards) */}
+                  <Tooltip arrow title={props.techSkills.nineTooltip}>
                     <img
-                      src={props.techSNine}
-                      alt={props.techSNineTooltip}
-                      width={37}
-                      height={37}
+                      className="techSkillsImg"
+                      src={props.techSkills.nine}
+                      alt={props.techSkills.nineTooltip}
                     />
                   </Tooltip>
-                  <Tooltip arrow title={props.techSTenTooltip}>
+                  {/* Mediante props se accede al valor de la propiedad tenTooltip y ten del objeto nested techSkills de los objetos (Miembros de javawizards) */}
+                  <Tooltip arrow title={props.techSkills.tenTooltip}>
                     <img
-                      src={props.techSTen}
-                      alt={props.techSTenTooltip}
-                      width={37}
-                      height={37}
+                      className="techSkillsImg"
+                      src={props.techSkills.ten}
+                      alt={props.techSkills.tenTooltip}
                     />
                   </Tooltip>
-                  <Tooltip arrow title={props.techSElevenTooltip}>
+                  {/* Mediante props se accede al valor de la propiedad elevenTooltip y eleven del objeto nested techSkills de los objetos (Miembros de javawizards) */}
+                  <Tooltip arrow title={props.techSkills.elevenTooltip}>
                     <img
-                      src={props.techSEleven}
-                      alt={props.techSElevenTooltip}
-                      width={37}
-                      height={37}
+                      className="techSkillsImg"
+                      src={props.techSkills.eleven}
+                      alt={props.techSkills.elevenTooltip}
                     />
                   </Tooltip>
                 </Grid>
               </Grid>
             </Grid>
           </Grid>
-
-          {/* SOFT SKILLS */}
-          <Grid id="softSkills" xs={12}>
-            <Divider>
-              <Chip className="lato" label="SOFT SKILLS" color="error" />
-            </Divider>
+          {/* ------------------------------- SOFT SKILLS  ------------------------------- */}
+          <Grid container id="softSkills" xs={12}>
+            <Grid item xs={12}>
+              <Divider>
+                <Chip className="lato" label="SOFT SKILLS" color="error" />
+              </Divider>
+            </Grid>
             <Grid
+              item
               xs={12}
               sx={{
                 display: "flex",
@@ -373,41 +412,41 @@ const AboutMe = (props) => {
                 flexWrap: "wrap",
               }}
             >
-              <Tooltip arrow title={props.SoftSOneTooltip}>
+              {/* Mediante props se accede al valor de la propiedad oneTooltip y one del objeto nested softSkills de los objetos (Miembros de javawizards) */}
+              <Tooltip arrow title={props.softSkills.oneTooltip}>
                 <img
-                  src={props.SoftSOne}
-                  alt={props.SoftSOneTooltip}
-                  width={60}
-                  height={60}
+                  className="softSkillsImg"
+                  src={props.softSkills.one}
+                  alt={props.softSkills.oneTooltip}
                 />
               </Tooltip>
-              <Tooltip arrow title={props.SoftSTwoTooltip}>
+              {/* Mediante props se accede al valor de la propiedad twoTooltip y two del objeto nested softSkills de los objetos (Miembros de javawizards) */}
+              <Tooltip arrow title={props.softSkills.twoTooltip}>
                 <img
-                  src={props.SoftSTwo}
-                  alt={props.SoftSTwoTooltip}
-                  width={60}
-                  height={60}
+                  className="softSkillsImg"
+                  src={props.softSkills.two}
+                  alt={props.softSkills.twoTooltip}
                 />
               </Tooltip>
-              <Tooltip arrow title={props.SoftSThreeTooltip}>
+              {/* Mediante props se accede al valor de la propiedad threeTooltip y three del objeto nested softSkills de los objetos (Miembros de javawizards) */}
+              <Tooltip arrow title={props.softSkills.threeTooltip}>
                 <img
-                  src={props.SoftSThree}
-                  alt={props.SoftSThreeTooltip}
-                  width={60}
-                  height={60}
+                  className="softSkillsImg"
+                  src={props.softSkills.three}
+                  alt={props.softSkills.threeTooltip}
                 />
               </Tooltip>
-              <Tooltip arrow title={props.SoftSFourTooltip}>
+              {/* Mediante props se accede al valor de la propiedad fourTooltip y four del objeto nested softSkills de los objetos (Miembros de javawizards) */}
+              <Tooltip arrow title={props.softSkills.fourTooltip}>
                 <img
-                  src={props.SoftSFour}
-                  alt={props.SoftSFourTooltip}
-                  width={60}
-                  height={60}
-                  />
+                  className="softSkillsImg"
+                  src={props.softSkills.four}
+                  alt={props.softSkills.fourTooltip}
+                />
               </Tooltip>
             </Grid>
           </Grid>
-        </Grid>
+        </Box>
       </CardContent>
     </React.Fragment>
   );
