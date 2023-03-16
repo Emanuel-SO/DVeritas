@@ -1,6 +1,9 @@
 import { Container, Grid, Button } from "@mui/material";
 import EditRoundedIcon from '@mui/icons-material/EditRounded';
 
+
+//Componente configuracion de usuario
+
 const ButtonUserConfig = () => {
   return (
     <Container sx={{ display: "flex", justifyContent: "center", alignItems: "center", marginTop: "30px"}}>
