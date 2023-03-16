@@ -1,4 +1,3 @@
-
 import AboutUs from '../Components/Nosotros/Nosotros'
 import Footer from "../Components/Footer/Footer";
 
@@ -9,7 +8,7 @@ function Nosotros() {
       <Footer/>
     </>
   )
-}
-    
+}  
+export default Nosotros;
 
       
