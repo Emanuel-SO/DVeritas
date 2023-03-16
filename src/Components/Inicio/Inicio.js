@@ -87,6 +87,8 @@ const landingPage = () => {
         <Grid xs={12} sx={{ p: 1 }}>
           <Typography
             variant="h2" /* Se agrega una variante h2 que define al texto como un titulo y le da un font size responsive */
+
+            
             className="latoBold" /* Se agrega clase latoBold para modificar el diseño en un css externo */
             style={{ marginTop: "50px", color: "#276678" }}
           >
