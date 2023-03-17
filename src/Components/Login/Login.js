@@ -28,9 +28,7 @@ function Login() {
         <Typography variant="h5" mb={3} sx={{ fontFamily: "Lato, sans-serif", color: "#276678", fontSize: { xs: '2.5rem', sm: '3rem' }, marginTop: '3rem', marginBottom: '4rem' }}>
           ¿Estas listo para ingresar al Anonimato?
         </Typography>
-        <Typography variant="h5" mb={3} sx={{ fontFamily: "Lato", color: "#276678", fontSize: { xs: '2.5rem', sm: '3rem' }, marginTop: '3rem', marginBottom: '4rem' }}>
-          ¿Estas listo para ingresar al Anonimato?
-        </Typography>
+ 
 
         <TextField
           required

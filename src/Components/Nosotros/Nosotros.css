@@ -2,7 +2,22 @@
 
 .lato {
 
-    font-family: "Lato, sans-serif"
+    font-family: "Lato, sans-serif";
+  
 
 }
 
+
+
+
+.techSkillsImg{
+   
+    width:37px;
+    height: 37px;
+
+}
+
+.softSkillsImg{
+    width:60px;
+    height: 60px;
+}
