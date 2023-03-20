@@ -23,10 +23,7 @@ import detailOrientation from "../Components/Nosotros/img/softSIcons/atencionAlD
 import communication from "../Components/Nosotros/img/softSIcons/comunicacion.png";
 import growthMindset from "../Components/Nosotros/img/softSIcons/mentalidadDeCrecimiento.png";
 import perseverance from "../Components/Nosotros/img/softSIcons/perseverancia.png";
-// import proactivity from "../Components/Nosotros/img/softSIcons/proactividad.png";
-// import personalResponsibility from "../Components/Nosotros/img/softSIcons/responsabilidadPersonal.png";
 import teamwork from "../Components/Nosotros/img/softSIcons/trabajoEnEquipo.png";
-// import orientacionAFuturo from '../Components/Nosotros/img/softSIcons/orientacionAFuturo.png';
 import problemResolution from "../Components/Nosotros/img/softSIcons/problemResolution.png";
 import adaptability from "../Components/Nosotros/img/softSIcons/adaptability.png";
 import collaboration from "../Components/Nosotros/img/softSIcons/collaboration.png";

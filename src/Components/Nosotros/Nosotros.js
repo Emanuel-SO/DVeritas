@@ -30,6 +30,7 @@ const AboutUs = () => {
       {/* PRIMER SECCIÓN: Se retorna una primer sección con el titulo "ACERCA DE NOSOTROS" y la imagen del logo, ambos con estilos agregados inline */}
       <Box>
         <Grid
+        container
           sx={{
             display: "flex",
             justifyContent: "space-between",
@@ -97,7 +98,7 @@ const AboutMe = (props) => {
           }}
         ></Box>
         {/* ------------------------------- AVATAR ------------------------------- */}
-        {/* AVATAR */}
+       
         <Box sx={{ display: "flex", justifyContent: "center", m: -8 }}>
           <Avatar
             sx={{ border: 2, width: 110, height: 110 }}
@@ -126,6 +127,8 @@ const AboutMe = (props) => {
               flexWrap: "wrap",
             }}
           >
+
+             
             {/* ------------------------------- ENLACE GITHUB ------------------------------- */}
 
             <Link href={props.gitHub} target="_blank">
@@ -146,7 +149,6 @@ const AboutMe = (props) => {
             </Link>
             {/* ------------------------------- ENLACE LINKEDIN ------------------------------- */}
             <Link href={props.linkedin} target="_blank">
-              {" "}
               {/* Mediante props se accede al enlace de LinkedIn de cada Miembro de javawizards*/}
               {/* La etiqueta Avatar le da estilos a una imagen o icono, siendo esta principalmente el circular la imagen y además permitir que se agregue estilo mediante sx al mismo*/}
               <Avatar
