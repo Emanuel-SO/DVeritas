@@ -41,9 +41,9 @@ function ResponsiveAppBar() {
       <Container maxWidth="xl">
         {/* Componente de MUI que permite contener otros componentes de MUI para hacer una barra de herramientas, se le asigna una propiedad que elimina los paddings horizontales para que todo el ancho del dispositivo */}
         <Toolbar disableGutters>
-          {/* Componente de MUI que funciona como etiquetas HTML para visualizar textos, para esto se le propocionan distintas propiedades que lo hacen comportarse como etiqueta HTML */}
 
 {/* ------------------------------- Nombre o Logo dispositivos pequeños ------------------------------- */}
+          {/* Componente de MUI que funciona como etiquetas HTML para visualizar textos, para esto se le propocionan distintas propiedades que lo hacen comportarse como etiqueta HTML */}
           <Typography
             variant="h6"
             noWrap
@@ -161,7 +161,7 @@ function ResponsiveAppBar() {
               </Link>
 
               <Link to="/nosotros" className='link-decoration'>{/* Permite redireccion a otra página por medio de react-router */}
-                <Button onClick={handleCloseNavMenu} sx={{ my: 2, color: "#D3E0EA", display: 'block' }} >
+                <Button sx={{ my: 2, color: "#D3E0EA", display: 'block' }} >
                   Nosotros
                 </Button>
               </Link>
