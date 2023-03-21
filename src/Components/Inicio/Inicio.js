@@ -1,14 +1,11 @@
 import "./Inicio.css";
-import landingBg from "../Nosotros/img/background/bgLanding.png";
+//import landingBg from "../Nosotros/img/background/bgLanding.png";
 import imgContent from "../Nosotros/img/LandingPage/imgContent.png";
 import publicationImg from "../Nosotros/img/background/publicationImg.png";
 import publicationNoImg from "../Nosotros/img/background/publicationNoImg.png";
 
 import * as React from "react";
-// import Stack from '@mui/material/Stack';
-// import Button from '@mui/material/Button';
-import Box from "@mui/material/Box";
-// import TextField from '@mui/material/TextField';
+
 import Typography from "@mui/material/Typography";
 import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
@@ -37,7 +34,7 @@ const landingPage = () => {
           <Typography
             variant="h1" /* Se agrega una variante h1 que define al texto como un titulo y le da un font size responsive */
             className="latoBold" /* Se agrega clase latoBold para modificar el diseño en un css externo */
-            sx={{ marginY: 25, color: "#276678" }}
+            sx={{ marginY: 25, color: "#D3E0EA", }}
           >
             Publica sin temor
           </Typography>
@@ -46,13 +43,14 @@ const landingPage = () => {
         {/* ------------------------------- BOTON INGRESAR ------------------------------- */}
 
         <Grid item xs={10} sx={{ marginTop: 5, marginBottom:10 }}>
-          <Link to="/login" className="link-decoration">
-            <Button
-              className="lato" /* Se agrega clase lato para modificar el diseño en un css externo */
+          <Link className="buttonInicio" to="/login" underline="none">
+            <Button className="buttonInicio lato" variant="contained" 
+              /* Se agrega clase lato para modificar el diseño en un css externo */
               sx={{
+                
                 fontSize: "1.25rem",
-                bgcolor: "#276678",
-                color: "#D3E0EA",
+                bgcolor: "#D3E0EA",
+                color: "#276678",
               }}
             >
               Ingresar
