@@ -1,0 +1,45 @@
+.containerForm {
+    display: flex;
+    justify-content: center;
+    margin-top: 4rem;
+
+}
+
+.gridForm{
+    margin-top: 5rem;
+    margin-bottom: 4rem;
+
+}
+
+
+.tittleForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: Lato, sans-serif;
+    color: #276678;
+    font-size: 6rem; /* for screens up to 600px wide */
+    margin-bottom: 2.5rem !important;
+
+
+    @media screen and (min-width: 600px) {
+        font-size: 3rem; /* for screens wider than 600px */
+    }
+}
+
+.textField {
+    font-family: "Lato", sans-serif;
+    margin-bottom: 2rem !important;
+    width: 100% !important;
+    max-width: 500px !important;
+} 
+
+.buttonForm {
+    font-family: "Lato", sans-serif;
+    background-color: #1687A7;
+  }
+  
+  .buttonForm:hover {
+    background-color: #125E75;
+  }

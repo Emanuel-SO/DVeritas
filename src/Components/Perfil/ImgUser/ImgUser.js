@@ -1,17 +1,16 @@
-import { Avatar, Container, Grid, Typography, useMediaQuery } from "@mui/material";
+import { Avatar, Grid, Typography, useMediaQuery } from "@mui/material";
 
 //Componenete de react con MUI que muestra la foto del usuario junto con su nombre, esta formado de dos grid containers, uno para la imagen y otro para el nombre de usuario
 
 const ImgUser = () => {
-  // Determinar si el dispositivo tiene un ancho máximo de 600px, esta variable la ocuparemos despued para ver si debe cambiar el tamaño de la fuente y los componenetes
+  // Determinar si el dispositivo tiene un ancho máximo de 600px, esta variable la ocuparemos despues para ver si debe cambiar el tamaño de la fuente y los componenetes
   const matches = useMediaQuery("(max-width:600px)");
 
   return (
-    // Contenedor principal
-    <Container sx={{ display: "flex", justifyContent: "center", alignItems: "center", marginTop: "30px" }}>
-      <Grid container alignItems="center" spacing={2}>
+    // Contenedor principal Grid container
+      <Grid container spacing={2} sx={{ display: "flex", justifyContent: "center", alignItems: "center", marginTop: "30px" }}>
         {/* Avatar de usuario */}
-        <Grid item xs={6} sm={6} sx={{ textAlign: "right" }}>
+        <Grid item xs={6} sm={6} sx={{alignItems: "right" }}>
           <Avatar
             alt="Person"
             src="https://i0.wp.com/satelitenorte.com.mx/wp-content/uploads/2020/07/personalidad.jpg?fit=1200%2C930&ssl=1"
@@ -20,8 +19,8 @@ const ImgUser = () => {
               width: matches ? 100 : 150,
               height: matches ? 100 : 150,
               border: "3px solid #276678",
-              marginLeft: matches ? "auto" : "inherit",
-              marginRight: "0",
+              marginLeft: matches ? "auto" : "auto",
+              marginRight: matches ? "20px" : "50px",
               alignItems: "right"
             }}
           />
@@ -34,7 +33,7 @@ const ImgUser = () => {
               fontFamily: "Lato, sans-serif",
               fontSize: matches ? "18px" : "34px",
               fontWeight: "bold",
-              marginLeft: matches ? "20px" : "0",
+              marginLeft: matches ? "20px" : "50px",
               color: "#276678"
             }}
           >
@@ -46,7 +45,7 @@ const ImgUser = () => {
               fontFamily: "Lato, sans-serif",
               fontSize: matches ? "16px" : "24px",
               fontWeight: "bold",
-              textAlign: matches ? "center" : "left",
+              marginLeft: matches ? "20px" : "50px",
               color: "#1687A7",
             }}
           >
@@ -54,7 +53,6 @@ const ImgUser = () => {
           </Typography>
         </Grid>
       </Grid>
-    </Container>
   );
 };
 
