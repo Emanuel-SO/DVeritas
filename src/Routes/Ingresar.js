@@ -1,8 +1,12 @@
 import Login from "../Components/Login/Login";
+import Footer from "../Components/Footer/Footer";
 
-function Ingresar(){
+function Ingresar() {
     return (
-        <Login />
+        <>
+            <Login/>
+            
+        </>
     )
 }
 export default Ingresar;

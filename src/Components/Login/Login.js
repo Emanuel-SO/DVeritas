@@ -25,11 +25,10 @@ function Login() { //La función Login es el componente que contiene un formular
 
   return (
     <div className="my-component">
-      <Grid container sx={{ height: "100vh" }}>
-        <Grid item xs={12}>
-
+      <Grid container sx={{ height: "100vh", justifyContent: "center", alignItems: "center" }}>
+        <Grid item xs={11} md={4} >
           <form onSubmit={handleSubmit}>
-            <Box                            //En el retorno del componente Login, se utiliza el componente "Box" para agrupar los componentes del formulario.
+            <Box   className="animated"                    //En el retorno del componente Login, se utiliza el componente "Box" para agrupar los componentes del formulario.
 
               sx={{
                 display: "flex",
@@ -41,9 +40,9 @@ function Login() { //La función Login es el componente que contiene un formular
                 borderRadius: "20px",
                 border: "4px solid #276678",
                 padding: "32px",
-                margin: "32px",
-                maxWidth: "500px",
-                width: "0 auto",
+                maxWidth: "100%",
+                margin: "0 auto",
+
               }}
               noValidate
               autoComplete="off"
@@ -52,13 +51,14 @@ function Login() { //La función Login es el componente que contiene un formular
             >
               <Typography
                 variant="h5"
-                className="Titulo animated"
+                
                 sx={{
-                  marginTop: '3rem',
+                  marginTop: '1rem',
                   marginBottom: '4rem',
                   color: '#276678',
                   fontFamily: 'Lato',
                   fontSize: { xs: '2.5rem', sm: '3rem' },
+                  textAlign: 'center'
                 }}
               >
                 ¿Estas listo para ingresar al Anonimato?
@@ -71,24 +71,28 @@ function Login() { //La función Login es el componente que contiene un formular
                 variant="outlined"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                sx={{ fontFamily: "Lato, sans-serif", mb: 3 }}
-                style={{ marginBottom: "16px", width: "500px" }}
+                sx={{ fontFamily: "Lato, sans-serif", mb: 5, width: "100%" }}
               />
-              <TextField                                      //Ambos campos son requeridos y se especifican mediante el atributo "required". Además, se utiliza el atributo "onChange" para actualizar los estados del correo electrónico y la contraseña.
+              <TextField                                     //Ambos campos son requeridos y se especifican mediante el atributo "required". Además, se utiliza el atributo "onChange" para actualizar los estados del correo electrónico y la contraseña.
                 required
                 id="outlined-password"
                 label="Contraseña"
                 type='password'
                 variant="outlined"
+                value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                sx={{ fontFamily: "Lato, sans-serif", mb: 3 }}
-                style={{ marginBottom: "16px", marginTop: "16px", width: "500px" }}
+                sx={{ fontFamily: "Lato, sans-serif", mb: 4, width: "100%" }}
               />
-              <Button                                       //  Se utiliza el componente "Button" de Material UI para agregar un botón de "Iniciar Sesión" que se utilizará para enviar el formulario. El estilo del botón se define mediante la propiedad "sx" de Material UI y se define una función para manejar la acción del botón mediante el atributo "onSubmit" en el formulario.
+              <Typography sx={{ mt: 1 }} href="/forgot-password" color="textSecondary">
+                {/* <Link > */}
+                  ¿Olvidaste tu contraseña?
+                {/* </Link> */}
+              </Typography>
+              <Button                               //  Se utiliza el componente "Button" de Material UI para agregar un botón de "Iniciar Sesión" que se utilizará para enviar el formulario. El estilo del botón se define mediante la propiedad "sx" de Material UI y se define una función para manejar la acción del botón mediante el atributo "onSubmit" en el formulario.
                 variant="contained"
                 id="botonlogin"
                 type="submit"           //prop type="submit" al botón de "Iniciar Sesión", este botón se utilizará para enviar el formulario cuando se hace clic.
-                sx={{ marginTop: '50px', width: '300px', height: '40px', fontFamily: 'lato', color: '#D3E0EA', bgcolor: '#1687A7', '&:hover': { bgcolor: '#125E75' }, }}>
+                sx={{ marginTop: '3rem', width: "100%", height: '40px', fontFamily: 'lato', color: '#D3E0EA', bgcolor: '#1687A7', '&:hover': { bgcolor: '#125E75' }, }}>
                 Iniciar Sesión
               </Button>
             </Box>
