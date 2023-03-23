@@ -1,13 +1,8 @@
 .containerForm {
-    display: flex;
+    align-items: center;
     justify-content: center;
-    margin-top: 4rem;
-
-}
-
-.gridForm{
-    margin-top: 5rem;
-    margin-bottom: 4rem;
+    height: 100vh;
+    
 
 }
 
@@ -19,8 +14,8 @@
     justify-content: center;
     font-family: Lato, sans-serif;
     color: #276678;
-    font-size: 6rem; /* for screens up to 600px wide */
     margin-bottom: 2.5rem !important;
+    text-align: center;
 
 
     @media screen and (min-width: 600px) {
@@ -42,4 +37,24 @@
   
   .buttonForm:hover {
     background-color: #125E75;
+  }
+
+  .animated {
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out forwards;
+  }
+  
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+.my-component {
+    background: url('./images/8351332.gif') no-repeat center;
+    background-size: cover;
   }
