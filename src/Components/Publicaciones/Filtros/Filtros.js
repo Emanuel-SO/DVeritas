@@ -9,9 +9,13 @@ import Feed from '../Feed/Feed';
 /* Importacion del componente formulario para hacer una nueva publicación */
 import FormularioPublicar from '../FormularioPublicar/FormularioPublicar';
 
+import data from '../../../Constants/publicaciones';
+
 
 /* se crea qy se exporta el componenete de las publicacioens */
 export default function NavTabs() {
+
+  const todasPublicaciones = data.map((item) => <Feed {...item} />);
   
   /* Hook que revisa el estado del la barra de opciones "Tabs" y hace que cada que recargue la pàgina se easigne a 1 */
   const [value, setValue] = useState('1');
@@ -40,7 +44,7 @@ export default function NavTabs() {
         {/* ----------------------------------------- Contenido que se muestra segun la tab que se encuentre selecionada ----------------------------------------- */}
       <TabPanel value='1' >
         {/* se agrega el componente que muetra las publicaciones como cards con o sin imagenes */}
-        <Feed/>
+        {todasPublicaciones}
       </TabPanel>
       <TabPanel value='2'>
         {/* se agrega el componente que muetra las publicaciones como cards con o sin imagenes */}

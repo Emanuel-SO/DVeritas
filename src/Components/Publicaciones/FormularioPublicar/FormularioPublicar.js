@@ -1,7 +1,8 @@
 import { useState } from "react";
 
 /* Imporaciones de componentes de Material UI */
-import { Grid, Box, TextField, Button,IconButton,Stack } from "@mui/material";
+import { Grid, Box, TextField, Button,IconButton,Stack} from "@mui/material";
+
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
 
 
@@ -25,7 +26,7 @@ const FormnularioPublicar = () => {
     /* Contenedor para el formulario */
     <div style={{ display: "flex", justifyContent: "center" }}> 
     {/* Componente grid para posicionar correctamente el formulario */}
-      <Grid item xs={12} md={8} sx={{ marginTop: "1rem", marginBottom: "-1rem", display:{xs:"none", sm:"flex"} }}>{/* display utiliza breakpoint de Material para ajustarse segun el tamaño de la pantalla */}
+      <Grid item xs={12} md={8} sx={{ marginTop: "1rem", marginBottom: "-1rem", display:"flex" }}>
         {/* Inicia el formulario */}
         <form onSubmit={handleSubmit}> {/* se le asigna una funcion a ejecutar una vez se presione el submit */}
           {/* Contenedor del formulario */}
@@ -38,9 +39,14 @@ const FormnularioPublicar = () => {
                 placeholder="Escribe lo que piensas..."
                 multiline
                 value={publicacion}
+                inputProps={{
+                  maxLength:280, /* ESTE ES EL LIMITE DE CARACTERES POR PUBLICACIÓN */
+              }}
                 onChange={(e) => setPublicacion(e.target.value)}/* cada que cambie este input se ejecuta el hook para guardar el dato en una variable */
                 sx={{fontFamily: "Lato, sans-serif", mb: 1}}
             />
+
+            
             
             <Stack direction="row" alignItems="center" spacing={18}>
                 <IconButton sx={{ color:"#1687A7" ,'&:hover': {color: '#125E75'}}} aria-label="upload picture" component="label">

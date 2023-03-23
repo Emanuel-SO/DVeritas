@@ -13,12 +13,13 @@ import { red } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ChatIcon from '@mui/icons-material/Chat';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import { Divider } from '@mui/material';
+import { Divider,Button } from '@mui/material';
 
 
 //exportacion del componente feed para las publicaciones
-export default function Feed() {
+export default function Feed(props) {
   
+  let date =  new Date(props.createdAt);
 
   return (
 
@@ -29,25 +30,34 @@ export default function Feed() {
         {/* Cabecera de la card, donde muestra una imagen, nombre, fecha y un icono para ociones */}
         <CardHeader
           avatar={
-            <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-              R
-            </Avatar>
+            <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe" src={props.avatar}/>
           }
           action={
             <IconButton aria-label="settings">
               <MoreVertIcon />{/* icono opciones */}
             </IconButton>
           }
-          title="Emanuel Saucedo Olvera"
-          subheader="September 14, 2016"
+          title={props.name}
+          subheader={date.toLocaleDateString()}/* Usa metodo de JS para darle formato  */
         />
+          <Divider/>
+
+          {/* Componente que permite asignar una imagen a las publicaciones */}
+        {props.image != null ? (<CardMedia
+              component="img"
+              image={props.image}/* ruta de la imagen */
+              alt="Paella dish"
+            />): null}
+            
+        
+
         {/* Componente de linea que divide componentes */}
         <Divider/>
 
         {/* Contenido del la card de publicacion */}
         <CardContent>
           <Typography variant="body2" color="text.secondary">
-            Aquí va el texto de la publicacion
+           {props.descripcion}
           </Typography>
         </CardContent>
 
@@ -56,64 +66,25 @@ export default function Feed() {
 
         {/* Seccion final de a car que muestra boton de me gusta y boton de comentarios con iconos */}
         <CardActions disableSpacing>
-          <IconButton aria-label="add to favorites">
-            <FavoriteIcon />{/* icono me gusta */}
-          </IconButton>
+         
+          {/* <IconButton aria-label="add to favorites">
+              <FavoriteIcon />
+          </IconButton>  ---------------> se deja por si no hay likes*/}
+          <Button aria-label="add to favorites"  startIcon={<FavoriteIcon />}>
+              {props.likes}
+          </Button>
 
-          <IconButton aria-label="add to favorites" sx={{ marginLeft:"auto" }}>
-              <ChatIcon/>{/* icono cometarios */}
-          </IconButton>
+          {/* <IconButton aria-label="add comment" sx={{ marginLeft:"auto" }}>
+              <ChatIcon/>
+          </IconButton>  ---------------> se deja por si no hay comentarios*/}
+          <Button aria-label="add to favorites"  startIcon={<ChatIcon/>} sx={{ marginLeft:"auto" }}>
+              {props.comments}
+          </Button>
+         
         </CardActions>
       </Card>
 
-      {/* -------------------------------------- Card Foto -------------------------------------- */}
-      {/* Componente Card que contiene una publicacion con imagenes */}
-      <Card sx={{ maxWidth: {xs:"300px", sm:"80%", md:"60%" } ,margin:"auto", borderRadius: "15px"}}>
-        <CardHeader
-          avatar={
-            <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-              R
-            </Avatar>
-          }
-          action={
-            <IconButton aria-label="settings">
-              <MoreVertIcon />
-            </IconButton>
-          }
-          title="Emanuel Saucedo Olvera"
-          subheader="September 14, 2016"
-        />
-        <Divider/>
-
-        {/* Componente que permite asignar una imagen a las publicaciones */}
-        <CardMedia
-          component="img"
-          height="194" /* tamaño de la imagen */
-          image="/static/images/cards/paella.jpg"/* ruta de la imagen */
-          alt="Paella dish"
-        />
-        <Divider/>
-
-
-        <CardContent>
-          <Typography variant="body2" color="text.secondary">
-            Aquí va el texto de la publicacion
-          </Typography>
-        </CardContent>
-        <Divider/>
-
-
-        <CardActions disableSpacing>
-          <IconButton aria-label="add to favorites">
-            <FavoriteIcon />
-          </IconButton>
-
-          <IconButton aria-label="add to favorites" sx={{ marginLeft:"auto" }}>
-            <ChatIcon/>
-          </IconButton>
-        </CardActions>
-        
-      </Card>
+      
     </div>
 
 
