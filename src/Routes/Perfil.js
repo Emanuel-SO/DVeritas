@@ -1,15 +1,17 @@
 import React from 'react'
 import ImgUser from '../Components/Perfil/ImgUser/ImgUser'
-import ButtonUserConf from '../Components/Perfil/ButtonUserConfig/ButtonUserConfig'
+import ButtonUserConfig from '../Components/Perfil/ButtonUserConfig/ButtonUserConfig'
 import BannerPub from '../Components/Perfil/BannerPub/BannerPub'
+import Feed from '../Components/Perfil/Publicaciones/Publicaciones'
 
 
 function Perfil() {
     return (
       <div>
         <ImgUser />
-        <ButtonUserConf />
+        <ButtonUserConfig />
         <BannerPub />
+        <Feed/>
       </div>
     )
   }
