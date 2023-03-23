@@ -5,7 +5,6 @@ import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import { useState } from "react";
 import './Login.css';
-import myGif from './images/myGif.gif';
 import { Grid } from "@mui/material";
 
 //  El código importa varias bibliotecas de Material UI (un conjunto de herramientas de interfaz de usuario para React) y también importa el hook useState de React.
@@ -26,7 +25,7 @@ function Login() { //La función Login es el componente que contiene un formular
   return (
     <div className="my-component">
       <Grid container sx={{ height: "100vh", justifyContent: "center", alignItems: "center" }}>
-        <Grid item xs={11} md={4} >
+      <Grid item xs={10} sm={8} md={4} >
           <form onSubmit={handleSubmit}>
             <Box   className="animated"                    //En el retorno del componente Login, se utiliza el componente "Box" para agrupar los componentes del formulario.
 
@@ -77,17 +76,17 @@ function Login() { //La función Login es el componente que contiene un formular
                 required
                 id="outlined-password"
                 label="Contraseña"
-                type='password'
+                type="password"
                 variant="outlined"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 sx={{ fontFamily: "Lato, sans-serif", mb: 4, width: "100%" }}
               />
-              <Typography sx={{ mt: 1 }} href="/forgot-password" color="textSecondary">
-                {/* <Link > */}
+              {/* <Typography sx={{ mt: 1 }} href="/forgot-password" color="textSecondary">
+                
                   ¿Olvidaste tu contraseña?
-                {/* </Link> */}
-              </Typography>
+                
+              </Typography> */}
               <Button                               //  Se utiliza el componente "Button" de Material UI para agregar un botón de "Iniciar Sesión" que se utilizará para enviar el formulario. El estilo del botón se define mediante la propiedad "sx" de Material UI y se define una función para manejar la acción del botón mediante el atributo "onSubmit" en el formulario.
                 variant="contained"
                 id="botonlogin"
