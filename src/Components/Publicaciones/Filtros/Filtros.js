@@ -33,8 +33,8 @@ export default function NavTabs() {
           {/* ----------------------------------------- Lista de opciones ----------------------------------------- */}
           <TabList aria-label='Tabs-example' onChange={handleChange} centered>{/* con el onchange se revisa que tab es la selecionada */}
             <Tab label='Todas' value='1'/>
-            <Tab label='Likes' value='2'/>
-            <Tab label='Comentarios' value='3'/>
+            <Tab label='+ Likes' value='2'/>
+            <Tab label='+ Comentarios' value='3'/>
           </TabList>
         </Box>
         {/* ----------------------------------------- Componente de formulario publicaciones ----------------------------------------- */}
