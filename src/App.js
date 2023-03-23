@@ -1,5 +1,10 @@
+// Importación de React Router para las rutas de la aplicación 
 import { Route, Routes } from 'react-router-dom';
+
+// Estilos generales de la aplicacón
 import './App.css';
+
+// Importación de los componentes que se utilizan con las rutaS
 import ResponsiveAppBar from './Components/AppBar/ResponsiveAppBar';
 import Contacto from './Routes/Contacto';
 import Inicio from './Routes/Inicio';
@@ -9,11 +14,13 @@ import Registrar from './Routes/Registrar';
 import Ingresar from './Routes/Ingresar';
 import Perfil from './Routes/Perfil';
 
-
+/* Componente que renderiza la alpicación de D´Veritas */
 function App() {
   return (
     <div>
-      <ResponsiveAppBar/>
+      <ResponsiveAppBar/> {/* Componete Menú de navegación */}
+
+      {/* Rutas de la aplicación */}
       <Routes>
         <Route path='/' element={<Inicio/>}/>
         <Route path="/publicaciones" element={<Publicaciones/>}/>
