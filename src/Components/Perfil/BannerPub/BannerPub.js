@@ -1,23 +1,11 @@
-/*  import { Box, Typography } from "@mui/material";
-
-const BannerPub = () => {
-  return (
-    <Box sx={{ backgroundColor: "#276678", padding: "20px", borderRadius: "5px", display: "flex", justifyContent: "center", alignItems: "center", marginTop: "30px"}}>
-      <Typography variant="h4" sx={{ fontFamily: "Lato, sans-serif", color: "#fff" }}>
-        Mis publicaciones
-      </Typography>
-    </Box>
-  );
-};
-
-export default BannerPub;*/
-
 import { Box, Typography, Grid } from "@mui/material";
 
+//Componente de react con MUI que muestra un banner de mis publicaciones
+
 const BannerPub = () => {
   return (
-    <Grid container justifyContent="center">
-      <Grid item xs={10} sm={8} md={6} lg={4}>
+    <Grid container justifyContent="center"> {/*  contenedor del item*/}
+      <Grid item xs={10} sm={10} md={10} lg={10}> {/*  segun el tamaño de la pantalla como va a ocupar las columnas */}
         <Box sx={{ backgroundColor: "#276678", padding: "10px", borderRadius: "5px", display: "flex", justifyContent: "center", alignItems: "center", marginTop: "50px"}}>
           <Typography variant="h5" sx={{ fontFamily: "Lato, sans-serif", color: "#fff", fontSize: { xs: '1.5rem', sm: '2rem' } }}>
             Mis publicaciones

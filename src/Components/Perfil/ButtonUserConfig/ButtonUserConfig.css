@@ -1,0 +1,12 @@
+.textField {
+    font-family: "Lato", sans-serif;
+} 
+
+.buttonForm {
+    font-family: "Lato", sans-serif;
+    background-color: #1687A7;
+  }
+  
+  .buttonForm:hover {
+    background-color: #125E75;
+  }

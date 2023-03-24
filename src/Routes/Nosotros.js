@@ -8,7 +8,6 @@ function Nosotros() {
       <Footer/>
     </>
   )
-}  
+}     
 export default Nosotros;
-
       
