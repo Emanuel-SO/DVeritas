@@ -1,8 +1,8 @@
 import "./Inicio.css";
 //import landingBg from "../Nosotros/img/background/bgLanding.png";
-import imgContent from "../Nosotros/img/LandingPage/imgContent.png";
-import publicationImg from "../Nosotros/img/background/publicationImg.png";
-import publicationNoImg from "../Nosotros/img/background/publicationNoImg.png";
+import imgContent from "../../img/LandingPage/imgContent.png";
+import publicationImg from "../../img/background/publicationImg.png";
+import publicationNoImg from "../../img/background/publicationNoImg.png";
 
 import * as React from "react";
 
