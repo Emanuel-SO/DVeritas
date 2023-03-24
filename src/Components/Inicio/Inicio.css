@@ -1,5 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
 
+
+.firstSection{
+
+background-image: url("../../img/background/fondo.gif");
+background-position: center;
+background-size: cover;
+}
+
 .lato {
 
     font-family: "Lato, sans-serif";
@@ -14,14 +22,28 @@
 
 }
 
+.buttonInicio{
+
+    text-decoration: none;
+}
+
+
+
 .imgContent {
 
-    width: 80%;
+    width: 80vw;
     max-width: 500px;  
 }
 
-.publicacionImg {
+.publicacion{
 
-    max-Width: 60%;
+    border-radius: 10px;
+}
+
+.publicacionNoImg, .publicacionImg {
+
+    width: 100%;
+    max-width: 450px;
+    margin: 10px 0px;
 
 }
