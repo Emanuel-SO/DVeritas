@@ -8,7 +8,6 @@ function Contacto() {
     return (
        <div>
           <Contact />
-           <Footer/>
         </div>
     )
 
