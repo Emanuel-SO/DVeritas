@@ -1,45 +1,50 @@
 //TechIcons
-import cssIcon from "../Components/Nosotros/img/techSIcons/cssIcon.png";
-import javascriptIcon from "../Components/Nosotros/img/techSIcons/javascriptIcon.png";
-import githubIcon from "../Components/Nosotros/img/techSIcons/gitHubIcon.png";
-import htmlIcon from "../Components/Nosotros/img/techSIcons/htmlIcon.png";
-import javaIcon from "../Components/Nosotros/img/techSIcons/javaIcon.png";
-import mysqlIcon from "../Components/Nosotros/img/techSIcons/mysqlIcon.png";
-import reactIcon from "../Components/Nosotros/img/techSIcons/reactIcon.svg";
-import springBootIcon from "../Components/Nosotros/img/techSIcons/springBootIcon.svg";
-import linuxIcon from "../Components/Nosotros/img/techSIcons/linuxIcon.png";
-import delphiIcon from "../Components/Nosotros/img/techSIcons/delphiIcon.svg";
-import oracle10gIcon from "../Components/Nosotros/img/techSIcons/oracle10gIcon.gif";
-import unityIcon from "../Components/Nosotros/img/techSIcons/Unity3dIcon.png";
-import fortinetIcon from "../Components/Nosotros/img/techSIcons/fortinetIcon.jpg";
-import windowsServerIcon from "../Components/Nosotros/img/techSIcons/windowsServerIcon.png";
-import pythonIcon from "../Components/Nosotros/img/techSIcons/pythonIcon.png";
-import phpIcon from "../Components/Nosotros/img/techSIcons/phpIcon.png";
-import laravelIcon from "../Components/Nosotros/img/techSIcons/laravelIcon.png";
-import none from "../Components/Nosotros/img/techSIcons/none.png";
+import cssIcon from "../img/Nosotros/techSIcons/cssIcon.png";
+import javascriptIcon from "../img/Nosotros/techSIcons/javascriptIcon.png";
+import githubIcon from "../img/Nosotros/techSIcons/gitHubIcon.png";
+import htmlIcon from "../img/Nosotros/techSIcons/htmlIcon.png";
+import javaIcon from "../img/Nosotros/techSIcons/javaIcon.png";
+import mysqlIcon from "../img/Nosotros/techSIcons/mysqlIcon.png";
+import reactIcon from "../img/Nosotros/techSIcons/reactIcon.svg";
+import springBootIcon from "../img/Nosotros/techSIcons/springBootIcon.svg";
+import linuxIcon from "../img/Nosotros/techSIcons/linuxIcon.png";
+import fortinetIcon from "../img/Nosotros/techSIcons/fortinetIcon.jpg";
+import windowsServerIcon from "../img/Nosotros/techSIcons/windowsServerIcon.png";
+import pythonIcon from "../img/Nosotros/techSIcons/pythonIcon.png";
+import phpIcon from "../img/Nosotros/techSIcons/phpIcon.png";
+import laravelIcon from "../img/Nosotros/techSIcons/laravelIcon.png";
+import sassIcon from "../img/Nosotros/techSIcons/sassIcon.png";
+import firebaseIcon from "../img/Nosotros/techSIcons/firebaseIcon.png";
 
 // SoftIcons
-import detailOrientation from "../Components/Nosotros/img/softSIcons/atencionAlDetalle.png";
-import communication from "../Components/Nosotros/img/softSIcons/comunicacion.png";
-import growthMindset from "../Components/Nosotros/img/softSIcons/mentalidadDeCrecimiento.png";
-import perseverance from "../Components/Nosotros/img/softSIcons/perseverancia.png";
-import teamwork from "../Components/Nosotros/img/softSIcons/trabajoEnEquipo.png";
-import problemResolution from "../Components/Nosotros/img/softSIcons/problemResolution.png";
-import adaptability from "../Components/Nosotros/img/softSIcons/adaptability.png";
-import collaboration from "../Components/Nosotros/img/softSIcons/collaboration.png";
-import tolerancy from "../Components/Nosotros/img/softSIcons/tolerancy.png";
-import patience from "../Components/Nosotros/img/softSIcons/patience.png";
-import resilience from "../Components/Nosotros/img/softSIcons/resilience.png";
-import versatility from "../Components/Nosotros/img/softSIcons/versatility.png";
-import activeListening from "../Components/Nosotros/img/softSIcons/activeListening.png";
-import criticalThinking from "../Components/Nosotros/img/softSIcons/criticalThinking.png";
+import detailOrientation from "../img/Nosotros/softSIcons/atencionAlDetalle.png";
+import communication from "../img/Nosotros/softSIcons/comunicacion.png";
+import growthMindset from "../img/Nosotros/softSIcons/mentalidadDeCrecimiento.png";
+import perseverance from "../img/Nosotros/softSIcons/perseverancia.png";
+import teamwork from "../img/Nosotros/softSIcons/trabajoEnEquipo.png";
+import problemResolution from "../img/Nosotros/softSIcons/problemResolution.png";
+import adaptability from "../img/Nosotros/softSIcons/adaptability.png";
+import collaboration from "../img/Nosotros/softSIcons/collaboration.png";
+import activeListening from "../img/Nosotros/softSIcons/activeListening.png";
+import criticalThinking from "../img/Nosotros/softSIcons/criticalThinking.png";
+import autodidact from "../img/Nosotros/softSIcons/autodidact.png";
+import creativeThinking from "../img/Nosotros/softSIcons/creativeThinking.png";
+import proactive from "../img/Nosotros/softSIcons/proactive.png";
+
 
 // AvatarIcons
-import hugo from "../Components/Nosotros/img/imgAvatars/hugo.jpeg";
-import heber from "../Components/Nosotros/img/imgAvatars/heber.jpeg";
-import emanuel from "../Components/Nosotros/img/imgAvatars/emanuel.jpeg";
-import asgary from "../Components/Nosotros/img/imgAvatars/asgary.jpeg";
-import aura from "../Components/Nosotros/img/imgAvatars/aura.jpeg";
+import hugo from "../img/Nosotros/imgAvatars/hugo.jpeg";
+import emanuel from "../img/Nosotros/imgAvatars/emanuel.jpeg";
+import asgary from "../img/Nosotros/imgAvatars/asgary.jpeg";
+import aura from "../img/Nosotros/imgAvatars/aura.jpeg";
+import kevin from "../img/Nosotros/imgAvatars/kevin.jpeg";
+
+//CV
+import hugocv from "../pdf/cv/hugocv.pdf";
+import emanuelcv from "../pdf/cv/emanuelcv.pdf";
+import asgarycv from "../pdf/cv/asgarycv.pdf";
+import auracv from "../pdf/cv/auracv.pdf";
+import kevincv from "../pdf/cv/kevincv.pdf";
 
 
 
@@ -60,7 +65,7 @@ const data = [
     name: "Aura Berenice Rodríguez Belmonte",
     gitHub: "https://github.com/Aura18R",
     linkedin: "https://www.linkedin.com/in/aura-rodriguez-3a64b6233/",
-    cv: "",
+    cv: auracv,
     headline: "Desarrolladora Java Full Stack JR",
     aboutMe: "Siempre me he sentido interesada por la programación, el mundo de los datos y los resultados que obtenemos cuando los  combinamos,  actualmente aprendiendo desarrollo full-stack  y lista para nuevos retos.",
     techSkills: {
@@ -106,7 +111,7 @@ const data = [
     name: "Asgary Nieto Terrazas",
     gitHub: "https://github.com/asgarynt",
     linkedin: "https://www.linkedin.com/in/asgarynt/",
-    cv: "",
+    cv: asgarycv,
     headline: "Desarrollador Java Full Stack JR",
     aboutMe: "Me apasiona la tecnología, su capacidad para innovar y resolver problemas, estoy convencido de que puedo contribuir significativamente al desarrollo de proyectos y soluciones tecnológicas.",
     techSkills: {
@@ -152,7 +157,7 @@ const data = [
     name: "Emanuel Saucedo Olvera",
     gitHub: "https://github.com/LouckGuntz",
     linkedin: "https://www.linkedin.com/in/emanuel-saucedo-47a2ba23b/",
-    cv: "",
+    cv: emanuelcv,
     headline: "Desarrollador Java Full Stack JR",
     aboutMe: "La tecnologia simpre ha sido algo importante en mi vida y actualmente me estoy preparando como desarrollador FullStack Java.",
     techSkills: {
@@ -191,52 +196,7 @@ const data = [
     },
   },
 
-    /* ------------------------------- Heber Sánchez Sánchez ------------------------------- */
-
-
-  {
-    avatar: heber,
-    name: "Heber Sánchez Sánchez",
-    gitHub: "https://github.com/HeberSanzS",
-    linkedin: "https://www.linkedin.com/in/heber-sanchez-sanchez-24978724/",
-    cv: "",
-    headline: "Desarrollador Java Full Stack JR",
-    aboutMe: "Una persona que explorar mas allá de sus limites y que opta por estar preparado lo mejor posible ante cualquier situación.",
-    techSkills: {
-      one: htmlIcon,
-      oneTooltip: "HTML",
-      two: cssIcon,
-      twoTooltip: "CSS",
-      three: javascriptIcon,
-      threeTooltip: "JavaScript",
-      four: reactIcon,
-      fourTooltip: "React",
-      five: javaIcon,
-      fiveTooltip: "Java",
-      six: springBootIcon,
-      sixTooltip: "SpringBoot",
-      seven: mysqlIcon,
-      sevenTooltip: "MySQL",
-      eight: githubIcon,
-      eightTooltip: "GitHub",
-      nine: delphiIcon,
-      nineTooltip: "Delphi",
-      ten: oracle10gIcon,
-      tenTooltip: "Oracle 10g",
-      eleven: unityIcon,
-      elevenTooltip: "Unity3D",
-    },
-    softSkills: {
-      one: tolerancy,
-      oneTooltip: "Tolerancia",
-      two: patience,
-      twoTooltip: "Paciencia",
-      three: resilience,
-      threeTooltip: "Resiliencia",
-      four: versatility,
-      fourTooltip: "Versatilidad",
-    },
-  },
+  
 
     /* ------------------------------- Hugo Antonio Morales Sánchez ------------------------------- */
 
@@ -245,7 +205,7 @@ const data = [
     name: "Hugo Antonio Morales Sánchez",
     gitHub: "https://github.com/HugoMorales98",
     linkedin: "https://www.linkedin.com/in/hugo-morales-0372201b9/",
-    cv: "",
+    cv: hugocv,
     headline: "Desarrollador Java Full Stack JR",
     aboutMe: "Ingeniero en Sistemas. Soy una persona que disfruta de leer y estar al tanto de los avances en tecnología. Esta pasión por aprender nuevas cosas no solo me mantiene entretenido, sino que también me ha permitido desarrollar habilidades en el campo tecnológico.",
     techSkills: {
@@ -283,6 +243,56 @@ const data = [
       fourTooltip: "Resolución de Problemas",
     },
   },
+
+    /* ------------------------------- Kevin Miguel	Cerón Escalante  ------------------------------- */
+
+  {
+    avatar: kevin,
+    name: "Kevin Miguel	Cerón Escalante",
+    gitHub: "https://github.com/kevcesca",
+    linkedin: "https://www.linkedin.com/in/kevinceresc/",
+    cv: kevincv,
+    headline: "Desarrollador Java Full Stack JR",
+    aboutMe: "Amante de la programación y los videojuegos, recientemente comencé mi camino ninja por el lado del back-end. De momento considero que mi punto fuerte es el diseñar y maquetar interfaces graficas para el usuario.",
+    techSkills: {
+      one: htmlIcon,
+      oneTooltip: "HTML",
+      two: cssIcon,
+      twoTooltip: "CSS",
+      three: javascriptIcon,
+      threeTooltip: "JavaScript",
+      four: reactIcon,
+      fourTooltip: "React",
+      five: javaIcon,
+      fiveTooltip: "Java",
+      six: springBootIcon,
+      sixTooltip: "SpringBoot",
+      seven: mysqlIcon,
+      sevenTooltip: "MySQL",
+      eight: githubIcon,
+      eightTooltip: "GitHub",
+      nine: sassIcon,
+      nineTooltip: "SASS",
+      ten: firebaseIcon,
+      tenTooltip: "FireBase",
+      eleven: null,
+      elevenTooltip: null,
+    },
+    softSkills: {
+      one: teamwork,
+      oneTooltip: "Trabajo en Equipo",
+      two: autodidact,
+      twoTooltip: "Autodidacta",
+      three: proactive,
+      threeTooltip: "Proactivo",
+      four: creativeThinking,
+      fourTooltip: "Pensamiento Creativo",
+    },
+  },
+
+
 ];
 
 export default data;
+
+

@@ -97,12 +97,11 @@ const landingPage = () => {
                 }}
               >
                 Una red social que permite a sus usuarios hacer publicaciones y
-                comentarios de manera anonima, ¿Tienes una idea? Publicala sin
-                temor. Encontraras gente que quiera compartir ideas contigo
+                comentarios de manera anónima, ¿Tienes una idea? Publicala sin
+                temor. Encontrarás gente que quiera compartir ideas contigo
                 igualmente.
               </Typography>
           </Grid>
-          
           <Grid item xs={10} md={5}>
           
               <img
