@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography';
 import { useState } from "react";
 import './Login.css';
 import { Grid } from "@mui/material";
+//import { redirect } from 'react-router-dom';
 
 //  El código importa varias bibliotecas de Material UI (un conjunto de herramientas de interfaz de usuario para React) y también importa el hook useState de React.
 
@@ -13,11 +14,52 @@ function Login() { //La función Login es el componente que contiene un formular
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+
+  const guardarCredenciales = (email, password) => {
+    localStorage.setItem('email', email);
+    localStorage.setItem('password', password);
+  }
+
+  guardarCredenciales(email, password);
+
+  // function imprimirCredenciales() {
+  //   const email = localStorage.getItem('email');
+  //   const password = localStorage.getItem('password');
+
+  //   console.log(email);
+  //   console.log(password);
+  // }
+
   //En el componente Login, se definen dos estados utilizando el hook useState de React. El primer estado "email" se inicializa como una cadena vacía y se actualiza mediante setEmail. El segundo estado "password" también se inicializa como una cadena vacía y se actualiza mediante setPassword.
 
   const handleSubmit = (e) => {     //La constante handleSubmit define una función que maneja el envío del formulario.
     e.preventDefault();     // Se utiliza para prevenir el comportamiento predeterminado de un evento
-    console.log({ email, password }); // Se muestra la información en la consola del navegador.
+    // Se utiliza para prevenir el comportamiento predeterminado de un evento
+
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+
+    const storedData = JSON.parse(localStorage.getItem('listausuarios'));
+
+    let match = false;
+
+    for (let i = 0; i < storedData.length; i++) {
+      if (email === storedData[i].email && password === storedData[i].password) {
+        match = true;
+        break;
+      }
+    }
+
+    if (match) {
+      console.log('Bienvenido a Deveritas!');
+      // Redirect to the user's dashboard or another page
+      history.push('/perfil');
+    } else {
+      console.log('Login failed');
+      // Show an error message to the user
+    }
+    //console.log({ email, password }); // Se muestra la información en la consola del navegador.
+    //imprimirCredenciales();
   };
 
 
@@ -25,9 +67,9 @@ function Login() { //La función Login es el componente que contiene un formular
   return (
     <div className="my-component">
       <Grid container sx={{ height: "100vh", justifyContent: "center", alignItems: "center" }}>
-      <Grid item xs={10} sm={8} md={4} >
+        <Grid item xs={10} sm={8} md={4} >
           <form onSubmit={handleSubmit}>
-            <Box   className="animated"                    //En el retorno del componente Login, se utiliza el componente "Box" para agrupar los componentes del formulario.
+            <Box className="animatedLogin"                    //En el retorno del componente Login, se utiliza el componente "Box" para agrupar los componentes del formulario.
 
               sx={{
                 display: "flex",
@@ -50,7 +92,7 @@ function Login() { //La función Login es el componente que contiene un formular
             >
               <Typography
                 variant="h5"
-                
+
                 sx={{
                   marginTop: '1rem',
                   marginBottom: '4rem',
