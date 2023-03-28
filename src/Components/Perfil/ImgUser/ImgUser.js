@@ -13,7 +13,7 @@ const ImgUser = () => {
         <Grid item xs={6} sm={6} sx={{alignItems: "right" }}>
           <Avatar
             alt="Person"
-            src="https://i0.wp.com/satelitenorte.com.mx/wp-content/uploads/2020/07/personalidad.jpg?fit=1200%2C930&ssl=1"
+            src="https://cdn-icons-png.flaticon.com/512/1534/1534082.png"
             sx={{
               // Estilo del avatar, ajustado según el ancho del dispositivo, si el dispositivo ya es menor que 600px que decalaramos en matches va a reducir el tamaño a 100 y tambien los margenes
               width: matches ? 100 : 150,
@@ -37,7 +37,7 @@ const ImgUser = () => {
               color: "#276678"
             }}
           >
-            Sam Guy
+            Mr. Anonimo
           </Typography>
           <Typography
             sx={{
@@ -49,7 +49,7 @@ const ImgUser = () => {
               color: "#1687A7",
             }}
           >
-            @samguy
+            @mranonimo
           </Typography>
         </Grid>
       </Grid>
