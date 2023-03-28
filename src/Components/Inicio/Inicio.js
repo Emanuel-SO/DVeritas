@@ -1,8 +1,8 @@
 import "./Inicio.css";
-//import landingBg from "../Nosotros/img/background/bgLanding.png";
 import imgContent from "../../img/LandingPage/imgContent.png";
 import publicationImg from "../../img/background/publicationImg.png";
 import publicationNoImg from "../../img/background/publicationNoImg.png";
+import publicationNoImg2 from "../../img/background/publicationNoImg2.png";
 
 import * as React from "react";
 
@@ -32,9 +32,8 @@ const landingPage = () => {
 
         <Grid item xs={10}>
           <Typography
-            variant="h1" /* Se agrega una variante h1 que define al texto como un titulo y le da un font size responsive */
             className="latoBold" /* Se agrega clase latoBold para modificar el diseño en un css externo */
-            sx={{ marginY: 25, color: "#D3E0EA", }}
+            sx={{ marginY:{xs:12, md: 25}, color: "#D3E0EA", fontWeight: 'bold', fontSize:{xs:"2.5rem", sm:"5rem", lg:"7rem"} }}
           >
             Publica sin temor
           </Typography>
@@ -43,18 +42,11 @@ const landingPage = () => {
         {/* ------------------------------- BOTON INGRESAR ------------------------------- */}
 
         <Grid item xs={10} sx={{ marginTop: 5, marginBottom:10 }}>
-          <Link className="buttonInicio" to="/login" underline="none">
-            <Button className="buttonInicio lato" variant="contained" 
-              /* Se agrega clase lato para modificar el diseño en un css externo */
-              sx={{
-                
-                fontSize: "1.25rem",
-                bgcolor: "#D3E0EA",
-                color: "#276678",
-              }}
-            >
-              Ingresar
-            </Button>
+          <Link className="buttonInicio" to="/ingresar" underline="none">
+          <Button variant="contained" size="large" sx={{ my: 2, color: "#D3E0EA", bgcolor:"#1687A7", fontSize:{xs:".8rem", sm:"1.2rem", lg:"2rem"}
+           , '&:hover': { bgcolor: '#125E75'} }}>
+                  Ingresar
+                </Button>
           </Link>
         </Grid>
       </Grid>
@@ -72,11 +64,10 @@ const landingPage = () => {
       >
         {/* ------------------------------- TÍTULO: ¿QUÉ ES D'VERITAS? ------------------------------- */}
 
-        <Grid item xs={10} sx={{ marginY: 3 }}>
+        <Grid item xs={10} sx={{ marginTop: {xs:3, sm:5,  lg:7 }}}>
           <Typography
-            variant="h2" /* Se agrega una variante h2 que define al texto como un titulo y le da un font size responsive */
             className="latoBold" /* Se agrega clase latoBold para modificar el diseño en un css externo */
-            sx={{ marginTop: "50px", color: "#276678" }}
+            sx={{  color: "#276678",fontWeight: 'bold', fontSize:{xs:"2rem", sm:"2.5rem", lg:"3rem"} }}
           >
             ¿Qué es D'Veritas?
           </Typography>
@@ -85,26 +76,25 @@ const landingPage = () => {
         {/* ------------------------------- TEXTO: DESCRIPCIÓN DE D'VERITAS ------------------------------- */}
 
       
-          <Grid item xs={10} md={5} sx={{display:"flex", justifyContent:"center"}}>
+          <Grid item xs={10} md={5} lg={4} sx={{display:"flex", justifyContent:"center"}}>
           
               <Typography
                 className="lato" /* Se agrega clase lato para modificar el diseño en un css externo */
                 sx={{
-                  fontSize: "1.5rem",
-                  p: 5,
+                  
+                  
                   textAlign: "justify",
-                  maxWidth: 500,
-                }}
+                  p: {xs: 1, sm:3},
+                  fontSize:{xs:"1.2rem", sm:"1.5rem", lg:"1.8rem"}, marginY:{xs:2}                }}
               >
                 Una red social que permite a sus usuarios hacer publicaciones y
-                comentarios de manera anónima, ¿Tienes una idea? Publicala sin
-                temor. Encontrarás gente que quiera compartir ideas contigo
-                igualmente.
+                comentarios de manera anónima, ¿Tienes una idea? Pública sin
+                temor. Encontrarás gente que quiera compartir ideas contigo.
               </Typography>
           </Grid>
-          <Grid item xs={10} md={5}>
+          <Grid item xs={12} md={5} sx={{marginY:{xs:5, lg:8}}}>
           
-              <img
+              <img id="img"
                 className="imgContent"
                 src={imgContent}
                 alt="Imagen Contenido"
@@ -130,11 +120,10 @@ const landingPage = () => {
       >
         {/* ------------------------------- TÍTULO: NUESTRA COMUNIDAD ------------------------------- */}
 
-        <Grid item xs={10} sx={{ p: 1 }}>
+        <Grid item xs={12} sx={{ p: 1 }}>
           <Typography
-            variant="h3" /* Se agrega una variante h3 que define al texto como un titulo y le da un font size responsive */
             className="latoBold" /* Se agrega clase lato para modificar el diseño en un css externo */
-            style={{ marginTop: "50px", color: "#276678" }}
+            sx={{ fontWeight: 'bold', marginTop: "50px", color: "#276678", fontSize:{xs:"2rem", sm:"2.5rem", lg:"3rem"} }}
           >
             Nuestra comunidad
           </Typography>
@@ -145,10 +134,10 @@ const landingPage = () => {
           <Typography
             className="lato" /* Se agrega clase lato para modificar el diseño en un css externo */
             sx={{
-              fontSize: "1.5rem",
-              paddingBottom: 5,
-              textAlign: "center",
-              maxWidth: "80vh",
+              textAlign: "justify",
+                  p: {xs: 1, sm:5},
+                  fontSize:{xs:"1.2rem", sm:"1.5rem", lg:"1.8rem"}
+              
             }}
           >
             Una comunidad que crece día a día permitiendo a sus usuarios
@@ -176,8 +165,10 @@ const landingPage = () => {
           <Typography
             className="latoBold" /* Se agrega clase latoBold para modificar el diseño en un css externo */
             sx={{
-              fontSize: "1.5rem",
+
               color: "#276678",
+              fontSize:{xs:"1.2rem", sm:"1.6rem", lg:"1.8rem"}
+
             }}
           >
             +12,000 <br /> {/* Se agrega <br/> para el salto de linea */}
@@ -195,9 +186,9 @@ const landingPage = () => {
           <Typography
             className="latoBold" /* Se agrega clase latoBold para modificar el diseño en un css externo */
             sx={{
-              fontSize: "1.5rem",
               color: "#276678",
               marginTop: { xs: 5, md: 0 },
+              fontSize:{xs:"1.2rem", sm:"1.6rem", lg:"1.8rem"}
             }}
           >
             +100,000 <br /> {/* Se agrega <br/> para el salto de linea */}
@@ -249,6 +240,7 @@ const landingPage = () => {
             alignContent: "center",
           }}
         >
+
           <img
             className="publicacionNoImg publicacion" /* Se agrega clase publicacionImg para modificar el diseño en un css externo */
             src={publicationNoImg}
@@ -256,7 +248,7 @@ const landingPage = () => {
           />
           <img
             className="publicacionNoImg publicacion" /* Se agrega clase publicacionImg para modificar el diseño en un css externo */
-            src={publicationNoImg}
+            src={publicationNoImg2}
             alt="Imagen Contenido"
           />
         </Grid>

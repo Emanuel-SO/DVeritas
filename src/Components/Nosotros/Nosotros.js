@@ -20,12 +20,15 @@ import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import InfoIcon from "@mui/icons-material/Info";
+import GroupIcon from '@mui/icons-material/Group';
+import TerminalIcon from '@mui/icons-material/Terminal';
 
 // Función que va a retornar las tarjetas con la información en la Página Nosotros. Esta es la función que se va a exportar.
 const AboutUs = () => {
   // La función .map() es una función que se utiliza para transformar cada elemento de un array según una función que se proporciona como argumento. En este caso, la función proporcionada como argumento ((item) => <AboutMe {...item} />) toma cada objeto dentro del array data, lo pasa como parametro ((item)) y crea un nuevo componente AboutMe. La sintaxis {...item} se utiliza para pasar cada propiedad del objeto item como una prop al componente AboutMe.
   // La constante aboutme es un array de componentes AboutMe (Componente con los estilos) creados a partir de los objetos dentro del array data.
-  const aboutme = data.map((item) => <AboutMe {...item} />);
+  const aboutme = data.map((item) => <AboutMe key={item.id} {...item} />);
 
   // Debido a que será la función AboutUs la que se exportará. Será el return que podremos visualizar en la página Nosotros
   return (
@@ -44,7 +47,7 @@ const AboutUs = () => {
         }}
       >
         <Grid item xs={12} md={6}>
-          <Typography className="lato" variant="h3" color="#276678">
+          <Typography className="lato" color="#276678" sx={{fontWeight: 'bold' ,fontSize:{xs:"2rem", sm:"2.5rem", lg:"3rem"}}}>
             ACERCA DE NOSOTROS
           </Typography>
         </Grid>
@@ -70,7 +73,9 @@ const AboutUs = () => {
       {/*Las tarjetas son superficies que muestran contenido y acciones sobre un solo tema.
       Deben ser fáciles de escanear en busca de información relevante y procesable. Los elementos, como el texto y las imágenes, deben colocarse en ellos de manera que indique claramente la jerarquía.*/}
       <Card id="card">
-        <Grid container justifyContent="center">{aboutme}</Grid>
+        <Grid container justifyContent="center">
+          {aboutme}
+        </Grid>
       </Card>
     </Box>
   );
@@ -84,12 +89,11 @@ const AboutMe = (props) => {
     <Grid
       item
       xs={12}
-      md={12}
       lg={6}
       xl={4}
       sx={{ display: "flex", justifyContent: "center" }}
     >
-      <item>
+      <Box>
         <CardContent
           sx={{
             bgcolor: "#276678",
@@ -135,8 +139,8 @@ const AboutMe = (props) => {
 
           {/* ------------------------------- NOMBRE ------------------------------- */}
 
-          <Grid container justifyContent="center" sx={{ p: 0, marginTop: 10 }}>
-            <Grid item sx={12}>
+          <Grid container justifyContent="center" sx={{ marginTop: 10 }}>
+            <Grid item>
               <Typography className="lato" sx={{ fontSize: "1.75rem" }}>
                 {props.name}
                 {/* Mediante props se accede al valor de la propiedad name de los objetos (Miembros de javawizards) */}
@@ -150,7 +154,6 @@ const AboutMe = (props) => {
             {/* ------------------------------- ENLACE GITHUB ------------------------------- */}
             <Grid item>
               <Link href={props.gitHub} target="_blank">
-                {" "}
                 {/* Mediante props se accede al enlace de GitHub de cada Miembro de javawizards*/}
                 {/* La etiqueta Avatar le da estilos a una imagen o icono, siendo esta principalmente el circular la imagen y además permitir que se agregue estilo mediante sx al mismo*/}
                 <Avatar
@@ -187,7 +190,7 @@ const AboutMe = (props) => {
             {/* ------------------------------- ENLACE CV ------------------------------- */}
             <Grid item>
               <Link href={props.cv} target="_blank">
-                {" "}
+          
                 {/* Mediante props se accede al enlace del CV de cada Miembro de javawizards*/}
                 {/* La etiqueta Avatar le da estilos a una imagen o icono, siendo esta principalmente el circular la imagen y además permitir que se agregue estilo mediante sx al mismo*/}
                 <Avatar
@@ -227,9 +230,7 @@ const AboutMe = (props) => {
             >
               <Grid container alignItems="center">
                 <Grid item xs={12}>
-                
-                    <Chip className="lato" label="ABOUT ME" color="warning" />
-                
+                  <Chip className="lato" label="Acerca de Mí" color="warning" icon={<InfoIcon />} />
                 </Grid>
               </Grid>
             </AccordionSummary>
@@ -262,14 +263,14 @@ const AboutMe = (props) => {
                 {/* El parametro item indica que Grid es un elemento hijo por lo que será afectado por la disposición y el estilo del componente padre. En Grid con parametro item también se agrega el tamaño de columnas*/}
                 <Grid item xs={12}>
                   {/* Divider es un componente que sirve para separar elementos mediante una linea.*/}
-            
-                    {/* Chip es un componente que representa una etiqueta. Muestra información compacta. */}
-                    <Chip
-                      className="lato"
-                      label="TECHNICAL SKILLS"
-                      color="primary"
-                    />
-                
+
+                  {/* Chip es un componente que representa una etiqueta. Muestra información compacta. */}
+                  <Chip
+                    className="lato"
+                    label="Habilidades Técnicas"
+                    color="primary"
+                    icon={<TerminalIcon />}
+                  />
                 </Grid>
               </Grid>
             </AccordionSummary>
@@ -277,7 +278,11 @@ const AboutMe = (props) => {
               <Grid container>
                 <Grid item xs={5}>
                   {/* Mediante props se accede al valor de la propiedad oneTooltip y one del objeto nested techSkills de los objetos (Miembros de javawizards) */}
-                  <Tooltip arrow title={props.techSkills.oneTooltip}>
+                  <Tooltip
+                    arrow
+                    enterTouchDelay={0}
+                    title={props.techSkills.oneTooltip}
+                  >
                     <img
                       className="techSkillsImg"
                       src={props.techSkills.one}
@@ -285,7 +290,11 @@ const AboutMe = (props) => {
                     />
                   </Tooltip>
                   {/* Mediante props se accede al valor de la propiedad twoTooltip y two del objeto nested techSkills de los objetos (Miembros de javawizards) */}
-                  <Tooltip arrow title={props.techSkills.twoTooltip}>
+                  <Tooltip
+                    arrow
+                    enterTouchDelay={0}
+                    title={props.techSkills.twoTooltip}
+                  >
                     <img
                       className="techSkillsImg"
                       src={props.techSkills.two}
@@ -293,7 +302,11 @@ const AboutMe = (props) => {
                     />
                   </Tooltip>
                   {/* Mediante props se accede al valor de la propiedad threeTooltip y three del objeto nested techSkills de los objetos (Miembros de javawizards) */}
-                  <Tooltip arrow title={props.techSkills.threeTooltip}>
+                  <Tooltip
+                    arrow
+                    enterTouchDelay={0}
+                    title={props.techSkills.threeTooltip}
+                  >
                     <img
                       className="techSkillsImg"
                       src={props.techSkills.three}
@@ -301,7 +314,11 @@ const AboutMe = (props) => {
                     />
                   </Tooltip>
                   {/* Mediante props se accede al valor de la propiedad fourTooltip y four del objeto nested techSkills de los objetos (Miembros de javawizards) */}
-                  <Tooltip arrow title={props.techSkills.fourTooltip}>
+                  <Tooltip
+                    arrow
+                    enterTouchDelay={0}
+                    title={props.techSkills.fourTooltip}
+                  >
                     <img
                       className="techSkillsImg"
                       src={props.techSkills.four}
@@ -313,7 +330,11 @@ const AboutMe = (props) => {
                 {/* El parametro item indica que Grid es un elemento hijo por lo que será afectado por la disposición y el estilo del componente padre. En Grid con parametro item también se agrega el tamaño de columnas*/}
                 <Grid item xs={2}>
                   {/* Mediante props se accede al valor de la propiedad fiveTooltip y five del objeto nested techSkills de los objetos (Miembros de javawizards) */}
-                  <Tooltip arrow title={props.techSkills.fiveTooltip}>
+                  <Tooltip
+                    arrow
+                    enterTouchDelay={0}
+                    title={props.techSkills.fiveTooltip}
+                  >
                     <img
                       className="techSkillsImg"
                       src={props.techSkills.five}
@@ -321,7 +342,11 @@ const AboutMe = (props) => {
                     />
                   </Tooltip>
                   {/* Mediante props se accede al valor de la propiedad sixTooltip y six del objeto nested techSkills de los objetos (Miembros de javawizards) */}
-                  <Tooltip arrow title={props.techSkills.sixTooltip}>
+                  <Tooltip
+                    arrow
+                    enterTouchDelay={0}
+                    title={props.techSkills.sixTooltip}
+                  >
                     <img
                       className="techSkillsImg"
                       src={props.techSkills.six}
@@ -333,7 +358,11 @@ const AboutMe = (props) => {
                 <Grid item xs={5}>
                   {/* Mediante props se accede al valor de la propiedad sevenTooltip y seven del objeto nested techSkills de los objetos (Miembros de javawizards) */}
                   {/* arrow agrega a los tooltips un pequeño señalador hacia el objeto del que sale */}
-                  <Tooltip arrow title={props.techSkills.sevenTooltip}>
+                  <Tooltip
+                    arrow
+                    enterTouchDelay={0}
+                    title={props.techSkills.sevenTooltip}
+                  >
                     <img
                       className="techSkillsImg"
                       src={props.techSkills.seven}
@@ -341,7 +370,11 @@ const AboutMe = (props) => {
                     />
                   </Tooltip>
                   {/* Mediante props se accede al valor de la propiedad eightTooltip y eight del objeto nested techSkills de los objetos (Miembros de javawizards) */}
-                  <Tooltip arrow title={props.techSkills.eightTooltip}>
+                  <Tooltip
+                    arrow
+                    enterTouchDelay={0}
+                    title={props.techSkills.eightTooltip}
+                  >
                     <img
                       className="techSkillsImg"
                       src={props.techSkills.eight}
@@ -350,7 +383,11 @@ const AboutMe = (props) => {
                   </Tooltip>
                   {/* Mediante props se accede al valor de la propiedad nineTooltip y nine del objeto nested techSkills de los objetos (Miembros de javawizards) */}
                   {props.techSkills.nine != null ? (
-                    <Tooltip arrow title={props.techSkills.nineTooltip}>
+                    <Tooltip
+                      arrow
+                      enterTouchDelay={0}
+                      title={props.techSkills.nineTooltip}
+                    >
                       <img
                         className="techSkillsImg"
                         src={props.techSkills.nine}
@@ -360,7 +397,11 @@ const AboutMe = (props) => {
                   ) : null}
                   {/* Mediante props se accede al valor de la propiedad tenTooltip y ten del objeto nested techSkills de los objetos (Miembros de javawizards) */}
                   {props.techSkills.ten != null ? (
-                    <Tooltip arrow title={props.techSkills.tenTooltip}>
+                    <Tooltip
+                      arrow
+                      enterTouchDelay={0}
+                      title={props.techSkills.tenTooltip}
+                    >
                       <img
                         className="techSkillsImg"
                         src={props.techSkills.ten}
@@ -372,7 +413,11 @@ const AboutMe = (props) => {
 
                   {/* Se hace una condicion ternaria en donde si el dato es null entonces no sé renderiza*/}
                   {props.techSkills.eleven != null ? (
-                    <Tooltip arrow title={props.techSkills.elevenTooltip}>
+                    <Tooltip
+                      arrow
+                      enterTouchDelay={0}
+                      title={props.techSkills.elevenTooltip}
+                    >
                       <img
                         className="techSkillsImg"
                         src={props.techSkills.eleven}
@@ -394,9 +439,12 @@ const AboutMe = (props) => {
             >
               <Grid container id="softSkills">
                 <Grid item xs={12}>
-            
-                    <Chip className="lato" label="SOFT SKILLS" color="error" />
-                
+                  <Chip
+                    className="lato"
+                    label="Habilidades Blandas"
+                    color="error"
+                    icon={<GroupIcon />}
+                  />
                 </Grid>
               </Grid>
             </AccordionSummary>
@@ -413,7 +461,11 @@ const AboutMe = (props) => {
                   }}
                 >
                   {/* Mediante props se accede al valor de la propiedad oneTooltip y one del objeto nested softSkills de los objetos (Miembros de javawizards) */}
-                  <Tooltip arrow title={props.softSkills.oneTooltip}>
+                  <Tooltip
+                    arrow
+                    enterTouchDelay={0}
+                    title={props.softSkills.oneTooltip}
+                  >
                     <img
                       className="softSkillsImg"
                       src={props.softSkills.one}
@@ -421,7 +473,11 @@ const AboutMe = (props) => {
                     />
                   </Tooltip>
                   {/* Mediante props se accede al valor de la propiedad twoTooltip y two del objeto nested softSkills de los objetos (Miembros de javawizards) */}
-                  <Tooltip arrow title={props.softSkills.twoTooltip}>
+                  <Tooltip
+                    arrow
+                    enterTouchDelay={0}
+                    title={props.softSkills.twoTooltip}
+                  >
                     <img
                       className="softSkillsImg"
                       src={props.softSkills.two}
@@ -429,7 +485,11 @@ const AboutMe = (props) => {
                     />
                   </Tooltip>
                   {/* Mediante props se accede al valor de la propiedad threeTooltip y three del objeto nested softSkills de los objetos (Miembros de javawizards) */}
-                  <Tooltip arrow title={props.softSkills.threeTooltip}>
+                  <Tooltip
+                    arrow
+                    enterTouchDelay={0}
+                    title={props.softSkills.threeTooltip}
+                  >
                     <img
                       className="softSkillsImg"
                       src={props.softSkills.three}
@@ -437,7 +497,11 @@ const AboutMe = (props) => {
                     />
                   </Tooltip>
                   {/* Mediante props se accede al valor de la propiedad fourTooltip y four del objeto nested softSkills de los objetos (Miembros de javawizards) */}
-                  <Tooltip arrow title={props.softSkills.fourTooltip}>
+                  <Tooltip
+                    arrow
+                    enterTouchDelay={0}
+                    title={props.softSkills.fourTooltip}
+                  >
                     <img
                       className="softSkillsImg"
                       src={props.softSkills.four}
@@ -449,7 +513,7 @@ const AboutMe = (props) => {
             </AccordionDetails>
           </Accordion>
         </CardContent>
-      </item>
+      </Box>
     </Grid>
   );
 };
