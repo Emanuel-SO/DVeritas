@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography';
 import { useState } from "react";
 import './Login.css';
 import { Grid } from "@mui/material";
+import { useHistory } from 'react-router-dom';
 //import { redirect } from 'react-router-dom';
 
 //  El código importa varias bibliotecas de Material UI (un conjunto de herramientas de interfaz de usuario para React) y también importa el hook useState de React.
@@ -53,7 +54,7 @@ function Login() { //La función Login es el componente que contiene un formular
     if (match) {
       console.log('Bienvenido a Deveritas!');
       // Redirect to the user's dashboard or another page
-      history.push('/perfil');
+      // history.push('/perfil');
     } else {
       console.log('Login failed');
       // Show an error message to the user
@@ -65,7 +66,7 @@ function Login() { //La función Login es el componente que contiene un formular
 
 
   return (
-    <div className="my-component">
+    <div className="my-componentLogin">
       <Grid container sx={{ height: "100vh", justifyContent: "center", alignItems: "center" }}>
         <Grid item xs={10} sm={8} md={4} >
           <form onSubmit={handleSubmit}>

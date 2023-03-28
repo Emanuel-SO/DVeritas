@@ -5,7 +5,7 @@
     margin-bottom: 4rem;
 } */
 
-.animated {
+.animatedLogin {
     opacity: 0;
     animation: fadeIn 1s ease-in-out forwards;
   }
@@ -20,7 +20,7 @@
     }
   }
 
-.my-component {
+.my-componentLogin {
     background: url('./images/myGif.gif') no-repeat center;
     background-size: cover;
   }
