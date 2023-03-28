@@ -29,7 +29,7 @@ function App() {
         <Route path="/registrar" element={<Registrar/>}/>
         <Route path="/ingresar" element={<Ingresar/>}/>
         <Route path="/perfil" element={<Perfil/>}/>
-
+        
       </Routes>
     </div>
   );

@@ -11,11 +11,42 @@ import FormularioPublicar from '../FormularioPublicar/FormularioPublicar';
 
 import data from '../../../Constants/publicaciones';
 
+function sortByLikes(data) {
+  data.sort(function (a, b) {
+      return b.likes - a.likes;
+  });
+  return data;
+}
+
+function sortByComments(data) {
+  data.sort(function (a, b) {
+      return b.comments - a.comments;
+  });
+  return data;
+}
+
+
+function sortByDate(data) {
+  data.sort(function (a, b) {
+    const fechaA = new Date(a.fecha);
+    const fechaB = new Date(b.fecha);
+    return fechaB - fechaA;
+  });
+  return data;
+}
+
+
+
+
 
 /* se crea qy se exporta el componenete de las publicacioens */
 export default function NavTabs() {
 
-  const todasPublicaciones = data.map((item) => <Feed {...item} />);
+
+  const todasPublicaciones = sortByDate(data).map((item) => <Feed {...item} key={item.id}/>);
+  // const todasPublicaciones = data.map((item) => <Feed {...item} key={item.id}/>);
+  const masLikesPublicaciones = sortByLikes(data).map((item) => <Feed {...item} key={item.id}/>);
+  const masComentariosPublicaciones = sortByComments(data).map((item) => <Feed {...item} key={item.id}/>);
   
   /* Hook que revisa el estado del la barra de opciones "Tabs" y hace que cada que recargue la pàgina se easigne a 1 */
   const [value, setValue] = useState('1');
@@ -48,11 +79,11 @@ export default function NavTabs() {
       </TabPanel>
       <TabPanel value='2'>
         {/* se agrega el componente que muetra las publicaciones como cards con o sin imagenes */}
-        <Feed/>
+        {masLikesPublicaciones}
       </TabPanel>
       <TabPanel value='3'>
         {/* se agrega el componente que muetra las publicaciones como cards con o sin imagenes */}
-        <Feed/>
+        {masComentariosPublicaciones}
       </TabPanel>
       </TabContext>
     </Box>
