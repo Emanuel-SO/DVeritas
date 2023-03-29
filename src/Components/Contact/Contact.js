@@ -10,6 +10,7 @@ import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
+import "./Contact.css";
 
 
 //  El código importa varias bibliotecas de Material UI (un conjunto de herramientas de interfaz de usuario para React) y también importa el hook useState de React.
@@ -18,24 +19,28 @@ function Contact() { //La función Contact es el componente que contiene un form
     const [open, setOpen] = useState(false);
     const [nombre, setNombre] = useState("");
     const [email, setEmail] = useState("");
+    const [mensaje, setMensaje] = useState("");
+    const [errorMail, setErrorMail] = useState(false);
     const [asunto, setAsunto] = useState("");
     const [comentario, setComentario] = useState("");
     const [isFormValid, setIsFormValid] = useState(true); //Estado para validar que los campos del formulario son validos
+    const regex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
     //En el componente Login, se definen dos estados utilizando el hook useState de React. El primer estado "email" se inicializa como una cadena vacía y se actualiza mediante setEmail. El segundo estado "password" también se inicializa como una cadena vacía y se actualiza mediante setPassword.
 
     //Efecto que queremos aplicar al estado de isFormValid que si cumple con las condiciones a su vez activa el boton para enviar formulario
     useEffect(() => {
-        setIsFormValid(email !== ''&& asunto !== '' && comentario !== '');
-    }, [email, asunto, comentario]);
+        setIsFormValid(email !== ''&& asunto !== '' && comentario !== '' && errorMail === false);
+    }, [errorMail, email, asunto, comentario]);
 
-    //Cambiamos el estado contrario al boton ya que cuando c
+    //Cambiamos el estado contrario al boton ya que cuando 
     const buttonDisabled = !isFormValid;
 
     const handleSubmit = (e) => {     //e.preventDefault();    
         e.preventDefault()
-        console.log({ nombre, email, asunto, comentario });
+        console.log({ nombre, email, asunto, comentario }); //Se almacenan los datos en consola
         setOpen(true);
+        window.location.href = 'mailto:mimikprime@gmail.com?subject='+ asunto + "&body=Nombre: " + nombre  + "%0AComentario: " + comentario +  "%0AResponder a: " + email ; //se crea un mailto con los campos almacenados desde el formulario
 
     };
 
@@ -45,10 +50,10 @@ function Contact() { //La función Contact es el componente que contiene un form
 
 
     return (
-        <div className="my-component">
-            <Grid container sx={{ height: "100vh", justifyContent: "center", alignItems: "center" }}>
-                <Grid item xs={10} sm={8} md={4} >
-                    <form onSubmit={handleSubmit}>
+        <div className="formulary-contactus">
+            <Grid container sx={{ height: "100vh", justifyContent: "center", alignItems: "center" }} >
+                <Grid item xs={10} sm={8} md={8} lg={4} >
+                    <form onSubmit={handleSubmit} className="only-formulary">
                         <Box className="animated"                    //En el retorno del componente Login, se utiliza el componente "Box" para agrupar los componentes del formulario.
 
                             sx={{
@@ -103,12 +108,24 @@ function Contact() { //La función Contact es el componente que contiene un form
                             />
                             <TextField      //Se utiliza el componente "TextField" de Material UI para agregar dos campos de entrada de texto: uno para el correo electrónico y otro para la contraseña.
                                 required
+                                error={errorMail}
+                                helperText={mensaje}
+                                onChange={(e) => {
+                                    setEmail(e.target.value);
+                                    // Se utiliza regex para validar que sea un email valido
+                                    if(regex.test(email) === false){
+                                        setErrorMail(true);
+                                        setMensaje("El correo es invalido")
+                                    }else{
+                                        setErrorMail(false);
+                                        setMensaje("");
+                                    }
+                                    }}
                                 id="outlined-email"
                                 label="Correo electronico"
                                 type="email"
                                 variant="outlined"
                                 value={email}
-                                onChange={(e) => setEmail(e.target.value)}
                                 sx={{ fontFamily: "Lato, sans-serif", mb: 5, width: "100%" }}
                             />
                             <TextField                                     //Ambos campos son requeridos y se especifican mediante el atributo "required". Además, se utiliza el atributo "onChange" para actualizar los estados del correo electrónico y la contraseña.
@@ -122,23 +139,20 @@ function Contact() { //La función Contact es el componente que contiene un form
                             />
                             <TextField
                                 required
+                                rowsmax={3} rows={3}
                                 id="outlined-comentarios"
                                 label="Comentarios"
                                 placeholder="Todo tus comentarios serán almacenados de forma anónima"
                                 multiline
-                                variant="filled"
                                 value={comentario}
                                 onChange={(e) => setComentario(e.target.value)}
                                 sx={{ fontFamily: "Lato, sans-serif", bm: 4, width: "100%" }}
                                 inputProps={{ maxLength: 700 }}
-                                InputProps={{
-                                    endAdornment: (
-                                        <InputAdornment position="end">
-                                            {comentario.length}/{700}
-                                        </InputAdornment>
-                                    ),
-                                }}
+                                
                             />
+                            <InputAdornment position="end" id="numerito">
+                                {comentario.length}/{700}
+                            </InputAdornment>
                             <Button                                // Boton por enviar el formulario
                                 variant="contained"
                                 id="boton"
@@ -155,11 +169,12 @@ function Contact() { //La función Contact es el componente que contiene un form
                                 }}
                                 onClick={handleSubmit}
                             >
+                            
                                 Enviar
                             </Button>
 
                             <Dialog open={open} onClose={handleClose}>
-                                <DialogTitle>¡ Muchas gracias por tus comentarios {nombre}!</DialogTitle>
+                                <DialogTitle>¡Muchas gracias por tus comentarios {nombre}!</DialogTitle>
                                 <DialogContent>
                                     Apreciamos mucho tu interes en nuestra aplicacion
                                 </DialogContent>

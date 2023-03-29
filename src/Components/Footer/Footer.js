@@ -86,13 +86,13 @@ function Footer(){
                                                 <LinkedInIcon/>
                                             </Avatar>
                                         </ListItemAvatar>
-                                        <ListItemText primary="LinkedIn"  sx={{color: "#D3E0EA" , display: { xs: 'none', md: 'flex' }}}/>
+                                        <ListItemText primary="LinkedIn"  sx={{color: "#D3E0EA", display: { xs: 'none', md: 'flex' }}}/>
                                 </ListItem>
                             </Link>
                         </Grid>
                         <Grid item xs={4} sm={12}>
                             <a href="https://github.com/LouckGuntz/DVeritas/" target="_blank" rel="noreferrer" className="link-decoration">
-                                <ListItem sx={{  justifyContent: "center" }}>
+                                <ListItem sx={{justifyContent: "center"}}>
                                     <ListItemAvatar>
                                         <Avatar sx={{bgcolor: "#276678"}}>
                                             <GitHubIcon/>
@@ -104,7 +104,7 @@ function Footer(){
                         </Grid>
                         <Grid item xs={4} sm={12} >
                             <Link className="link-decoration" >
-                                <ListItem sx={{  justifyContent: "center" }}>
+                                <ListItem sx={{justifyContent: "center"}}>
                                     <ListItemAvatar>
                                         <Avatar sx={{bgcolor: "#276678"}}>
                                             <TwitterIcon/>

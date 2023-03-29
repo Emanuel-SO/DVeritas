@@ -61,6 +61,7 @@ import kevincv from "../pdf/cv/kevincv.pdf";
 
 const data = [
   {
+    id:1,
     avatar: aura,
     name: "Aura Berenice Rodríguez Belmonte",
     gitHub: "https://github.com/Aura18R",
@@ -107,6 +108,7 @@ const data = [
   /* ------------------------------- Asgary Nieto Terrazas ------------------------------- */
 
   {
+    id:2,
     avatar: asgary,
     name: "Asgary Nieto Terrazas",
     gitHub: "https://github.com/asgarynt",
@@ -153,6 +155,7 @@ const data = [
     /* ------------------------------- Emanuel Saucedo Olvera ------------------------------- */
 
   {
+    id:3,
     avatar: emanuel,
     name: "Emanuel Saucedo Olvera",
     gitHub: "https://github.com/LouckGuntz",
@@ -201,6 +204,7 @@ const data = [
     /* ------------------------------- Hugo Antonio Morales Sánchez ------------------------------- */
 
   {
+    id:4,
     avatar: hugo,
     name: "Hugo Antonio Morales Sánchez",
     gitHub: "https://github.com/HugoMorales98",
@@ -247,6 +251,7 @@ const data = [
     /* ------------------------------- Kevin Miguel	Cerón Escalante  ------------------------------- */
 
   {
+    id:5,
     avatar: kevin,
     name: "Kevin Miguel	Cerón Escalante",
     gitHub: "https://github.com/kevcesca",

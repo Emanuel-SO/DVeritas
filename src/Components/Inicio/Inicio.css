@@ -6,6 +6,8 @@
 background-image: url("../../img/background/fondo.gif");
 background-position: center;
 background-size: cover;
+opacity: 0.9;
+
 }
 
 .lato {
@@ -31,19 +33,19 @@ background-size: cover;
 
 .imgContent {
 
-    width: 80vw;
-    max-width: 500px;  
+    width: 95%;
+    max-width: 450px;  
 }
 
-.publicacion{
+/* .publicacion{
 
     border-radius: 10px;
-}
+} */
 
 .publicacionNoImg, .publicacionImg {
 
-    width: 100%;
-    max-width: 450px;
+    width: 95%;
+    max-width: 400px;
     margin: 10px 0px;
-
+    border-radius: 25px;
 }
