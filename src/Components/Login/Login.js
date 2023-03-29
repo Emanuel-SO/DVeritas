@@ -6,8 +6,10 @@ import Typography from '@mui/material/Typography';
 import { useState } from "react";
 import './Login.css';
 import { Grid } from "@mui/material";
-import { useHistory } from 'react-router-dom';
-//import { redirect } from 'react-router-dom';
+//import { useHistory } from "react-router-dom";
+//import { redirect } from 'react-router-dom'; // is not a function that can be used to redirect from a component.
+import { useNavigate } from 'react-router-dom';
+
 
 //  El código importa varias bibliotecas de Material UI (un conjunto de herramientas de interfaz de usuario para React) y también importa el hook useState de React.
 
@@ -23,10 +25,8 @@ function Login() { //La función Login es el componente que contiene un formular
 
   guardarCredenciales(email, password);
 
-  // function imprimirCredenciales() {
-  //   const email = localStorage.getItem('email');
-  //   const password = localStorage.getItem('password');
 
+  const navigate = useNavigate();
   //   console.log(email);
   //   console.log(password);
   // }
@@ -37,9 +37,7 @@ function Login() { //La función Login es el componente que contiene un formular
     e.preventDefault();     // Se utiliza para prevenir el comportamiento predeterminado de un evento
     // Se utiliza para prevenir el comportamiento predeterminado de un evento
 
-    const email = e.target.email.value;
-    const password = e.target.password.value;
-
+    
     const storedData = JSON.parse(localStorage.getItem('listausuarios'));
 
     let match = false;
@@ -54,11 +52,13 @@ function Login() { //La función Login es el componente que contiene un formular
     if (match) {
       console.log('Bienvenido a Deveritas!');
       // Redirect to the user's dashboard or another page
-      // history.push('/perfil');
+      navigate("/perfil");
+      //history.push("/perfil");
     } else {
       console.log('Login failed');
       // Show an error message to the user
     }
+    
     //console.log({ email, password }); // Se muestra la información en la consola del navegador.
     //imprimirCredenciales();
   };
