@@ -86,31 +86,31 @@ function Footer(){
                                                 <LinkedInIcon/>
                                             </Avatar>
                                         </ListItemAvatar>
-                                        <ListItemText primary="LinkedIn"  sx={{color: "#D3E0EA"}}/>
+                                        <ListItemText primary="LinkedIn"  sx={{color: "#D3E0EA" , display: { xs: 'none', md: 'flex' }}}/>
                                 </ListItem>
                             </Link>
                         </Grid>
                         <Grid item xs={4} sm={12}>
                             <a href="https://github.com/LouckGuntz/DVeritas/" target="_blank" rel="noreferrer" className="link-decoration">
-                                <ListItem>
+                                <ListItem sx={{  justifyContent: "center" }}>
                                     <ListItemAvatar>
                                         <Avatar sx={{bgcolor: "#276678"}}>
                                             <GitHubIcon/>
                                         </Avatar>
                                     </ListItemAvatar>
-                                    <ListItemText primary="GitHub" sx={{color: "#D3E0EA"}} />
+                                    <ListItemText primary="GitHub" sx={{color: "#D3E0EA", display: { xs: 'none', md: 'flex' }}} />
                                 </ListItem>
                             </a>
                         </Grid>
                         <Grid item xs={4} sm={12} >
                             <Link className="link-decoration" >
-                                <ListItem>
+                                <ListItem sx={{  justifyContent: "center" }}>
                                     <ListItemAvatar>
                                         <Avatar sx={{bgcolor: "#276678"}}>
                                             <TwitterIcon/>
                                         </Avatar>
                                     </ListItemAvatar>
-                                    <ListItemText primary="Twitter"  sx={{color: "#D3E0EA"}}/>
+                                    <ListItemText primary="Twitter"  sx={{color: "#D3E0EA", display: { xs: 'none', md: 'flex' }}}/>
                                 </ListItem>
                             </Link>
                         </Grid>
