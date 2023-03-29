@@ -3,7 +3,7 @@ import { Grid, Box, Typography, TextField, Button, Checkbox, FormControlLabel, M
 import './FormSU.css';
 //import { Link } from "react-router-dom";
 import terminos from './images/Terminos_condiciones_dveritas.pdf';
-import {listaUsuarios} from '../../../Data/Data.js';
+import {listaUsuarios} from '../../../Data/data.js';
 
 
 /* Componente formulario de registro donde el usuario ingresa un nombre de usuario, un correo electronico y 
