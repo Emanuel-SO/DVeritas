@@ -6,10 +6,8 @@ import Typography from '@mui/material/Typography';
 import { useState } from "react";
 import './Login.css';
 import { Grid } from "@mui/material";
-//import { useHistory } from "react-router-dom";
-//import { redirect } from 'react-router-dom'; // is not a function that can be used to redirect from a component.
 import { useNavigate } from 'react-router-dom';
-
+//import { redirect } from 'react-router-dom';
 
 //  El código importa varias bibliotecas de Material UI (un conjunto de herramientas de interfaz de usuario para React) y también importa el hook useState de React.
 
@@ -24,6 +22,17 @@ function Login() { //La función Login es el componente que contiene un formular
   }
 
   guardarCredenciales(email, password);
+  
+  // aisganmos el useNavigate a la constante navigate
+  const navigate = useNavigate();
+  
+  // Validar si ya iniciaste sesion, si ya estas loggeado serás redirigido a tu perfil
+  if (localStorage.getItem('usuario')) {
+    console.log('Ya estas logeado');
+    setTimeout(() => {
+      navigate('/perfil');
+    }, 50);
+  }
 
 
   const navigate = useNavigate();
@@ -37,20 +46,31 @@ function Login() { //La función Login es el componente que contiene un formular
     e.preventDefault();     // Se utiliza para prevenir el comportamiento predeterminado de un evento
     // Se utiliza para prevenir el comportamiento predeterminado de un evento
 
-    
     const storedData = JSON.parse(localStorage.getItem('listausuarios'));
+    const usuarioActual = [];
 
+    
+
+    
     let match = false;
 
     for (let i = 0; i < storedData.length; i++) {
       if (email === storedData[i].email && password === storedData[i].password) {
         match = true;
+
+        // Almacenar en usuario actual y luego en el local storage 
+        usuarioActual.push(storedData[i]);
+        localStorage.setItem('usuario', JSON.stringify(usuarioActual));
+        
         break;
       }
     }
 
     if (match) {
       console.log('Bienvenido a Deveritas!');
+      navigate('/perfil');
+      window.location.replace('');
+      
       // Redirect to the user's dashboard or another page
       navigate("/perfil");
       //history.push("/perfil");
