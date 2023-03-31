@@ -25,6 +25,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import ChatIcon from "@mui/icons-material/Chat";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import Chip from "@mui/material/Chip";
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 const style = {
   position: "absolute",
@@ -43,6 +44,23 @@ const style = {
 
 //exportacion del componente feed para las publicaciones
 export default function Feed(props) {
+
+
+  const [likes, setLikes] = useState(props.likes);
+  const [liked, setLiked] = useState(false);
+
+  function handleLike() {
+    if (!liked) {
+      setLikes(likes + 1);
+      setLiked(true);
+      console.log(props.name);
+    } else {
+      setLikes(likes - 1);
+      setLiked(false);
+    }
+  }
+
+
   const [comentario, setComentario] = useState("");
 
   const handleSubmit = (e) => {
@@ -115,8 +133,14 @@ export default function Feed(props) {
           {/* <IconButton aria-label="add to favorites">
               <FavoriteIcon />
           </IconButton>  ---------------> se deja por si no hay likes*/}
-          <Button aria-label="add to favorites" startIcon={<FavoriteIcon />}>
-            {props.likes}
+          <Button aria-label="add to favorites" onClick={handleLike} >
+            {liked 
+              ? <FavoriteIcon /> 
+              : <FavoriteBorderIcon/>
+            } 
+            {likes}
+          
+            
           </Button>
 
           {/* <IconButton aria-label="add comment" sx={{ marginLeft:"auto" }}>
