@@ -35,7 +35,6 @@ function Login() { //La función Login es el componente que contiene un formular
   }
 
 
-  const navigate = useNavigate();
   //   console.log(email);
   //   console.log(password);
   // }
