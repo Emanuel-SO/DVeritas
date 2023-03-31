@@ -6,6 +6,7 @@ import terminos from './images/Terminos_condiciones_dveritas.pdf';
 import {listaUsuarios} from '../../../Data/Data.js';
 import { useNavigate } from 'react-router-dom';
 
+
 /* Componente formulario de registro donde el usuario ingresa un nombre de usuario, un correo electronico y 
 una contraseña para crear un perfil para la red social */
 

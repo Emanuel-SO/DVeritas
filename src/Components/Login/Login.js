@@ -34,10 +34,8 @@ function Login() { //La función Login es el componente que contiene un formular
     }, 50);
   }
 
-  // function imprimirCredenciales() {
-  //   const email = localStorage.getItem('email');
-  //   const password = localStorage.getItem('password');
 
+  const navigate = useNavigate();
   //   console.log(email);
   //   console.log(password);
   // }
@@ -74,11 +72,13 @@ function Login() { //La función Login es el componente que contiene un formular
       window.location.replace('');
       
       // Redirect to the user's dashboard or another page
-      // history.push('/perfil');
+      navigate("/perfil");
+      //history.push("/perfil");
     } else {
       console.log('Login failed');
       // Show an error message to the user
     }
+    
     //console.log({ email, password }); // Se muestra la información en la consola del navegador.
     //imprimirCredenciales();
   };
