@@ -4,8 +4,6 @@ import './Login.css';
 import { useNavigate } from 'react-router-dom';
 import { Grid, Box, Typography, TextField, Button, Modal } from "@mui/material";
 
-
-
 //  El código importa varias bibliotecas de Material UI (un conjunto de herramientas de interfaz de usuario para React) y también importa el hook useState de React.
 
 function Login() { //La función Login es el componente que contiene un formulario que se presenta al usuario. 
@@ -19,7 +17,6 @@ function Login() { //La función Login es el componente que contiene un formular
   }
 
   guardarCredenciales(email, password);
-
 
   const navigate = useNavigate();
   //   console.log(email);
@@ -114,11 +111,6 @@ function Login() { //La función Login es el componente que contiene un formular
                 onChange={(e) => setPassword(e.target.value)}
                 sx={{ fontFamily: "Lato, sans-serif", mb: 4, width: "100%" }}
               />
-              {/* <Typography sx={{ mt: 1 }} href="/forgot-password" color="textSecondary">
-                
-                  ¿Olvidaste tu contraseña?
-                
-              </Typography> */}
               <Button                               //  Se utiliza el componente "Button" de Material UI para agregar un botón de "Iniciar Sesión" que se utilizará para enviar el formulario. El estilo del botón se define mediante la propiedad "sx" de Material UI y se define una función para manejar la acción del botón mediante el atributo "onSubmit" en el formulario.
                 variant="contained"
                 id="botonlogin"
