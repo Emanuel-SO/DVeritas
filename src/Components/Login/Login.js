@@ -1,20 +1,15 @@
 import * as React from 'react';
-import Button from '@mui/material/Button';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import Typography from '@mui/material/Typography';
 import { useState } from "react";
 import './Login.css';
-import { Grid } from "@mui/material";
-import { useHistory } from 'react-router-dom';
-//import { redirect } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { Grid, Box, Typography, TextField, Button, Modal } from "@mui/material";
 
 //  El código importa varias bibliotecas de Material UI (un conjunto de herramientas de interfaz de usuario para React) y también importa el hook useState de React.
 
 function Login() { //La función Login es el componente que contiene un formulario que se presenta al usuario. 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const [credentialsError, setCredentialsError] = useState(false);// Estado para mostrar el modal de Credenciales incorrectas
 
   const guardarCredenciales = (email, password) => {
     localStorage.setItem('email', email);
@@ -23,10 +18,7 @@ function Login() { //La función Login es el componente que contiene un formular
 
   guardarCredenciales(email, password);
 
-  // function imprimirCredenciales() {
-  //   const email = localStorage.getItem('email');
-  //   const password = localStorage.getItem('password');
-
+  const navigate = useNavigate();
   //   console.log(email);
   //   console.log(password);
   // }
@@ -35,15 +27,8 @@ function Login() { //La función Login es el componente que contiene un formular
 
   const handleSubmit = (e) => {     //La constante handleSubmit define una función que maneja el envío del formulario.
     e.preventDefault();     // Se utiliza para prevenir el comportamiento predeterminado de un evento
-    // Se utiliza para prevenir el comportamiento predeterminado de un evento
-
-    const email = e.target.email.value;
-    const password = e.target.password.value;
-
     const storedData = JSON.parse(localStorage.getItem('listausuarios'));
-
     let match = false;
-
     for (let i = 0; i < storedData.length; i++) {
       if (email === storedData[i].email && password === storedData[i].password) {
         match = true;
@@ -52,18 +37,19 @@ function Login() { //La función Login es el componente que contiene un formular
     }
 
     if (match) {
-      console.log('Bienvenido a Deveritas!');
-      // Redirect to the user's dashboard or another page
-      // history.push('/perfil');
+      // Reedirigido a perfil en caso de que las credenciales se encuentren el local storage
+      navigate("/perfil");
     } else {
+      setCredentialsError(true);
       console.log('Login failed');
       // Show an error message to the user
     }
-    //console.log({ email, password }); // Se muestra la información en la consola del navegador.
-    //imprimirCredenciales();
   };
 
-
+  // Función para cerrar el modal de credenciales incorrectas
+  const handleClose = () => {
+    setCredentialsError(false);
+  };
 
   return (
     <div className="my-componentLogin">
@@ -125,11 +111,6 @@ function Login() { //La función Login es el componente que contiene un formular
                 onChange={(e) => setPassword(e.target.value)}
                 sx={{ fontFamily: "Lato, sans-serif", mb: 4, width: "100%" }}
               />
-              {/* <Typography sx={{ mt: 1 }} href="/forgot-password" color="textSecondary">
-                
-                  ¿Olvidaste tu contraseña?
-                
-              </Typography> */}
               <Button                               //  Se utiliza el componente "Button" de Material UI para agregar un botón de "Iniciar Sesión" que se utilizará para enviar el formulario. El estilo del botón se define mediante la propiedad "sx" de Material UI y se define una función para manejar la acción del botón mediante el atributo "onSubmit" en el formulario.
                 variant="contained"
                 id="botonlogin"
@@ -137,6 +118,24 @@ function Login() { //La función Login es el componente que contiene un formular
                 sx={{ marginTop: '3rem', width: "100%", height: '40px', fontFamily: 'lato', color: '#D3E0EA', bgcolor: '#1687A7', '&:hover': { bgcolor: '#125E75' }, }}>
                 Iniciar Sesión
               </Button>
+              <Modal open={credentialsError} onClose={handleClose}>
+                <Box sx={{
+                  position: "absolute",
+                  top: "50%",
+                  left: "50%",
+                  transform: "translate(-50%, -50%)",
+                  bgcolor: "background.paper",
+                  boxShadow: 24,
+                  p: 4,
+                  width: "400px",
+                  maxWidth: "100%",
+                }}>
+                  <Typography variant="h6" sx={{ fontFamily: "Lato, sans-serif", color: "#276678", textAlign: 'center' }}>El correo o la contraseña son incorrectos</Typography>
+                  <Typography variant="body1" sx={{ fontFamily: "Lato, sans-serif", textAlign: 'center' }}>
+                    Por favor vuelve a intentarlo
+                  </Typography>
+                </Box>
+              </Modal>
             </Box>
           </form>
 

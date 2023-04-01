@@ -11,6 +11,8 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import { Link } from 'react-router-dom';
+import {  useEffect } from "react";
+
 
 // Estilos parsonalizados para el menu de navegación
 import './ResponsiveAppBar.css';
@@ -21,6 +23,28 @@ function ResponsiveAppBar() {
 
   // Hook que revisa el estado del boton de hamburguesa para el menu en dispositivos pequeños
   const [anchorElNav, setAnchorElNav] = React.useState(null);
+
+
+  // funcion para cerrar sesion
+  const [usuarioActual, setUsuarioActual] = React.useState(null);
+  
+  function deleteStorage() {
+    localStorage.removeItem("usuario");
+    setUsuarioActual(null);
+  }
+
+  useEffect(() => {
+    setUsuarioActual (localStorage.getItem("usuario"));
+    if (setUsuarioActual) {
+      console.log(usuarioActual);
+
+    }
+  }, [usuarioActual]);
+
+
+
+
+
 
   // funcion que abre el menu de hamburguesa segun el estado
   const handleOpenNavMenu = (event) => {
@@ -117,9 +141,16 @@ function ResponsiveAppBar() {
                   </Link>
                 </MenuItem>
                 <MenuItem  onClick={handleCloseNavMenu}>{/* Evento que cierra el menu cuando se da click en el */}
-                  <Link to="/registrar" className='link-decoration'>{/* Permite redireccion a otra página por medio de react-router */}
-                    <Typography textAlign="center" className='link-decoration'>Registrarse</Typography>
-                  </Link>
+                { !usuarioActual 
+                  ? <Link to="/registrar" className='link-decoration'>{/* Permite redireccion a otra página por medio de react-router */}
+                      <Typography textAlign="center" className='link-decoration'>Registrarse</Typography>
+                    </Link>
+
+                  : <Link to="/perfil" className='link-decoration'>{/* Permite redireccion a otra página por medio de react-router */}
+                      <Typography textAlign="center" className='link-decoration'>Perfil</Typography>
+                    </Link>
+                }
+                  
                 </MenuItem>
             </Menu>
           </Box>
@@ -172,24 +203,42 @@ function ResponsiveAppBar() {
                 </Button>
               </Link>
 
-              <Link to="/registrar" className="link-decoration">{/* Permite redireccion a otra página por medio de react-router */}
-                <Button  sx={{ my: 2, color: '#D3E0EA', display: 'block' }}>
-                  Registrarse
-                </Button>
-              </Link>
+              {/* Dependiendo si hay usuario logeado o no, se mostrara una opcion diferente */}
+              { !usuarioActual 
+                ? <Link to="/registrar" className="link-decoration">{/* Permite redireccion a otra página por medio de react-router */}
+                    <Button  sx={{ my: 2, color: '#D3E0EA', display: 'block' }}>
+                      Registrarse
+                    </Button>
+                  </Link>
+                  : <Link to="/perfil" className="link-decoration">{/* Permite redireccion a otra página por medio de react-router */}
+                      <Button  sx={{ my: 2, color: '#D3E0EA', display: 'block' }}>
+                        Perfil
+                      </Button>
+                    </Link>
+              }
           </Box>
           
 {/* ------------------------------- Boton Ingresar o Perfil ------------------------------- */}
           <Box sx={{ flexGrow: 0 }}>
-              <Link to="/ingresar" className="link-decoration">{/* Permite redireccion a otra página por medio de react-router */}
-                <Button variant="contained"  sx={{ my: 2, color: "#D3E0EA", bgcolor:"#1687A7" , '&:hover': { bgcolor: '#125E75'} }}>
-                  Ingresar
-                </Button>
-              </Link>
+
+            { !usuarioActual 
+                ? <Link to="/ingresar" className="link-decoration">{/* Permite redireccion a otra página por medio de react-router */}
+                    <Button variant="contained"  sx={{ my: 2, color: "#D3E0EA", bgcolor:"#1687A7" , '&:hover': { bgcolor: '#125E75'} }}>
+                      Ingresar
+                    </Button>
+                  </Link>
+
+                : <Link to="/" className="link-decoration">{/* Permite redireccion a otra página por medio de react-router */}
+                    <Button variant="contained"  sx={{ my: 2, color: "#D3E0EA", bgcolor:"#1687A7" , '&:hover': { bgcolor: '#125E75'} }} onClick={deleteStorage}>
+                      Cerrar Sesión
+                    </Button>
+                  </Link>
+            }
           </Box>
         </Toolbar>
       </Container>
     </AppBar>
   );
+  
 }
 export default ResponsiveAppBar;

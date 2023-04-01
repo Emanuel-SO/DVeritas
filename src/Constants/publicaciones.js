@@ -1,3 +1,12 @@
+import publicacionImg1 from "../img/publicaciones/publicacionImg1.jpg";
+import publicacionImg2 from "../img/publicaciones/publicacionImg2.jpg";
+import publicacionImg3 from "../img/publicaciones/publicacionImg3.jpg";
+import publicacionImg4 from "../img/publicaciones/publicacionImg4.jpg";
+import publicacionImg5 from "../img/publicaciones/publicacionImg5.jpg";
+import publicacionImg6 from "../img/publicaciones/publicacionImg6.jpg";
+import publicacionImg7 from "../img/publicaciones/publicacionImg7.jpg";
+
+
 const data = [
     {
       "createdAt": "2023-03-22T04:22:26.245Z",
@@ -14,7 +23,7 @@ const data = [
       "name": "Paul Kunde",
       "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/574.jpg",
       "descripcion": "Forward",
-      "image": "https://loremflickr.com/640/480",
+      "image": publicacionImg1,
       "likes": "9",
       "comments": "1",
       "id": "2"
@@ -34,7 +43,7 @@ const data = [
       "name": "Daryl Ortiz",
       "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/688.jpg",
       "descripcion": "input",
-      "image": "https://loremflickr.com/640/480",
+      "image": publicacionImg2,
       "likes": "8",
       "comments": "8",
       "id": "4"
@@ -44,7 +53,7 @@ const data = [
       "name": "Lorenzo Rath",
       "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/717.jpg",
       "descripcion": "synergize",
-      "image": "https://loremflickr.com/640/480",
+      "image": publicacionImg7,
       "likes": "4",
       "comments": "1",
       "id": "5"
@@ -54,7 +63,7 @@ const data = [
       "name": "Mrs. Colin Lemke",
       "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/712.jpg",
       "descripcion": "tend",
-      "image": "https://loremflickr.com/640/480",
+      "image": publicacionImg3,
       "likes": "2",
       "comments": "5",
       "id": "6"
@@ -64,7 +73,7 @@ const data = [
       "name": "Katie Abshire",
       "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1164.jpg",
       "descripcion": "Utah",
-      "image": "https://loremflickr.com/640/480",
+      "image": publicacionImg4,
       "likes": "9",
       "comments": "7",
       "id": "7"
@@ -74,7 +83,7 @@ const data = [
       "name": "Rachel Stanton",
       "avatar": null,
       "descripcion": "Radium",
-      "image": "https://loremflickr.com/640/480",
+      "image": publicacionImg5,
       "likes": "9",
       "comments": "3",
       "id": "8"
@@ -84,7 +93,7 @@ const data = [
       "name": "Gene Hane",
       "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/703.jpg",
       "descripcion": "generate",
-      "image": "https://loremflickr.com/640/480",
+      "image": publicacionImg6,
       "likes": "3",
       "comments": "7",
       "id": "9"
