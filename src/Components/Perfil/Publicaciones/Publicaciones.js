@@ -29,17 +29,15 @@ export default function Feed() {
         {/* Cabecera de la card, donde muestra una imagen, nombre, fecha y un icono para ociones */}
         <CardHeader
           avatar={
-            <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-              R
-            </Avatar>
+            <Avatar alt="Mranonimo" src="https://cdn-icons-png.flaticon.com/512/1534/1534082.png"/>
           }
           action={
             <IconButton aria-label="settings">
               <MoreVertIcon />{/* icono opciones */}
             </IconButton>
           }
-          title="Emanuel Saucedo Olvera"
-          subheader="September 14, 2016"
+          title="Mr. Anonimo"
+          subheader="31/03/2023"
         />
         {/* Componente de linea que divide componentes */}
         <Divider/>
@@ -47,7 +45,7 @@ export default function Feed() {
         {/* Contenido del la card de publicacion */}
         <CardContent>
           <Typography variant="body2" color="text.secondary">
-            Aquí va el texto de la publicacion
+            Adivinen a quien despidieron en la oficina
           </Typography>
         </CardContent>
 
@@ -71,17 +69,15 @@ export default function Feed() {
       <Card sx={{ maxWidth: {xs:"300px", sm:"80%", md:"60%" } ,margin:"auto", borderRadius: "15px"}}>
         <CardHeader
           avatar={
-            <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-              R
-            </Avatar>
+            <Avatar alt="Mranonimo" src="https://cdn-icons-png.flaticon.com/512/1534/1534082.png"/>
           }
           action={
             <IconButton aria-label="settings">
               <MoreVertIcon />
             </IconButton>
           }
-          title="Emanuel Saucedo Olvera"
-          subheader="September 14, 2016"
+          title="Mr. Anonimo"
+          subheader="12/03/2023"
         />
         <Divider/>
 
@@ -89,7 +85,7 @@ export default function Feed() {
         <CardMedia
           component="img"
           height="194" /* tamaño de la imagen */
-          image="/static/images/cards/paella.jpg"/* ruta de la imagen */
+          image="https://lanoticiadigital.com.mx/wp-content/uploads/2022/08/igiene-696x809.jpg"/* ruta de la imagen */
           alt="Paella dish"
         />
         <Divider/>
@@ -97,7 +93,7 @@ export default function Feed() {
 
         <CardContent>
           <Typography variant="body2" color="text.secondary">
-            Aquí va el texto de la publicacion
+            Nunca coman con la tia Aly salen moscas 
           </Typography>
         </CardContent>
         <Divider/>
