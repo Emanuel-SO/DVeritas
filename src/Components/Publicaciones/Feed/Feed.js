@@ -24,6 +24,7 @@ import { red } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ChatIcon from '@mui/icons-material/Chat';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import Chip from "@mui/material/Chip";
 
 
 const style = {
@@ -143,8 +144,8 @@ export default function Feed(props) {
                     
                     {[0].map((item) => (
                       <Box>
-                        <ListSubheader>
-                            Usuaiario Manolito
+                        <ListSubheader sx={{translate: "0px -5px", scrollBehavior: "smooth"}}>
+                          <Divider textAlign="left"><Chip label="Usuaiario Manolito" sx={{color:"#276678",borderColor:"#276678"}} variant="outlined"/></Divider>
                         </ListSubheader>
                         <ListItem key={`item-${sectionId}-${item}`}>
                             <ListItemText primary={`Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`} />
