@@ -3,8 +3,7 @@ import { Grid, Box, Typography, TextField, Button, Checkbox, FormControlLabel, M
 import './FormSU.css';
 //import { Link } from "react-router-dom";
 import terminos from './images/Terminos_condiciones_dveritas.pdf';
-import {listaUsuarios} from '../../../Data/Data.js';
-import { useNavigate } from 'react-router-dom';
+import {listaUsuarios} from '../../../Data/data.js';
 
 
 /* Componente formulario de registro donde el usuario ingresa un nombre de usuario, un correo electronico y 
@@ -20,22 +19,12 @@ const FormSU = () => {
   const [isFormValid, setIsFormValid] = useState(false); //Estado para validar que los campos del formulario son validos
   const [passwordError, setPasswordError] = useState(false);// Estado para mostrar el modal de contraseña incorrecta
   const usuarioActual = [];
-  const navigate = useNavigate();// declaramos navigate
 
   //Efecto que queremos aplicar al estado de isFormValid que si cumple con las condiciones a su vez activa el boton para enviar formulario
   useEffect(() => {
     const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
     setIsFormValid(email !== '' && username !== '' && password !== '' && isChecked && emailRegex.test(email));
   }, [email, username, password, isChecked]);
-
-  // Validar si ya iniciaste sesion, si ya estas loggeado serás redirigido a tu perfil
-  if (localStorage.getItem('usuario')) {
-    console.log('Ya estas logeado');
-    setTimeout(() => {
-      navigate('/perfil');
-      
-    }, 50);
-  }
   
   // Manejador de eventos que se ejecuta cuando el usuario envía el formulario
   const handleSubmit = (e) => {
@@ -47,9 +36,6 @@ const FormSU = () => {
       listaUsuarios.push({email, username, password});
       localStorage.setItem('usuario', JSON.stringify(usuarioActual));
       localStorage.setItem('listausuarios', JSON.stringify(listaUsuarios));
-      navigate('/perfil');
-      window.location.replace('');
-      
     } else {
       setPasswordError(true);
     }

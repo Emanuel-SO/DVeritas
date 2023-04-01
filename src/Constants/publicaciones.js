@@ -1,12 +1,3 @@
-import publicacionImg1 from "../img/publicaciones/publicacionImg1.jpg";
-import publicacionImg2 from "../img/publicaciones/publicacionImg2.jpg";
-import publicacionImg3 from "../img/publicaciones/publicacionImg3.jpg";
-import publicacionImg4 from "../img/publicaciones/publicacionImg4.jpg";
-import publicacionImg5 from "../img/publicaciones/publicacionImg5.jpg";
-import publicacionImg6 from "../img/publicaciones/publicacionImg6.jpg";
-import publicacionImg7 from "../img/publicaciones/publicacionImg7.jpg";
-
-
 const data = [
     {
       "createdAt": "2023-03-22T04:22:26.245Z",
@@ -23,7 +14,7 @@ const data = [
       "name": "Raegan.Kiehn77",
       "avatar": "https://loremflickr.com/640/480/abstract?random=2",
       "descripcion": "Forward",
-      "image": publicacionImg1,
+      "image": "https://loremflickr.com/640/480",
       "likes": "9",
       "comments": "1",
       "id": "2"
@@ -43,7 +34,7 @@ const data = [
       "name": "Trenton58",
       "avatar": "https://loremflickr.com/640/480/abstract?random=4",
       "descripcion": "input",
-      "image": publicacionImg2,
+      "image": "https://loremflickr.com/640/480",
       "likes": "8",
       "comments": "8",
       "id": "4"
@@ -53,7 +44,7 @@ const data = [
       "name": "Linwood68",
       "avatar": "https://loremflickr.com/640/480/abstract?random=5",
       "descripcion": "synergize",
-      "image": publicacionImg7,
+      "image": "https://loremflickr.com/640/480",
       "likes": "4",
       "comments": "1",
       "id": "5"
@@ -63,7 +54,7 @@ const data = [
       "name": "Emerald_Cormier64",
       "avatar": "https://loremflickr.com/640/480/abstract?random=6",
       "descripcion": "tend",
-      "image": publicacionImg3,
+      "image": "https://loremflickr.com/640/480",
       "likes": "2",
       "comments": "5",
       "id": "6"
@@ -73,7 +64,7 @@ const data = [
       "name": "Heaven_Breitenberg91",
       "avatar": "https://loremflickr.com/640/480/abstract?random=7",
       "descripcion": "Utah",
-      "image": publicacionImg4,
+      "image": "https://loremflickr.com/640/480",
       "likes": "9",
       "comments": "7",
       "id": "7"
@@ -83,7 +74,7 @@ const data = [
       "name": "Kari77",
       "avatar": null,
       "descripcion": "Radium",
-      "image": publicacionImg5,
+      "image": "https://loremflickr.com/640/480",
       "likes": "9",
       "comments": "3",
       "id": "8"
@@ -93,7 +84,7 @@ const data = [
       "name": "Kellie50",
       "avatar": "https://loremflickr.com/640/480/abstract?random=9",
       "descripcion": "generate",
-      "image": publicacionImg6,
+      "image": "https://loremflickr.com/640/480",
       "likes": "3",
       "comments": "7",
       "id": "9"
