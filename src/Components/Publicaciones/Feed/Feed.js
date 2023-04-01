@@ -1,6 +1,8 @@
 import * as React from "react";
 
 import { useState } from "react";
+import {  useEffect } from "react";
+
 
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -46,18 +48,30 @@ const style = {
 export default function Feed(props) {
 
 
+  const [usuarioActual, setUsuarioActual] = React.useState(null);
+
+  useEffect(() => {
+    setUsuarioActual (localStorage.getItem("usuario"));
+    
+  }, [usuarioActual]);
+
+
   const [likes, setLikes] = useState(props.likes);
   const [liked, setLiked] = useState(false);
 
   function handleLike() {
+    
+   if(localStorage.getItem("usuario")){
     if (!liked) {
-      setLikes(likes + 1);
+      setLikes(parseInt(likes) + 1);
       setLiked(true);
       console.log(props.name);
+      
     } else {
-      setLikes(likes - 1);
+      setLikes(parseInt(likes) - 1);
       setLiked(false);
     }
+   }
   }
 
 
@@ -101,7 +115,7 @@ export default function Feed(props) {
               {/* icono opciones */}
             </IconButton>
           }
-          title={props.name}
+          title={`@${props.name}`}
           subheader={date.toLocaleDateString()} /* Usa metodo de JS para darle formato  */
         />
         <Divider />

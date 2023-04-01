@@ -1,4 +1,7 @@
+import * as React from "react";
+
 import { useState } from "react";
+import {  useEffect } from "react";
 
 /* Imporaciones de componentes de Material UI */
 import { Grid, Box, TextField, Button,IconButton,Stack} from "@mui/material";
@@ -9,6 +12,17 @@ import PhotoCamera from '@mui/icons-material/PhotoCamera';
 /* Creacion del componete de formulario para las publicaciones */
 const FormnularioPublicar = () => {
 
+
+  const [usuarioActual, setUsuarioActual] = React.useState(null);
+
+  useEffect(() => {
+   
+    setUsuarioActual (localStorage.getItem("usuario"));
+    
+    
+  }, [usuarioActual])
+
+
   //Usando useState definimos los valores iniciales de los campos del formulario y como los vamos a almacenar
   const [publicacion, setPublicacion] = useState("");
   const [imagen, setImagen] = useState("");
@@ -17,7 +31,9 @@ const FormnularioPublicar = () => {
   // Manejador de eventos que se ejecuta cuando el usuario envía el formulario
   const handleSubmit = (e) => {
     e.preventDefault(); // Previene la acción por defecto del formulario al ser enviado
-    console.log({ publicacion, imagen }); // Imprime en la consola los valores del formulario
+    let ejemplo =JSON.parse(usuarioActual);
+    let usuario = ejemplo[0].username;
+    console.log({ publicacion, imagen, usuario }); // Imprime en la consola los valores del formulario
   };
 
   // Es la estructura de la parte visual del formulario

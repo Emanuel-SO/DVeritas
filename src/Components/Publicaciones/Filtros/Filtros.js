@@ -1,4 +1,8 @@
-import { useState } from 'react';
+import * as React from "react";
+
+import { useState } from "react";
+import {  useEffect } from "react";
+
 
 /* Importacion de componentes de MUI */
 import {Box, Tab} from '@mui/material';
@@ -28,10 +32,11 @@ function sortByComments(data) {
 
 function sortByDate(data) {
   data.sort(function (a, b) {
-    const fechaA = new Date(a.fecha);
-    const fechaB = new Date(b.fecha);
+    const fechaA = new Date(a.createdAt);
+    const fechaB = new Date(b.createdAt);
     return fechaB - fechaA;
   });
+  // console.log(data);
   return data;
 }
 
@@ -42,6 +47,13 @@ function sortByDate(data) {
 /* se crea qy se exporta el componenete de las publicacioens */
 export default function NavTabs() {
 
+  
+  const [usuarioActual, setUsuarioActual] = React.useState(null);
+
+  useEffect(() => {
+    setUsuarioActual (localStorage.getItem("usuario"));
+    
+  }, [usuarioActual]);
 
   const todasPublicaciones = sortByDate(data).map((item) => <Feed {...item} key={item.id}/>);
   // const todasPublicaciones = data.map((item) => <Feed {...item} key={item.id}/>);
@@ -70,7 +82,10 @@ export default function NavTabs() {
         </Box>
         {/* ----------------------------------------- Componente de formulario publicaciones ----------------------------------------- */}
         {/* se agrega el componente de formulario para publicaciones */}
-        <FormularioPublicar/>
+        {usuarioActual
+        ? <FormularioPublicar/>
+        : null
+        }
 
         {/* ----------------------------------------- Contenido que se muestra segun la tab que se encuentre selecionada ----------------------------------------- */}
       <TabPanel value='1' >
