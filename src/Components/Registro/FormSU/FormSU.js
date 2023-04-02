@@ -1,15 +1,9 @@
 import { useState, useEffect } from "react";
 import { Grid, Box, Typography, TextField, Button, Checkbox, FormControlLabel, Modal } from "@mui/material";
 import './FormSU.css';
-//import { Link } from "react-router-dom";
 import terminos from './images/Terminos_condiciones_dveritas.pdf';
-
 import {listaUsuarios} from '../../../Data/data.js';
-
-//import {listaUsuarios} from '../../../Data/Data.js';
 import { useNavigate } from 'react-router-dom';
-import InputLabel from '@mui/material/InputLabel';
-
 
 /* Componente formulario de registro donde el usuario ingresa un nombre de usuario, un correo electronico y 
 una contraseña para crear un perfil para la red social */
@@ -90,7 +84,6 @@ const FormSU = () => {
             <Typography className="tittleForm" variant="h5"> {/*Titulo h3 */}
             ¡Únete  y libera tus pensamientos sin temor a ser juzgado! 
         </Typography>
-            <InputLabel htmlFor="correo">No te preocupes esto sera anonimo</InputLabel>
             <TextField  //cada uno de estos textfield representan un campo donde el usuario pone la informacion
               id="correo"
               className="textField"
