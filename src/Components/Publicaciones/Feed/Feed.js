@@ -12,6 +12,7 @@ import ListSubheader from "@mui/material/ListSubheader";
 import { Grid, TextField, Stack, Divider } from "@mui/material";
 
 //Importacion de componentes de Material UI
+
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
@@ -25,6 +26,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import ChatIcon from "@mui/icons-material/Chat";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import Chip from "@mui/material/Chip";
+
 
 const style = {
   position: "absolute",
@@ -156,12 +158,10 @@ export default function Feed(props) {
                 <li key={sectionId}>
                   <ul>
                       <Box>
-                        <ListSubheader sx={{translate: "0px -5px", scrollBehavior: "smooth"}}
 
- >
-                        <Divider textAlign="left"><Chip label="Usuaiario Manolito" sx={{color:"#276678",borderColor:"#276678"}} variant="outlined"/></Divider>
-                          {/* <Divider textAlign="left"><Chip label="Usuaiario Manolito" color="primary"/></Divider> */}
-                        {/* usuario manolito */}
+                        <ListSubheader sx={{translate: "0px -5px", scrollBehavior: "smooth"}}>
+                          <Divider textAlign="left"><Chip label="Usuaiario Manolito" sx={{color:"#276678",borderColor:"#276678"}} variant="outlined"/></Divider>
+
                         </ListSubheader>
                         <ListItem key={sectionId}>
                           <ListItemText

@@ -24,7 +24,7 @@ function Contact() { //La función Contact es el componente que contiene un form
     const [asunto, setAsunto] = useState("");
     const [comentario, setComentario] = useState("");
     const [isFormValid, setIsFormValid] = useState(true); //Estado para validar que los campos del formulario son validos
-    const regex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+    // const regex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
 
     //En el componente Login, se definen dos estados utilizando el hook useState de React. El primer estado "email" se inicializa como una cadena vacía y se actualiza mediante setEmail. El segundo estado "password" también se inicializa como una cadena vacía y se actualiza mediante setPassword.
 
@@ -40,7 +40,7 @@ function Contact() { //La función Contact es el componente que contiene un form
         e.preventDefault()
         console.log({ nombre, email, asunto, comentario }); //Se almacenan los datos en consola
         setOpen(true);
-        window.location.href = 'mailto:mimikprime@gmail.com?subject='+ asunto + "&body=Nombre: " + nombre  + "%0AComentario: " + comentario +  "%0AResponder a: " + email ; //se crea un mailto con los campos almacenados desde el formulario
+        window.location.href = 'mailto:mimikprime@gmail.com?subject='+ asunto + "&body=Nombre del usuario: " + nombre +  "%0ACorreo del usuario: " + email  + "%0AComentario: " + comentario  ; //se crea un mailto con los campos almacenados desde el formulario
 
     };
 
@@ -111,16 +111,7 @@ function Contact() { //La función Contact es el componente que contiene un form
                                 error={errorMail}
                                 helperText={mensaje}
                                 onChange={(e) => {
-                                    setEmail(e.target.value);
-                                    // Se utiliza regex para validar que sea un email valido
-                                    if(regex.test(email) === false){
-                                        setErrorMail(true);
-                                        setMensaje("El correo es invalido")
-                                    }else{
-                                        setErrorMail(false);
-                                        setMensaje("");
-                                    }
-                                    }}
+                                    setEmail(e.target.value)}}
                                 id="outlined-email"
                                 label="Correo electronico"
                                 type="email"
