@@ -7,20 +7,11 @@ import { Grid, Box, Typography, TextField, Button, Modal } from "@mui/material";
 //  El código importa varias bibliotecas de Material UI (un conjunto de herramientas de interfaz de usuario para React) y también importa el hook useState de React.
 
 function Login() { //La función Login es el componente que contiene un formulario que se presenta al usuario. 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [credentialsError, setCredentialsError] = useState(false);// Estado para mostrar el modal de Credenciales incorrectas
+  const [email, setEmail] = useState(""); //El primer estado "email" se inicializa como una cadena vacía y se actualiza mediante setEmail.
+  const [password, setPassword] = useState(""); //El segundo estado "password" también se inicializa como una cadena vacía y se actualiza mediante setPassword.
+  const [credentialsError, setCredentialsError] = useState(false); //Estado para mostrar el modal de Credenciales incorrectas
+  const navigate = useNavigate(); //Hook para la navegación de la página.
 
-  const guardarCredenciales = (email, password) => {
-    localStorage.setItem('email', email);
-    localStorage.setItem('password', password);
-  }
-
-  guardarCredenciales(email, password);
-
-  // aisganmos el useNavigate a la constante navigate
-  const navigate = useNavigate();
-  
   // Validar si ya iniciaste sesion, si ya estas loggeado serás redirigido a tu perfil
   if (localStorage.getItem('usuario')) {
     console.log('Ya estas logeado');
@@ -29,26 +20,26 @@ function Login() { //La función Login es el componente que contiene un formular
     }, 50);
   }
 
-  //En el componente Login, se definen dos estados utilizando el hook useState de React. El primer estado "email" se inicializa como una cadena vacía y se actualiza mediante setEmail. El segundo estado "password" también se inicializa como una cadena vacía y se actualiza mediante setPassword.
-
-  const handleSubmit = (e) => {     //La constante handleSubmit define una función que maneja el envío del formulario.
-    e.preventDefault();     // Se utiliza para prevenir el comportamiento predeterminado de un evento
-    const storedData = JSON.parse(localStorage.getItem('listausuarios'));
+  const handleSubmit = (e) => { //La constante handleSubmit define una función que maneja el envío del formulario.
+    e.preventDefault(); //Prevenir el comportamiento predeterminado de un evento.
+    const storedData = JSON.parse(localStorage.getItem('listausuarios')); //Recuperar datos de usuarios del local storage
+    const usuarioActual = [];
     let match = false;
-    for (let i = 0; i < storedData.length; i++) {
+    for (let i = 0; i < storedData.length; i++) { //Iterar a través de los datos almacenados para verificar las credenciales ingresadas.
       if (email === storedData[i].email && password === storedData[i].password) {
         match = true;
+        // Almacenar en usuario actual y luego en el local storage 
+        usuarioActual.push(storedData[i]);
+        localStorage.setItem('usuario', JSON.stringify(usuarioActual));
         break;
       }
     }
 
-    if (match) {
-      // Reedirigido a perfil en caso de que las credenciales se encuentren el local storage
+    if (match) { //En caso de que se encuentren las credenciales en el local storage, se redirige al usuario a la página de perfil.
       navigate("/perfil");
-    } else {
-      setCredentialsError(true);
-      console.log('Login failed');
-      // Show an error message to the user
+      window.location.replace('');
+    } else { //En caso contrario, se muestra un mensaje de error al usuario.
+      setCredentialsError(true); // Se ejecuta el modal credentialsError        
     }
   };
 
@@ -58,12 +49,17 @@ function Login() { //La función Login es el componente que contiene un formular
   };
 
   return (
+    // Retorna el componente "div" con la clase "my-componentLogin".
     <div className="my-componentLogin">
+      {/* Utiliza el componente "Grid" de Material UI para crear una cuadrícula que se ajusta a la altura de la ventana, con elementos centrados horizontal y verticalmente */}
       <Grid container sx={{ height: "100vh", justifyContent: "center", alignItems: "center" }}>
+        {/* Utiliza el componente "Grid" de Material UI para definir el tamaño del formulario en diferentes tamaños de pantalla */}
         <Grid item xs={10} sm={8} md={4} >
+          {/* Utiliza el componente "form" de HTML y la función "handleSubmit" que se pasará como prop a "onSubmit" */}
           <form onSubmit={handleSubmit}>
-            <Box className="animatedLogin"                    //En el retorno del componente Login, se utiliza el componente "Box" para agrupar los componentes del formulario.
-
+            {/* Utiliza el componente "Box" de Material UI para agrupar los componentes del formulario. */}
+            <Box className="animatedLogin"
+              // Define las propiedades de estilo del formulario utilizando la propiedad "sx" de Material UI
               sx={{
                 display: "flex",
                 flexDirection: "column",
@@ -76,16 +72,14 @@ function Login() { //La función Login es el componente que contiene un formular
                 padding: "32px",
                 maxWidth: "100%",
                 margin: "0 auto",
-
               }}
-              noValidate
-              autoComplete="off"
-
-            //se utiliza el componente "Typography" para agregar un encabezado al formulario.
+              noValidate // Deshabilita la validación del formulario por defecto de HTML
+              autoComplete="off" // Deshabilita el autocompletado por defecto de HTML
             >
+              {/* Utiliza el componente "Typography" de Material UI para agregar un encabezado al formulario. */}
               <Typography
                 variant="h5"
-
+                // Define las propiedades de estilo del encabezado utilizando la propiedad "sx" de Material UI
                 sx={{
                   marginTop: '1rem',
                   marginBottom: '4rem',
@@ -97,27 +91,29 @@ function Login() { //La función Login es el componente que contiene un formular
               >
                 ¿Estas listo para ingresar al Anonimato?
               </Typography>
-              <TextField      //Se utiliza el componente "TextField" de Material UI para agregar dos campos de entrada de texto: uno para el correo electrónico y otro para la contraseña.
-                required
+              {/* Utiliza el componente "TextField" de Material UI para agregar dos campos de entrada de texto: uno para el correo electrónico y otro para la contraseña. */}
+              <TextField
+                required // Marca el campo de entrada como requerido
                 id="outlined-email"
                 label="Correo electronico"
                 type="email"
                 variant="outlined"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => setEmail(e.target.value)} // Actualiza el estado de correo electrónico cuando el usuario escribe en el campo
                 sx={{ fontFamily: "Lato, sans-serif", mb: 5, width: "100%" }}
               />
-              <TextField                                     //Ambos campos son requeridos y se especifican mediante el atributo "required". Además, se utiliza el atributo "onChange" para actualizar los estados del correo electrónico y la contraseña.
-                required
+              <TextField
+                required // Marca el campo de entrada como requerido
                 id="outlined-password"
                 label="Contraseña"
                 type="password"
                 variant="outlined"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) => setPassword(e.target.value)} // Actualiza el estado de contraseña cuando el usuario escribe en el campo
                 sx={{ fontFamily: "Lato, sans-serif", mb: 4, width: "100%" }}
               />
-              <Button                               //  Se utiliza el componente "Button" de Material UI para agregar un botón de "Iniciar Sesión" que se utilizará para enviar el formulario. El estilo del botón se define mediante la propiedad "sx" de Material UI y se define una función para manejar la acción del botón mediante el atributo "onSubmit" en el formulario.
+              {/* Utiliza el componente "Button" de Material UI para agregar un botón de "Iniciar Sesión" que se utilizará para enviar el formulario. */}
+              <Button
                 variant="contained"
                 id="botonlogin"
                 type="submit"           //prop type="submit" al botón de "Iniciar Sesión", este botón se utilizará para enviar el formulario cuando se hace clic.

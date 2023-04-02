@@ -1,10 +1,22 @@
 import { Avatar, Grid, Typography, useMediaQuery } from "@mui/material";
+import { useNavigate } from 'react-router-dom';
 
 //Componenete de react con MUI que muestra la foto del usuario junto con su nombre, esta formado de dos grid containers, uno para la imagen y otro para el nombre de usuario
 
 const ImgUser = () => {
   // Determinar si el dispositivo tiene un ancho máximo de 600px, esta variable la ocuparemos despues para ver si debe cambiar el tamaño de la fuente y los componenetes
   const matches = useMediaQuery("(max-width:600px)");
+
+  // aisganmos el useNavigate a la constante navigate
+  const navigate = useNavigate();
+
+  // Validar si ya iniciaste sesion, si ya estas loggeado serás redirigido a tu perfil
+  if (!(localStorage.getItem('usuario'))) {
+    console.log('No estas logeado');
+    setTimeout(() => {
+      navigate('/ingresar');
+    }, 50);
+  }
 
   return (
     // Contenedor principal Grid container

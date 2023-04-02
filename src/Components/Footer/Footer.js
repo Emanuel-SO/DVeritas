@@ -4,6 +4,8 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import { Link } from "react-router-dom";
+import * as React from 'react';
+import { useEffect } from "react";
 
 
 import './Footer.css';
@@ -11,6 +13,17 @@ import './Footer.css';
 // sx={{ display:{lg:'none', xs: 'block'} }}
  
 function Footer(){
+
+    const [usuarioActual, setUsuarioActual] = React.useState(null);
+    // verificar si hay usuario en el local storage
+    useEffect(() => {
+        setUsuarioActual(localStorage.getItem("usuario"));
+        if (setUsuarioActual) {
+            console.log(usuarioActual);
+
+        }
+    }, [usuarioActual]);
+
     return (
         <Grid container bgcolor="#276678" color="#D3E0EA">
             <Grid item xs={12} sm={4} textAlign="center">
@@ -50,27 +63,31 @@ function Footer(){
                                     </ListItemButton>
                                 </Link>
                             </ListItem>
-                            <ListItem disablePadding sx={{  justifyContent: "center" }}>
-                                <Link to="/registrar" className="link-decoration">
-                                    <ListItemButton>
-                                        <ListItemText primary="Registrarse" sx={{color: "#D3E0EA"}}/>
-                                    </ListItemButton>
-                                </Link>
-                            </ListItem>
-                            <ListItem disablePadding sx={{  justifyContent: "center" }}>
-                                <Link to="/ingresar" className="link-decoration">
-                                    <ListItemButton>
-                                        <ListItemText primary="Ingresar" sx={{color: "#D3E0EA"}}/>
-                                    </ListItemButton>
-                                </Link>
-                            </ListItem>
-                            <ListItem disablePadding sx={{  justifyContent: "center" }}>
-                                <Link to="/perfil" className="link-decoration">
-                                    <ListItemButton>
-                                        <ListItemText primary="Perfil" sx={{color: "#D3E0EA"}}/>
-                                    </ListItemButton>
-                                </Link>
-                            </ListItem>
+                            { !usuarioActual 
+                                ?<>
+                                    <ListItem disablePadding sx={{ justifyContent: "center" }}>
+                                        <Link to="/registrar" className="link-decoration">
+                                            <ListItemButton>
+                                                <ListItemText primary="Registrarse" sx={{ color: "#D3E0EA" }} />
+                                            </ListItemButton>
+                                        </Link>
+                                    </ListItem>
+                                    <ListItem disablePadding sx={{ justifyContent: "center" }}>
+                                        <Link to="/ingresar" className="link-decoration">
+                                            <ListItemButton>
+                                                <ListItemText primary="Ingresar" sx={{ color: "#D3E0EA" }} />
+                                            </ListItemButton>
+                                        </Link>
+                                    </ListItem>
+                                </>
+                                :<ListItem disablePadding sx={{ justifyContent: "center" }}>
+                                    <Link to="/perfil" className="link-decoration">
+                                        <ListItemButton>
+                                            <ListItemText primary="Perfil" sx={{ color: "#D3E0EA" }} />
+                                        </ListItemButton>
+                                    </Link>
+                                </ListItem>
+                            }
                         </Grid>
                     </Grid>
                 </List>

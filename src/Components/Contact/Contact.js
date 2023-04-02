@@ -25,7 +25,7 @@ function Contact() { //La función Contact es el componente que contiene un form
     const [comentario, setComentario] = useState("");
     const [isFormValid, setIsFormValid] = useState(true); //Estado para validar que los campos del formulario son validos
     // const regex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
-
+ 
     //En el componente Login, se definen dos estados utilizando el hook useState de React. El primer estado "email" se inicializa como una cadena vacía y se actualiza mediante setEmail. El segundo estado "password" también se inicializa como una cadena vacía y se actualiza mediante setPassword.
 
     //Efecto que queremos aplicar al estado de isFormValid que si cumple con las condiciones a su vez activa el boton para enviar formulario
