@@ -33,6 +33,7 @@ function Login() { //La función Login es el componente que contiene un formular
       navigate('/perfil');
     }, 50);
   }
+
   //En el componente Login, se definen dos estados utilizando el hook useState de React. El primer estado "email" se inicializa como una cadena vacía y se actualiza mediante setEmail. El segundo estado "password" también se inicializa como una cadena vacía y se actualiza mediante setPassword.
 
   const handleSubmit = (e) => {     //La constante handleSubmit define una función que maneja el envío del formulario.
