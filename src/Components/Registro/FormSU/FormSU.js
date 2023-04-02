@@ -3,7 +3,7 @@ import { Grid, Box, Typography, TextField, Button, Checkbox, FormControlLabel, M
 import './FormSU.css';
 //import { Link } from "react-router-dom";
 import terminos from './images/Terminos_condiciones_dveritas.pdf';
-import {listaUsuarios} from '../../../Data/Data.js';
+import {listaUsuarios} from '../../../Data/data.js';
 import { useNavigate } from 'react-router-dom';
 
 
