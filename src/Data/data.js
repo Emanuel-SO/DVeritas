@@ -14,4 +14,4 @@ const listaUsuarios = [
 const usuarioActual = [];
 
 
-export {listaUsuarios, usuarioActual}
+export {listaUsuarios, usuarioActual} //Comentario prueba
