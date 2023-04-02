@@ -1,11 +1,9 @@
 import { useState, useEffect } from "react";
 import { Grid, Box, Typography, TextField, Button, Checkbox, FormControlLabel, Modal } from "@mui/material";
 import './FormSU.css';
-//import { Link } from "react-router-dom";
 import terminos from './images/Terminos_condiciones_dveritas.pdf';
 import {listaUsuarios} from '../../../Data/data.js';
 import { useNavigate } from 'react-router-dom';
-
 
 /* Componente formulario de registro donde el usuario ingresa un nombre de usuario, un correo electronico y 
 una contraseña para crear un perfil para la red social */
@@ -87,11 +85,13 @@ const FormSU = () => {
             ¡Únete  y libera tus pensamientos sin temor a ser juzgado! 
         </Typography>
             <TextField  //cada uno de estos textfield representan un campo donde el usuario pone la informacion
+              id="correo"
               className="textField"
               label="Correo electrónico"
               variant="outlined"
               type="email"
               value={email}
+              helperText="No te preocupes esto sera anonimo"
               onChange={(e) => setEmail(e.target.value)} //ante el cambio tomara esa informacion y la enviara con ayuda de la funcio setEmail
             />
             <TextField
