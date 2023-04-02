@@ -28,8 +28,8 @@ function sortByComments(data) {
 
 function sortByDate(data) {
   data.sort(function (a, b) {
-    const fechaA = new Date(a.fecha);
-    const fechaB = new Date(b.fecha);
+    const fechaA = new Date(a.createdAt);
+    const fechaB = new Date(b.createdAt);
     return fechaB - fechaA;
   });
   return data;
