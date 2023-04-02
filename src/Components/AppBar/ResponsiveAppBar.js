@@ -24,15 +24,16 @@ function ResponsiveAppBar() {
   // Hook que revisa el estado del boton de hamburguesa para el menu en dispositivos pequeños
   const [anchorElNav, setAnchorElNav] = React.useState(null);
 
+  // Hook que revisa el usuarip en el local storage
+  const [usuarioActual, setUsuarioActual] = React.useState(null);
 
   // funcion para cerrar sesion
-  const [usuarioActual, setUsuarioActual] = React.useState(null);
-  
   function deleteStorage() {
     localStorage.removeItem("usuario");
     setUsuarioActual(null);
   }
 
+  // verificar si hay usuario en el local storage
   useEffect(() => {
     setUsuarioActual (localStorage.getItem("usuario"));
     if (setUsuarioActual) {

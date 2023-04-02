@@ -21,8 +21,11 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import InfoIcon from "@mui/icons-material/Info";
-import GroupIcon from '@mui/icons-material/Group';
-import TerminalIcon from '@mui/icons-material/Terminal';
+import GroupIcon from "@mui/icons-material/Group";
+import TerminalIcon from "@mui/icons-material/Terminal";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
+import jeffFacebook from "../../img/Nosotros/pixeljeff/pixeljeffFacebook.png";
+import jeffInstagram from "../../img/Nosotros/pixeljeff/pixeljeffInstagram.png";
 
 // Función que va a retornar las tarjetas con la información en la Página Nosotros. Esta es la función que se va a exportar.
 const AboutUs = () => {
@@ -47,14 +50,21 @@ const AboutUs = () => {
         }}
       >
         <Grid item xs={12} md={6}>
-          <Typography className="lato" color="#276678" sx={{fontWeight: 'bold' ,fontSize:{xs:"2rem", sm:"2.5rem", lg:"3rem"}}}>
+          <Typography
+            className="lato"
+            color="#276678"
+            sx={{
+              fontWeight: "bold",
+              fontSize: { xs: "2rem", sm: "2.5rem", lg: "3rem" },
+            }}
+          >
             ACERCA DE NOSOTROS
           </Typography>
         </Grid>
         <Grid
           item
           xs={12}
-          md={6}
+          lg={6}
           sx={{
             display: "flex",
             justifyContent: { xs: "center", md: "flex-end" },
@@ -75,6 +85,64 @@ const AboutUs = () => {
       <Card id="card">
         <Grid container justifyContent="center">
           {aboutme}
+        </Grid>
+      </Card>
+      <Card id="card">
+        <Grid
+          container
+          justifyContent="center"
+          alignItems="center"
+          textAlign={"center"}
+          sx={{ bgcolor: "black", color: "white", paddingY:5 }}
+        >
+<Grid item xs={12}>
+
+            </Grid>
+          <Grid
+            item xs={12}
+            lg={4} 
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
+<Typography sx={{fontSize:"1.4rem", marginBottom:5}}>
+             Atribuciones <br/>Imagenes Background. 
+            </Typography>
+            <Avatar
+              sx={{ border: 2, width: 110, height: 110 }}
+              alt={"Pixel Jeff"} // Mediante props se accede al valor de la propiedad name de los objetos (Miembros de javawizards)
+              src={
+                "https://cdna.artstation.com/p/users/avatars/000/235/656/large/bcb5d0c6d3d43af4bdfb5aa939c42802.jpg?1598109580"
+              } // Mediante props se accede al valor de la propiedad avatar de los objetos (Miembros de javawizards)
+            />
+
+            <Typography sx={{fontSize:"2rem"}}>Pixel Jeff</Typography>
+
+            <Typography sx={{fontSize:"1.5rem"}}>Pixel Artist / Freelancer</Typography>
+
+            <Typography sx={{fontSize:"1.2rem"}}>
+              <LocationOnIcon /> Taipei, Taiwan
+            </Typography>
+
+            <Link sx={{fontSize:"1.2rem"}} href="https://pixeljeff1995.artstation.com" target={"_blank"}>
+              pixeljeff1995.artstation.com
+            </Link>
+          </Grid>
+          <Grid item xs={12} lg={4} sx={{marginTop:2, marginBottom:1}}>
+          <Link href="https://www.instagram.com/pixeljeff_design/" target={"_blank"} sx={{display:"flex", justifyContent:"center"}}>
+            <img src={jeffInstagram} alt={"Jeff Pixel Instagram"} />
+          </Link>
+          </Grid>
+          <Grid item xs={12} lg={4} sx={{marginY:1,  display: "flex",
+              justifyContent: "center",
+              alignItems: "center"}}>
+          <Link href="https://www.facebook.com/PixelJeff/" target={"_blank"} sx={{display:"flex", justifyContent:"center"}}>
+            <img src={jeffFacebook} alt={"Jeff Pixel Facebook"} />
+            </Link>
+          </Grid>
         </Grid>
       </Card>
     </Box>
@@ -190,7 +258,6 @@ const AboutMe = (props) => {
             {/* ------------------------------- ENLACE CV ------------------------------- */}
             <Grid item>
               <Link href={props.cv} target="_blank">
-          
                 {/* Mediante props se accede al enlace del CV de cada Miembro de javawizards*/}
                 {/* La etiqueta Avatar le da estilos a una imagen o icono, siendo esta principalmente el circular la imagen y además permitir que se agregue estilo mediante sx al mismo*/}
                 <Avatar
@@ -230,7 +297,12 @@ const AboutMe = (props) => {
             >
               <Grid container alignItems="center">
                 <Grid item xs={12}>
-                  <Chip className="lato" label="Acerca de Mí" color="warning" icon={<InfoIcon />} />
+                  <Chip
+                    className="lato"
+                    label="Acerca de Mí"
+                    color="warning"
+                    icon={<InfoIcon />}
+                  />
                 </Grid>
               </Grid>
             </AccordionSummary>

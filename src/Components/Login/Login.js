@@ -18,10 +18,16 @@ function Login() { //La función Login es el componente que contiene un formular
 
   guardarCredenciales(email, password);
 
+  // aisganmos el useNavigate a la constante navigate
   const navigate = useNavigate();
-  //   console.log(email);
-  //   console.log(password);
-  // }
+  
+  // Validar si ya iniciaste sesion, si ya estas loggeado serás redirigido a tu perfil
+  if (localStorage.getItem('usuario')) {
+    console.log('Ya estas logeado');
+    setTimeout(() => {
+      navigate('/perfil');
+    }, 50);
+  }
 
   //En el componente Login, se definen dos estados utilizando el hook useState de React. El primer estado "email" se inicializa como una cadena vacía y se actualiza mediante setEmail. El segundo estado "password" también se inicializa como una cadena vacía y se actualiza mediante setPassword.
 
