@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+
+
+.firstSection{
+
+background-image: url("../../img/background/fondo.gif");
+background-position: center;
+background-size: cover;
+opacity: 0.9;
+
+}
+
+.lato {
+
+    font-family: "Lato, sans-serif";
+
+
+}
+
+.latoBold {
+
+    font-family: "Lato, sans-serif";
+    font-weight: 700;
+
+}
+
+.buttonInicio{
+
+    text-decoration: none;
+}
+
+
+
+.imgContent {
+
+    width: 95%;
+    max-width: 450px;  
+}
+
+/* .publicacion{
+
+    border-radius: 10px;
+} */
+
+.publicacionNoImg, .publicacionImg {
+
+    width: 95%;
+    max-width: 400px;
+    margin: 10px 0px;
+    border-radius: 25px;
+}

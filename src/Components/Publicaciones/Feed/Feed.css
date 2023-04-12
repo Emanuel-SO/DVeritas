@@ -1,0 +1,11 @@
+
+#outlined-comentarios::-webkit-scrollbar{
+    width: 10px;
+    background: #276678;
+    border-radius: 10px;
+  }
+  
+  #outlined-comentarios::-webkit-scrollbar-thumb {
+    background: #1687A7;
+    border-radius: 10px;
+  }

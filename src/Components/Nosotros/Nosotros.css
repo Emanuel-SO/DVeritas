@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+
+.lato {
+
+    font-family: "Lato, sans-serif";
+  
+
+}
+
+
+
+
+.techSkillsImg{
+   
+    width:37px;
+    height: 37px;
+
+}
+
+.softSkillsImg{
+    width:60px;
+    height: 60px;
+}

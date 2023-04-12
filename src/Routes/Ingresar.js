@@ -1,7 +1,10 @@
+import Login from "../Components/Login/Login";
 
-function Ingresar(){
+function Ingresar() {
     return (
-        <h1>Hola mundo Ingresar</h1>
+        <>
+            <Login/>     
+        </>
     )
 }
 export default Ingresar;

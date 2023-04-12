@@ -1,0 +1,26 @@
+/* .titulo {
+    font-family: "Lato";
+    color: #276678;
+    margin-top: 3rem;
+    margin-bottom: 4rem;
+} */
+
+.animatedLogin {
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out forwards;
+  }
+  
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+.my-componentLogin {
+    background: url('./images/myGif.gif') no-repeat center;
+    background-size: cover;
+  }

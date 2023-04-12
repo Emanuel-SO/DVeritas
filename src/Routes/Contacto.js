@@ -1,7 +1,15 @@
 
-function Contacto(){
+import Contact from "../Components/Contact/Contact";
+
+
+
+function Contacto() {
     return (
-        <h1>Hola mundo Contacto</h1>
+       <div>
+          <Contact />
+        </div>
     )
+
 }
+
 export default Contacto;

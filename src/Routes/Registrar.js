@@ -1,6 +1,11 @@
+import FormSU from "../Components/Registro/FormSU/FormSU";
+
+
 function Registrar(){
     return (
-        <h1>Hola mundo Registrar</h1>
+        <div>
+        <FormSU />
+        </div>
     )
 }
 export default Registrar;

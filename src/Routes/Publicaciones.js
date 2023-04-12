@@ -1,7 +1,10 @@
+import NavTabs from "../Components/Publicaciones/Filtros/Filtros";
 
 function Publicaciones(){
     return (
-        <h1>Hola mundo Publicaciones</h1>
+        <>
+            <NavTabs/>
+        </>
     )
 }
 export default Publicaciones;

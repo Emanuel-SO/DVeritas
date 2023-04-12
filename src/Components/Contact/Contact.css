@@ -1,0 +1,102 @@
+#outlined-comentarios::-webkit-scrollbar{
+  width: 10px;
+  background: #276678;
+  border-radius: 10px;
+}
+
+#outlined-comentarios::-webkit-scrollbar-thumb {
+  background: #1687A7;
+  border-radius: 10px;
+}
+
+
+.animated {
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out forwards;
+}
+  
+  
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+}
+
+.only-formulary{
+  margin-top: 50px;
+}
+
+.formulary-contactus {
+    background: url("../../img/background/fondo.gif") no-repeat center;
+    background-size: auto 1100px;
+    background-position: center;
+    height: 800px;
+}
+
+#numerito{
+  translate: 0px 22px;
+}
+
+
+
+@media only screen and (max-width: 800px) {
+    
+    /* Estilos para dispositivos con ancho máximo de 767px */
+    .formulary-contactus {
+      background-size: auto 100px;
+      background-position: bottom;
+      height: 800px;
+    }
+
+    .only-formulary{
+      margin-top: 150px;
+    }
+
+    
+}
+
+
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  
+  .only-formulary{
+    margin-top: 10px;
+  }
+
+  .formulary-contactus {
+    background-size: auto 1250px;
+    background-position: bottom;
+    height: 1100px;
+  }
+  
+}
+
+@media only screen and (max-width: 1199px) {
+  .formulary-contactus {
+    background-size: auto 1400px;
+    background-position: bottom;
+    height: 1300px;
+  }
+
+  .only-formulary{
+    margin-top: 150px;
+  }
+
+
+}
+
+@media only screen and (min-width: 1200px) {
+  .formulary-contactus {
+    background-size: auto 1250px;
+    background-position: bottom;
+    height: 1100px;
+  }
+
+  .only-formulary{
+    margin-top: 150px;
+  }
+}
+

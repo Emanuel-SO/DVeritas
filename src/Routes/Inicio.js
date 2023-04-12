@@ -1,7 +1,14 @@
 
+import LandingPage from "../Components/Inicio/Inicio"
+import Footer from "../Components/Footer/Footer";
+
 function Inicio(){
     return (
-        <h1>Hola mundo Inicio</h1>
+
+        <>
+          <LandingPage />
+          <Footer/>
+        </>
     )
 }
 export default Inicio;
