@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -24,9 +24,9 @@ import Typography from "@mui/material/Typography";
 import { red } from "@mui/material/colors";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ChatIcon from "@mui/icons-material/Chat";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
 import Chip from "@mui/material/Chip";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 
 
 const style = {
@@ -47,19 +47,35 @@ const style = {
 //exportacion del componente feed para las publicaciones
 export default function Feed(props) {
 
+  // Hook que revisa el usuarip en el local storage
+  const [usuarioActual, setUsuarioActual] = React.useState(null);
 
-  const [likes, setLikes] = useState(props.likes);
+  // verificar si hay usuario en el local storage
+  useEffect(() => {
+  setUsuarioActual (localStorage.getItem("usuario"));
+  }, [usuarioActual]);
+
+
+  // const [likes, setLikes] = useState(parseInt(props.likes));
   const [liked, setLiked] = useState(false);
 
   function handleLike() {
-    if (!liked) {
-      setLikes(likes + 1);
-      setLiked(true);
-      console.log(props.name);
-    } else {
-      setLikes(likes - 1);
-      setLiked(false);
+    
+    if(usuarioActual){
+
+      if (!liked) {
+        // setLikes(likes + 1);
+        setLiked(true);
+        console.log(props.usuario.nombre);
+      } else {
+        // setLikes(likes - 1);
+        setLiked(false);
+      }
     }
+  }
+
+  function handleDelete(){
+    console.log(`Eliminada publicacion: ${props.id} del usuario: ${props.usuario.nombre}`);
   }
 
 
@@ -74,7 +90,16 @@ export default function Feed(props) {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  let date = new Date(props.createdAt);
+  // let date = new Date(props.fecha_publicacion);
+  const fecha = new Date(); // Esto obtiene la fecha actual, pero puedes usar cualquier fecha
+
+const dia = fecha.getDate(props.fecha_publicacion).toString().padStart(2, '0'); // Obtiene el día y lo convierte en una cadena de dos dígitos con ceros a la izquierda si es necesario
+const mes = (fecha.getMonth() + 1).toString().padStart(2, '0'); // Obtiene el mes (que es un índice basado en cero) y le suma 1 para obtener el número real del mes. Luego lo convierte en una cadena de dos dígitos con ceros a la izquierda si es necesario.
+const anio = fecha.getFullYear();
+const hora = fecha.getHours().toString().padStart(2, '0'); // Obtiene la hora y lo convierte en una cadena de dos dígitos con ceros a la izquierda si es necesario
+const minuto = fecha.getMinutes().toString().padStart(2, '0'); // Obtiene el minuto y lo convierte en una cadena de dos dígitos con ceros a la izquierda si es necesario
+const segundo = fecha.getSeconds().toString().padStart(2, '0');
+const fechaFormateada = `${dia}/${mes}/${anio} a las ${hora}:${minuto}:${segundo}`;
 
   return (
     <div>
@@ -94,25 +119,26 @@ export default function Feed(props) {
             <Avatar
               sx={{ bgcolor: red[500] }}
               aria-label="recipe"
-              src={props.avatar}
+              src={props.usuario.avatar}
             />
           }
           action={
-            <IconButton aria-label="settings">
-              <MoreVertIcon />
+            <IconButton aria-label="settings"
+            onClick={handleDelete}>
+              <HighlightOffIcon />
               {/* icono opciones */}
             </IconButton>
           }
-          title={props.name}
-          subheader={date.toLocaleDateString()} /* Usa metodo de JS para darle formato  */
+          title={props.usuario.nombre}
+          subheader={fechaFormateada} /* Usa metodo de JS para darle formato  */
         />
         <Divider />
 
         {/* Componente que permite asignar una imagen a las publicaciones */}
-        {props.image != null ? (
+        {props.imagen != null ? (
           <CardMedia
             component="img"
-            image={props.image} /* ruta de la imagen */
+            image={props.imagen} /* ruta de la imagen */
             alt="Paella dish"
           />
         ) : null}
@@ -140,7 +166,7 @@ export default function Feed(props) {
               ? <FavoriteIcon /> 
               : <FavoriteBorderIcon/>
             } 
-            {likes}
+            {/* {likes} */}
           
             
           </Button>
@@ -154,7 +180,7 @@ export default function Feed(props) {
             startIcon={<ChatIcon />}
             sx={{ marginLeft: "auto" }}
           >
-            {props.comments}
+            {/* {props.comments} */}
           </Button>
         </CardActions>
 
@@ -212,7 +238,9 @@ export default function Feed(props) {
                 }}
               >
                 {/* Inicia el formulario */}
-                <form onSubmit={handleSubmit}>
+                {usuarioActual
+                  ?
+                  <form onSubmit={handleSubmit}>
                   {" "}
                   {/* se le asigna una funcion a ejecutar una vez se presione el submit */}
                   {/* Contenedor del formulario */}
@@ -260,7 +288,10 @@ export default function Feed(props) {
                       </Button>
                     </Stack>
                   </Box>
-                </form>
+                  </form>
+                  :null
+                }
+                
               </Grid>
             </div>
           </Box>
