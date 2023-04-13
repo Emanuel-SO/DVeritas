@@ -13,11 +13,28 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import ChatIcon from '@mui/icons-material/Chat';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { Divider } from '@mui/material';
-
+import { useState, useEffect } from "react";
 
 //exportacion del componente feed para las publicaciones
 export default function Feed() {
-  
+
+  // Obtiene el objeto JSON del servidor
+    const objetoJSON = {
+      "id": 14
+    }
+
+  // Guarda el valor de 'id' en sessionStorage
+    sessionStorage.setItem('id', objetoJSON.id.toString());
+
+  const [usuario, setUsuario] = useState({});
+
+  useEffect(() => {
+    const id = sessionStorage.getItem("id");
+    fetch(`http://localhost:8080/dveritas/usuarios/${id}`)
+      .then((response) => response.json())
+      .then((data) => setUsuario(data))
+      .catch((error) => console.log(error));
+  }, []);
 
   return (
 
@@ -28,14 +45,14 @@ export default function Feed() {
         {/* Cabecera de la card, donde muestra una imagen, nombre, fecha y un icono para ociones */}
         <CardHeader
           avatar={
-            <Avatar alt="Mranonimo" src="https://cdn-icons-png.flaticon.com/512/1534/1534082.png"/>
+            <Avatar alt="Mranonimo" src={usuario.avatar}/>
           }
           action={
             <IconButton aria-label="settings">
               <MoreVertIcon />{/* icono opciones */}
             </IconButton>
           }
-          title="Mr. Anonimo"
+          title={usuario.nombre}
           subheader="31/03/2023"
         />
         {/* Componente de linea que divide componentes */}
@@ -68,14 +85,14 @@ export default function Feed() {
       <Card sx={{ maxWidth: {xs:"300px", sm:"80%", md:"60%" } ,margin:"auto", borderRadius: "15px"}}>
         <CardHeader
           avatar={
-            <Avatar alt="Mranonimo" src="https://cdn-icons-png.flaticon.com/512/1534/1534082.png"/>
+            <Avatar alt="Mranonimo" src={usuario.avatar}/>
           }
           action={
             <IconButton aria-label="settings">
               <MoreVertIcon />
             </IconButton>
           }
-          title="Mr. Anonimo"
+          title={usuario.nombre}
           subheader="12/03/2023"
         />
         <Divider/>
