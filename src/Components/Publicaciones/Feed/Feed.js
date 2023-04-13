@@ -64,7 +64,7 @@ export default function Feed(props) {
     if(usuarioActual){
 
       if (!liked) {
-        // setLikes(likes + 1);
+        //setLikes(likes + 1);
         setLiked(true);
         console.log(props.usuario.nombre);
       } else {
