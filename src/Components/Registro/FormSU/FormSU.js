@@ -86,9 +86,9 @@ const FormSU = () => {
     <Grid container className="containerForm" > {/* Grid principal que contiene toda los campos y el boton */}
       <Grid item className="gridForm" xs={10} md={6} lg={5}> {/* Grid iten que a su vez define las columnas a usar del componente segun  el tamaño de la pantalla */}
         {/* Inicia el formulario */}
-        <form onSubmit={handleSubmit} > {/* Cuando tenemos un  */}
+        <form onSubmit={handleSubmit} className="only-formulary" > {/* Cuando tenemos un  */}
           {/* Contenedor del formulario */}
-          <Box  className="animated"  sx={{ display: "flex",
+          <Box  className="animated "   sx={{ display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
                 justifyContent: "center",
