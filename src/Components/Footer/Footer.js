@@ -17,7 +17,7 @@ function Footer(){
     const [usuarioActual, setUsuarioActual] = React.useState(null);
     // verificar si hay usuario en el local storage
     useEffect(() => {
-        setUsuarioActual(localStorage.getItem("usuario"));
+        setUsuarioActual(sessionStorage.getItem("id"));
         if (setUsuarioActual) {
             console.log(usuarioActual);
 

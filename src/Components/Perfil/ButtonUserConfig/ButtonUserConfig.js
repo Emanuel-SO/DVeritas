@@ -3,6 +3,7 @@ import React from "react";
 import {Box, Button, Modal, Typography, TextField, Grid, } from "@mui/material";
 import EditRoundedIcon from '@mui/icons-material/EditRounded';
 import './ButtonUserConfig.css';
+import { API_URL } from "../../../configuracion";
 
 /* Componenete de react del boton de configuracion de usuario, al presionarlo despliega un modal que incluye el campo paraingresar el nuevo nombre de usuario, nuevo correo elctronico y contraseña */
 
@@ -18,7 +19,12 @@ const ButtonUserConfig = () => {
   const [isNameValid, setIsNameValid] = useState(false); //definimimos el nombre valido
   const [isPasswordValid, setIsPasswordValid] = useState(false); //definimos la contraseña es valida
   const [isEmailValid, setIsEmailValid] = useState(false); //definimos el email es valido
+  const [errorMessage, setErrorMessage] = useState("");
+  const [showModal, setShowModal] = useState(false);
  
+
+  
+
 
   const handleOpen = () => {   /* Al llamar la funcion el estado de open cambiara a true, abrimos el modal */
     setOpen(true);
@@ -28,17 +34,117 @@ const ButtonUserConfig = () => {
     setOpen(false);
   };
 
-  const handleSaveName = () => { /* Manda a consola la informacion guardada en name */
-    console.log(name);
+  const handleSaveName = async () => { /* Manda a consola la informacion guardada en name */
+    
+    const usuarioName = {
+      nombre: name
+    };
+
+    const id = sessionStorage.getItem("id");
+
+    try {
+      const response = await fetch(`${API_URL}/dveritas/usuarios/${id}?nombre=${usuarioName.nombre}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(usuarioName)
+      });
+      const data = await response.text();
+      const isOk = response.ok;
+      if (isOk) {
+        console.log("Cambios realizados correctamente");
+        setErrorMessage("Cambios realizados correctamente");
+        setShowModal(true);
+        setName("");
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000); 
+        
+      } else {
+        setErrorMessage("Error intente de nuevo");
+        setShowModal(true);
+      }
+    } catch (error) {
+      console.error("Error intente de nuevo", error);
+      setErrorMessage("Error intente de nuevo");
+      setShowModal(true);
+    }  
   };
 
-  const handleSaveEmail = () => { /* Manda a consola la informacion guardada en email */
-    console.log(email);
+  const handleSaveEmail = async () => { /* Manda a consola la informacion guardada en email */
+    
+  const usuarioEmail = {
+    correo: email
   };
 
-  const handleSavePassword = () => { /* Manda a consola la informacion guardada en password */
-    console.log(password);
+  const id = sessionStorage.getItem("id");
+
+  try {
+    const response = await fetch(`${API_URL}/dveritas/usuarios/${id}?correo=${usuarioEmail.correo}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(usuarioEmail)
+    });
+    const data = await response.text();
+    const isOk = response.ok;
+    if (isOk) {
+      console.log("Cambios realizados correctamente");
+      setErrorMessage("Cambios realizados correctamente");
+      setShowModal(true);
+      setName("");
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000); 
+      
+    } else {
+      setErrorMessage("Error intente de nuevo");
+      setShowModal(true);
+    }
+  } catch (error) {
+    console.error("Error intente de nuevo", error);
+    setErrorMessage("Error intente de nuevo");
+    setShowModal(true);
+  }  
   };
+
+  const handleSavePassword = async () => { /* Manda a consola la informacion guardada en password */
+   
+  const usuarioPassword = {
+    password: password
+  };
+
+  const id = sessionStorage.getItem("id");
+
+  try {
+    const response = await fetch(`${API_URL}/dveritas/usuarios/${id}?password=${usuarioPassword.password}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(usuarioPassword)
+    });
+    const data = await response.text();
+    const isOk = response.ok;
+    if (isOk) {
+      console.log("Cambios realizados correctamente");
+      setErrorMessage("Cambios realizados correctamente");
+      setShowModal(true);
+      setName("");
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000); // 5000 milisegundos (5 segundos)
+      
+    } else {
+      setErrorMessage("Error intente de nuevo");
+      setShowModal(true);
+    }
+  } catch (error) {
+    console.error("Error intente de nuevo", error);
+    setErrorMessage("Error intente de nuevo");
+    setShowModal(true);
+  }  
+  };
+
+  
+
+
 
   const handleFileChange = (event) => { /* La función toma como parámetro un evento, que es el evento de cambio que se produce cuando se selecciona un archivo en el input */
     const file = event.target.files[0]; //Selecciona el archivo, el [0] indica que solo se puede seleccionar un archivo
@@ -63,6 +169,10 @@ const ButtonUserConfig = () => {
     const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/; //expresion regualar, debe de tener texto@texto.2 o 3 caracteres
     setIsEmailValid(emailRegex.test(email)); //si se cumple lo anterior actualiza el estado de isEmailValid
   }, [email]);
+
+  const handleCloseVal = () => {
+    setShowModal(false);
+    };
 
 
   return (
@@ -173,14 +283,30 @@ const ButtonUserConfig = () => {
               </Typography>
             )}
             {/* Boton que cierra el modal en caso de que el usuario no quiera cambiar nada */}
-            <Box sx={{ display: "flex", justifyContent: "flex-end", mt: 3 }}>
-              <Button onClick={handleClose} sx={{ mr: 2, color: '#125E75' }}>
+            <Box sx={{ display: "flex", mt: 3, justifyContent: 'space-between' }}>
+              <Button variant="contained" onClick={handleClose} sx={{ fontFamily: 'lato', color: '#D3E0EA', bgcolor: '#1687A7', '&:hover': { bgcolor: '#125E75' }}}>
+                Borrar Usuario
+              </Button>
+              <Button onClick={handleClose} sx={{ mr: 2, color: '#125E75'}}>
                 Cancelar
               </Button>
             </Box>
           </form>
         </Box>
       </Modal>{/* Fin del modal */}
+      <Modal open={showModal} onClose={handleCloseVal}>
+              <Box sx={{ position: "absolute",
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%, -50%)",
+                bgcolor: "background.paper",
+                boxShadow: 24,
+                p: 4,
+                width: "400px",
+                maxWidth: "100%", }}>
+                <Typography variant="h6" sx = {{fontFamily:  "Lato, sans-serif", color: "#276678",  textAlign: 'center'}}>{errorMessage}</Typography>
+              </Box>
+            </Modal>
     </Grid>
   );
 };

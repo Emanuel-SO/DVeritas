@@ -29,13 +29,13 @@ function ResponsiveAppBar() {
 
   // funcion para cerrar sesion
   function deleteStorage() {
-    localStorage.removeItem("usuario");
+    sessionStorage.removeItem("id");
     setUsuarioActual(null);
   }
 
   // verificar si hay usuario en el local storage
   useEffect(() => {
-    setUsuarioActual (localStorage.getItem("usuario"));
+    setUsuarioActual (sessionStorage.getItem("id"));
     if (setUsuarioActual) {
       console.log(usuarioActual);
 

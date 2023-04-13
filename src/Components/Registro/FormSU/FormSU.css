@@ -47,5 +47,45 @@
 
 .my-component {
     background: url('./images/8351332.gif') no-repeat center;
-    background-size: cover;
+    background-size: auto 1100px;
+    background-position: center;
+    height: 800px;
   }
+
+  .gridForm{
+    margin-top: 9000px;
+  }
+
+  @media only screen and (max-width: 800px) {
+    /* Estilos para dispositivos con ancho máximo de 767px */
+    .my-component {
+      background-size: auto 100px;
+      background-position: bottom;
+      height: 800px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  .my-component {
+    background-size: auto 1250px;
+    background-position: bottom;
+    height: 1100px;
+  }
+}
+
+@media only screen and (max-width: 1199px) {
+  .my-component {
+    background-size: auto 1400px;
+    background-position: bottom;
+    height: 1300px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .my-component {
+    background-size: auto 1250px;
+    background-position: bottom;
+    height: 1100px;
+  }
+}
+

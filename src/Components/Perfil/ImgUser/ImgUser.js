@@ -1,6 +1,7 @@
 import { Avatar, Grid, Typography, useMediaQuery } from "@mui/material";
 import { useNavigate } from 'react-router-dom';
-
+import { useState, useEffect } from "react";
+import { API_URL } from "../../../configuracion";
 //Componenete de react con MUI que muestra la foto del usuario junto con su nombre, esta formado de dos grid containers, uno para la imagen y otro para el nombre de usuario
 
 const ImgUser = () => {
@@ -11,12 +12,25 @@ const ImgUser = () => {
   const navigate = useNavigate();
 
   // Validar si ya iniciaste sesion, si ya estas loggeado serás redirigido a tu perfil
-  if (!(localStorage.getItem('usuario'))) {
+    if (!(sessionStorage.getItem('id'))) {
     console.log('No estas logeado');
     setTimeout(() => {
       navigate('/ingresar');
     }, 50);
   }
+
+
+
+  const [usuario, setUsuario] = useState({});
+
+  useEffect(() => {
+    const id = sessionStorage.getItem("id");
+    fetch(`${API_URL}/dveritas/usuarios/${id}`)
+      .then((response) => response.json())
+      .then((data) => setUsuario(data))
+      .catch((error) => console.log(error));
+  }, []);
+
 
   return (
     // Contenedor principal Grid container
@@ -25,7 +39,7 @@ const ImgUser = () => {
         <Grid item xs={6} sm={6} sx={{alignItems: "right" }}>
           <Avatar
             alt="Person"
-            src="https://cdn-icons-png.flaticon.com/512/1534/1534082.png"
+            src={usuario.avatar}
             sx={{
               // Estilo del avatar, ajustado según el ancho del dispositivo, si el dispositivo ya es menor que 600px que decalaramos en matches va a reducir el tamaño a 100 y tambien los margenes
               width: matches ? 100 : 150,
@@ -49,19 +63,19 @@ const ImgUser = () => {
               color: "#276678"
             }}
           >
-            Mr. Anonimo
+            {usuario.nombre}
           </Typography>
           <Typography
             sx={{
               // Estilo del handle de usuario, ajustado según el ancho del dispositivo
               fontFamily: "Lato, sans-serif",
-              fontSize: matches ? "16px" : "24px",
+              fontSize: matches ? "10px" : "19px",
               fontWeight: "bold",
               marginLeft: matches ? "20px" : "50px",
               color: "#1687A7",
             }}
           >
-            @mranonimo
+            {usuario.correo}
           </Typography>
         </Grid>
       </Grid>

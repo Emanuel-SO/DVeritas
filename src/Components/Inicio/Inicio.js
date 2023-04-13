@@ -22,8 +22,48 @@ import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import Divider from "@mui/material/Divider";
+import { useState, useEffect } from 'react';
+import { API_URL } from "../../configuracion";
 
-const landingPage = () => {
+
+
+
+const LandingPage = () => {
+
+  const [usuarios, setUsuarios] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`${API_URL}/dveritas/usuarios/totalusuarios`); 
+        const jsonData = await response.json();
+        setUsuarios(jsonData);
+      } catch (error) {
+        console.error('Error al obtener los datos de la API:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const [publicaciones, setPublicaciones] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`${API_URL}/dveritas/publicaciones/totalpublicaciones`); 
+        const jsonData = await response.json();
+        setPublicaciones(jsonData);
+      } catch (error) {
+        console.error('Error al obtener los datos de la API:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+
+
   return (
     <div>
       {/* ------------------------------- PRIMERA SECCIÓN ------------------------------- */}
@@ -201,7 +241,9 @@ const landingPage = () => {
               fontSize: { xs: "1.2rem", sm: "1.6rem", lg: "1.8rem" },
             }}
           >
-            +12,000 <br /> {/* Se agrega <br/> para el salto de linea */}
+
+          
+          +{usuarios} <br /> {/* Se agrega <br/> para el salto de linea */}
             USUARIOS
           </Typography>
         </Grid>
@@ -216,7 +258,7 @@ const landingPage = () => {
               fontSize: { xs: "1.2rem", sm: "1.6rem", lg: "1.8rem" },
             }}
           >
-            +100,000 <br /> {/* Se agrega <br/> para el salto de linea */}
+           +{publicaciones} <br /> {/* Se agrega <br/> para el salto de linea */}
             PUBLICACIONES
           </Typography>
         </Grid>
@@ -463,4 +505,4 @@ const landingPage = () => {
   );
 };
 
-export default landingPage;
+export default LandingPage;

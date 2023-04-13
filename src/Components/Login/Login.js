@@ -3,6 +3,7 @@ import { useState } from "react";
 import './Login.css';
 import { useNavigate } from 'react-router-dom';
 import { Grid, Box, Typography, TextField, Button, Modal } from "@mui/material";
+import { API_URL } from '../../configuracion';
 
 //  El código importa varias bibliotecas de Material UI (un conjunto de herramientas de interfaz de usuario para React) y también importa el hook useState de React.
 
@@ -12,36 +13,76 @@ function Login() { //La función Login es el componente que contiene un formular
   const [credentialsError, setCredentialsError] = useState(false); //Estado para mostrar el modal de Credenciales incorrectas
   const navigate = useNavigate(); //Hook para la navegación de la página.
 
+
+
+  const handleSubmit = (e) => { //La constante handleSubmit define una función que maneja el envío del formulario.
+    e.preventDefault(); //Prevenir el comportamiento predeterminado de un evento.
+
+    fetch(`${API_URL}/dveritas/login/`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        correo: email,
+        password: password
+      })
+    })
+      .then(response => response.json()) // Parsear el cuerpo de la respuesta como JSON
+      .then(data => {
+        // data contendrá los datos reales de la respuesta
+        if (data === true) { // Verificar si la respuesta es true 
+          console.log('Login successful');
+          fetch(`${API_URL}/dveritas/login/${email}`)
+          .then(response => response.json())
+          .then(data => {
+            console.log(data)
+            // Guardar el valor del ID en sessionStorage
+            const id = "id"; // Definir la variable id con el valor deseado
+            sessionStorage.setItem(id, JSON.stringify(data));
+            setTimeout(() => {
+              navigate('/perfil');
+              window.location.reload();
+            }, 50);
+          })
+        } else {
+          setCredentialsError(true);
+          console.log('Login failed');
+        }
+      })
+      .catch(error => {
+        console.error('Error: ', error);
+      });
+  }
+
   // Validar si ya iniciaste sesion, si ya estas loggeado serás redirigido a tu perfil
-  if (localStorage.getItem('usuario')) {
+  if (sessionStorage.getItem('id')) {
     console.log('Ya estas logeado');
     setTimeout(() => {
       navigate('/perfil');
     }, 50);
   }
 
-  const handleSubmit = (e) => { //La constante handleSubmit define una función que maneja el envío del formulario.
-    e.preventDefault(); //Prevenir el comportamiento predeterminado de un evento.
-    const storedData = JSON.parse(localStorage.getItem('listausuarios')); //Recuperar datos de usuarios del local storage
-    const usuarioActual = [];
-    let match = false;
-    for (let i = 0; i < storedData.length; i++) { //Iterar a través de los datos almacenados para verificar las credenciales ingresadas.
-      if (email === storedData[i].email && password === storedData[i].password) {
-        match = true;
-        // Almacenar en usuario actual y luego en el local storage 
-        usuarioActual.push(storedData[i]);
-        localStorage.setItem('usuario', JSON.stringify(usuarioActual));
-        break;
-      }
-    }
+  // const storedData = JSON.parse(localStorage.getItem('listausuarios')); //Recuperar datos de usuarios del local storage
+  // const usuarioActual = [];
+  // let match = false;
+  // for (let i = 0; i < storedData.length; i++) { //Iterar a través de los datos almacenados para verificar las credenciales ingresadas.
+  //   if (email === storedData[i].email && password === storedData[i].password) {
+  //     match = true;
+  //     // Almacenar en usuario actual y luego en el local storage 
+  //     usuarioActual.push(storedData[i]);
+  //     localStorage.setItem('usuario', JSON.stringify(usuarioActual));
+  //     break;
+  //   }
+  // }
 
-    if (match) { //En caso de que se encuentren las credenciales en el local storage, se redirige al usuario a la página de perfil.
-      navigate("/perfil");
-      window.location.replace('');
-    } else { //En caso contrario, se muestra un mensaje de error al usuario.
-      setCredentialsError(true); // Se ejecuta el modal credentialsError        
-    }
-  };
+  //   if (match) { //En caso de que se encuentren las credenciales en la base de datos, se redirige al usuario a la página de perfil.
+  //     navigate("/perfil");
+  //     window.location.replace('');
+  //   } else { //En caso contrario, se muestra un mensaje de error al usuario.
+  //     setCredentialsError(true); // Se ejecuta el modal credentialsError        
+  //   }
+  // };
 
   // Función para cerrar el modal de credenciales incorrectas
   const handleClose = () => {
