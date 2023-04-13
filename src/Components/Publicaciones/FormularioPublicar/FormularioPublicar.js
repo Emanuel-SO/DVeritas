@@ -11,8 +11,13 @@ const FormnularioPublicar = () => {
 
   //Usando useState definimos los valores iniciales de los campos del formulario y como los vamos a almacenar
   const [publicacion, setPublicacion] = useState("");
-  const [imagen, setImagen] = useState("");
+  const [imagen, setImagen] = useState('');
   
+  function handleChange(event) {
+    const fileName = event.target.files[0].name;
+    console.log(fileName);
+    setImagen(fileName);
+  }
 
   // Manejador de eventos que se ejecuta cuando el usuario envía el formulario
   const handleSubmit = (e) => {
@@ -50,8 +55,9 @@ const FormnularioPublicar = () => {
             
             <Stack direction="row" alignItems="center" spacing={18}>
                 <IconButton sx={{ color:"#1687A7" ,'&:hover': {color: '#125E75'}}} aria-label="upload picture" component="label">
-                    <input hidden accept="image/*" type="file" value={imagen} onChange={(e) => setImagen(e.target.value)}/>{/* cada que cambie este input se ejecuta el hook para guardar el dato en una variable, en este caso la ruta de donde sale la imagen a guardar */}
+                    <input hidden accept="image/*" type="file" onChange={handleChange}/>{/* cada que cambie este input se ejecuta el hook para guardar el dato en una variable, en este caso la ruta de donde sale la imagen a guardar */}
                     <PhotoCamera/>
+                    <p>{imagen}</p>
                 </IconButton>
                 {/* Botón para enviar el formulario */}
                 <Button variant="contained" type="submit" sx={{ fontFamily:  "Lato, sans-serif",   bgcolor: '#1687A7',

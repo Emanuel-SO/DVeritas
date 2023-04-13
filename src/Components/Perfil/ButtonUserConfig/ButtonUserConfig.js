@@ -148,6 +148,10 @@ const ButtonUserConfig = () => {
   }  
   };
 
+  
+
+
+
   const handleFileChange = (event) => { /* La función toma como parámetro un evento, que es el evento de cambio que se produce cuando se selecciona un archivo en el input */
     const file = event.target.files[0]; //Selecciona el archivo, el [0] indica que solo se puede seleccionar un archivo
     setSelectedFile(file); //actualiza el estado de selected file con el archivo file
