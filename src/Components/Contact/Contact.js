@@ -5,13 +5,12 @@ import Typography from '@mui/material/Typography';
 import { Grid } from "@mui/material";
 import Button from '@mui/material/Button';
 import { useState, useEffect } from "react";
-import { InputAdornment } from '@mui/material';
+import { InputAdornment, Modal } from '@mui/material';
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import "./Contact.css";
-
 
 //  El código importa varias bibliotecas de Material UI (un conjunto de herramientas de interfaz de usuario para React) y también importa el hook useState de React.
 
@@ -25,23 +24,53 @@ function Contact() { //La función Contact es el componente que contiene un form
     const [comentario, setComentario] = useState("");
     const [isFormValid, setIsFormValid] = useState(true); //Estado para validar que los campos del formulario son validos
     // const regex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
- 
+    const [modalMessage, setModalMessage] = useState(""); // Nuevo estado para el mensaje modal
+
     //En el componente Login, se definen dos estados utilizando el hook useState de React. El primer estado "email" se inicializa como una cadena vacía y se actualiza mediante setEmail. El segundo estado "password" también se inicializa como una cadena vacía y se actualiza mediante setPassword.
 
     //Efecto que queremos aplicar al estado de isFormValid que si cumple con las condiciones a su vez activa el boton para enviar formulario
     useEffect(() => {
-        setIsFormValid(email !== ''&& asunto !== '' && comentario !== '' && errorMail === false);
+        setIsFormValid(email !== '' && asunto !== '' && comentario !== '' && errorMail === false);
     }, [errorMail, email, asunto, comentario]);
 
     //Cambiamos el estado contrario al boton ya que cuando 
     const buttonDisabled = !isFormValid;
 
-    const handleSubmit = (e) => {     //e.preventDefault();    
-        e.preventDefault()
-        console.log({ nombre, email, asunto, comentario }); //Se almacenan los datos en consola
-        setOpen(true);
-        window.location.href = 'mailto:mimikprime@gmail.com?subject='+ asunto + "&body=Nombre del usuario: " + nombre +  "%0ACorreo del usuario: " + email  + "%0AComentario: " + comentario  ; //se crea un mailto con los campos almacenados desde el formulario
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const apiUrl = 'http://localhost:8080/dveritas/contactos/';
+
+        const postContacto = async (contacto) => {
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(contacto)
+            });
+
+            if (!response.ok) {
+                throw new Error('Error al crear el contacto');
+            }
+        }
+
+        const newContacto = {
+            nombre: nombre,
+            correo: email,
+            asunto: asunto,
+            comentario: comentario
+        };
+
+        postContacto(newContacto)
+            .then(() => {
+                setModalMessage('Contacto creado correctamente'); // Actualizamos el estado del mensaje modal
+                setOpen(true); // Abrimos la ventana modal
+                setTimeout(() => {
+                    window.location.replace('');
+                }, 1000);
+            })
+            .catch(error => console.error(error));
     };
 
     const handleClose = () => {
@@ -111,7 +140,8 @@ function Contact() { //La función Contact es el componente que contiene un form
                                 error={errorMail}
                                 helperText={mensaje}
                                 onChange={(e) => {
-                                    setEmail(e.target.value)}}
+                                    setEmail(e.target.value)
+                                }}
                                 id="outlined-email"
                                 label="Correo electronico"
                                 type="email"
@@ -139,7 +169,7 @@ function Contact() { //La función Contact es el componente que contiene un form
                                 onChange={(e) => setComentario(e.target.value)}
                                 sx={{ fontFamily: "Lato, sans-serif", bm: 4, width: "100%" }}
                                 inputProps={{ maxLength: 700 }}
-                                
+
                             />
                             <InputAdornment position="end" id="numerito">
                                 {comentario.length}/{700}
@@ -160,7 +190,7 @@ function Contact() { //La función Contact es el componente que contiene un form
                                 }}
                                 onClick={handleSubmit}
                             >
-                            
+
                                 Enviar
                             </Button>
 
@@ -178,6 +208,7 @@ function Contact() { //La función Contact es el componente que contiene un form
 
                 </Grid>
             </Grid>
+
         </div>
     );
 }
