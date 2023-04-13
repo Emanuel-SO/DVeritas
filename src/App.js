@@ -1,5 +1,5 @@
 // Importación de React Router para las rutas de la aplicación 
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 
 // Estilos generales de la aplicacón
 import './App.css';
@@ -22,6 +22,7 @@ function App() {
 
       {/* Rutas de la aplicación */}
       <Routes>
+        <Route path="*" element={ <Navigate to={"/perfil"}/> }/>
         <Route path='/' element={<Inicio/>}/>
         <Route path="/publicaciones" element={<Publicaciones/>}/>
         <Route path="/contacto"  element={<Contacto/>}/>
