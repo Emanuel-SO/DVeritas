@@ -3,6 +3,7 @@ import { useState } from "react";
 import './Login.css';
 import { useNavigate } from 'react-router-dom';
 import { Grid, Box, Typography, TextField, Button, Modal } from "@mui/material";
+import { API_URL } from '../../configuracion';
 
 //  El código importa varias bibliotecas de Material UI (un conjunto de herramientas de interfaz de usuario para React) y también importa el hook useState de React.
 
@@ -12,18 +13,12 @@ function Login() { //La función Login es el componente que contiene un formular
   const [credentialsError, setCredentialsError] = useState(false); //Estado para mostrar el modal de Credenciales incorrectas
   const navigate = useNavigate(); //Hook para la navegación de la página.
 
-  // Validar si ya iniciaste sesion, si ya estas loggeado serás redirigido a tu perfil
-  // if (localStorage.getItem('usuario')) {
-  //   console.log('Ya estas logeado');
-  //   setTimeout(() => {
-  //     navigate('/perfil');
-  //   }, 50);
-  // }
+
 
   const handleSubmit = (e) => { //La constante handleSubmit define una función que maneja el envío del formulario.
     e.preventDefault(); //Prevenir el comportamiento predeterminado de un evento.
 
-    fetch('http://localhost:8080/dveritas/login/', {
+    fetch(`${API_URL}/dveritas/login/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -38,6 +33,18 @@ function Login() { //La función Login es el componente que contiene un formular
         // data contendrá los datos reales de la respuesta
         if (data === true) { // Verificar si la respuesta es true 
           console.log('Login successful');
+          fetch(`${API_URL}/dveritas/login/${email}`)
+          .then(response => response.json())
+          .then(data => {
+            console.log(data)
+            // Guardar el valor del ID en sessionStorage
+            const id = "id"; // Definir la variable id con el valor deseado
+            sessionStorage.setItem(id, JSON.stringify(data));
+            setTimeout(() => {
+              navigate('/perfil');
+              window.location.reload();
+            }, 50);
+          })
         } else {
           setCredentialsError(true);
           console.log('Login failed');
@@ -46,6 +53,14 @@ function Login() { //La función Login es el componente que contiene un formular
       .catch(error => {
         console.error('Error: ', error);
       });
+  }
+
+  // Validar si ya iniciaste sesion, si ya estas loggeado serás redirigido a tu perfil
+  if (sessionStorage.getItem('id')) {
+    console.log('Ya estas logeado');
+    setTimeout(() => {
+      navigate('/perfil');
+    }, 50);
   }
 
   // const storedData = JSON.parse(localStorage.getItem('listausuarios')); //Recuperar datos de usuarios del local storage

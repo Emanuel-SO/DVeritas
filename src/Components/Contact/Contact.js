@@ -11,6 +11,7 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import "./Contact.css";
+import { API_URL } from '../../configuracion';
 
 //  El código importa varias bibliotecas de Material UI (un conjunto de herramientas de interfaz de usuario para React) y también importa el hook useState de React.
 
@@ -39,7 +40,7 @@ function Contact() { //La función Contact es el componente que contiene un form
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const apiUrl = 'http://localhost:8080/dveritas/contactos/';
+        const apiUrl = `${API_URL}/dveritas/contactos/`;
 
         const postContacto = async (contacto) => {
             const response = await fetch(apiUrl, {

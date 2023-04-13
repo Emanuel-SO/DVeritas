@@ -1,6 +1,7 @@
 import { Avatar, Grid, Typography, useMediaQuery } from "@mui/material";
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from "react";
+import { API_URL } from "../../../configuracion";
 //Componenete de react con MUI que muestra la foto del usuario junto con su nombre, esta formado de dos grid containers, uno para la imagen y otro para el nombre de usuario
 
 const ImgUser = () => {
@@ -11,26 +12,20 @@ const ImgUser = () => {
   const navigate = useNavigate();
 
   // Validar si ya iniciaste sesion, si ya estas loggeado serás redirigido a tu perfil
- /*   if (!(localStorage.getItem('usuario'))) {
+    if (!(sessionStorage.getItem('id'))) {
     console.log('No estas logeado');
     setTimeout(() => {
       navigate('/ingresar');
     }, 50);
-  }*/
+  }
 
-  // Obtiene el objeto JSON del servidor
-const objetoJSON = {
-  "id": 1
-}
 
-// Guarda el valor de 'id' en sessionStorage
-sessionStorage.setItem('id', objetoJSON.id.toString());
 
   const [usuario, setUsuario] = useState({});
 
   useEffect(() => {
     const id = sessionStorage.getItem("id");
-    fetch(`http://localhost:8080/dveritas/usuarios/${id}`)
+    fetch(`${API_URL}/dveritas/usuarios/${id}`)
       .then((response) => response.json())
       .then((data) => setUsuario(data))
       .catch((error) => console.log(error));

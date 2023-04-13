@@ -1,8 +1,10 @@
+import * as React from 'react';
 import { useState, useEffect } from "react";
-import { Grid, Box, Typography, TextField, Button, Checkbox, FormControlLabel, Modal } from "@mui/material";
+import { Grid, Box, Typography, TextField, Button, Checkbox, FormControlLabel, Modal, useIsFocusVisible } from "@mui/material";
 import './FormSU.css';
 import terminos from './images/Terminos_condiciones_dveritas.pdf';
 import { useNavigate } from 'react-router-dom';
+import { API_URL } from "../../../configuracion";
 
 /* Componente formulario de registro donde el usuario ingresa un nombre de usuario, un correo electronico y 
 una contraseña para crear un perfil para la red social */
@@ -19,6 +21,21 @@ const FormSU = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();// declaramos navigate
+
+
+  // Hook que revisa el usuarip en el local storage
+  const [usuarioActual, setUsuarioActual] = React.useState(null);
+  // verificar si hay usuario en el local storage
+  useEffect(() => {
+  setUsuarioActual (sessionStorage.getItem("id"));
+  }, [usuarioActual]);
+
+  if (usuarioActual) {
+    console.log('Ya estas logeado');
+    setTimeout(() => {
+      navigate('/perfil');
+    }, 50);
+  }
 
   //Efecto que queremos aplicar al estado de isFormValid que si cumple con las condiciones a su vez activa el boton para enviar formulario
   useEffect(() => {
@@ -42,7 +59,7 @@ const FormSU = () => {
       //console.log({ email, username, password, isChecked });
 
       try {
-        const response = await fetch('http://localhost:8080/dveritas/usuarios/', {
+        const response = await fetch(`${API_URL}/dveritas/usuarios/`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(usuario)
@@ -51,7 +68,22 @@ const FormSU = () => {
         const isOk = response.ok;
         if (isOk) {
           console.log(data.mensaje);
-          //navigate('/perfil');
+          
+          fetch(`${API_URL}/dveritas/login/${usuario.correo}`)
+          .then(response => response.json())
+          .then(data => {
+            console.log(data)
+            // Guardar el valor del ID en sessionStorage
+            const id = "id"; // Definir la variable id con el valor deseado
+            sessionStorage.setItem(id, JSON.stringify(data));
+            setTimeout(() => {
+              navigate('/perfil');
+              window.location.reload();
+            }, 50);
+          })
+
+          
+          
         } else {
           // Aquí abres el modal y muestras el mensaje de error
           //console.error("No pudimos guardar el usuario. Código de error: ", response.status);

@@ -3,6 +3,7 @@ import React from "react";
 import {Box, Button, Modal, Typography, TextField, Grid, } from "@mui/material";
 import EditRoundedIcon from '@mui/icons-material/EditRounded';
 import './ButtonUserConfig.css';
+import { API_URL } from "../../../configuracion";
 
 /* Componenete de react del boton de configuracion de usuario, al presionarlo despliega un modal que incluye el campo paraingresar el nuevo nombre de usuario, nuevo correo elctronico y contraseña */
 
@@ -21,13 +22,6 @@ const ButtonUserConfig = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [showModal, setShowModal] = useState(false);
  
-  //Simulamos la el usuario en el sessionstorage
-  const objetoJSON = {
-    "id": 1
-  }
-  
-  // Guarda el valor de 'id' en sessionStorage
-  sessionStorage.setItem('id', objetoJSON.id.toString());
 
   
 
@@ -49,7 +43,7 @@ const ButtonUserConfig = () => {
     const id = sessionStorage.getItem("id");
 
     try {
-      const response = await fetch(`http://localhost:8080/dveritas/usuarios/${id}?nombre=${usuarioName.nombre}`, {
+      const response = await fetch(`${API_URL}/dveritas/usuarios/${id}?nombre=${usuarioName.nombre}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(usuarioName)
@@ -85,7 +79,7 @@ const ButtonUserConfig = () => {
   const id = sessionStorage.getItem("id");
 
   try {
-    const response = await fetch(`http://localhost:8080/dveritas/usuarios/${id}?correo=${usuarioEmail.correo}`, {
+    const response = await fetch(`${API_URL}/dveritas/usuarios/${id}?correo=${usuarioEmail.correo}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(usuarioEmail)
@@ -121,7 +115,7 @@ const ButtonUserConfig = () => {
   const id = sessionStorage.getItem("id");
 
   try {
-    const response = await fetch(`http://localhost:8080/dveritas/usuarios/${id}?password=${usuarioPassword.password}`, {
+    const response = await fetch(`${API_URL}/dveritas/usuarios/${id}?password=${usuarioPassword.password}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(usuarioPassword)

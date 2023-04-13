@@ -23,6 +23,7 @@ import IconButton from "@mui/material/IconButton";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import Divider from "@mui/material/Divider";
 import { useState, useEffect } from 'react';
+import { API_URL } from "../../configuracion";
 
 
 
@@ -34,7 +35,7 @@ const LandingPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:8080/dveritas/usuarios/totalusuarios'); 
+        const response = await fetch(`${API_URL}/dveritas/usuarios/totalusuarios`); 
         const jsonData = await response.json();
         setUsuarios(jsonData);
       } catch (error) {
@@ -50,7 +51,7 @@ const LandingPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:8080/dveritas/publicaciones/totalpublicaciones'); 
+        const response = await fetch(`${API_URL}/dveritas/publicaciones/totalpublicaciones`); 
         const jsonData = await response.json();
         setPublicaciones(jsonData);
       } catch (error) {

@@ -14,23 +14,18 @@ import ChatIcon from '@mui/icons-material/Chat';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { Divider } from '@mui/material';
 import { useState, useEffect } from "react";
+import { API_URL } from '../../../configuracion';
 
 //exportacion del componente feed para las publicaciones
 export default function Feed() {
 
-  // Obtiene el objeto JSON del servidor
-    const objetoJSON = {
-      "id": 1
-    }
-
-  // Guarda el valor de 'id' en sessionStorage
-    sessionStorage.setItem('id', objetoJSON.id.toString());
-
+  
+  
   const [usuario, setUsuario] = useState({});
 
   useEffect(() => {
     const id = sessionStorage.getItem("id");
-    fetch(`http://localhost:8080/dveritas/usuarios/${id}`)
+    fetch(`${API_URL}/dveritas/usuarios/${id}`)
       .then((response) => response.json())
       .then((data) => setUsuario(data))
       .catch((error) => console.log(error));
