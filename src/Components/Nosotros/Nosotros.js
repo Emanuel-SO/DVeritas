@@ -31,6 +31,9 @@ import jeffInstagram from "../../img/Nosotros/pixeljeff/pixeljeffInstagram.png";
 const AboutUs = () => {
   // La función .map() es una función que se utiliza para transformar cada elemento de un array según una función que se proporciona como argumento. En este caso, la función proporcionada como argumento ((item) => <AboutMe {...item} />) toma cada objeto dentro del array data, lo pasa como parametro ((item)) y crea un nuevo componente AboutMe. La sintaxis {...item} se utiliza para pasar cada propiedad del objeto item como una prop al componente AboutMe.
   // La constante aboutme es un array de componentes AboutMe (Componente con los estilos) creados a partir de los objetos dentro del array data.
+ 
+ 
+ 
   const aboutme = data.map((item) => <AboutMe key={item.id} {...item} />);
 
   // Debido a que será la función AboutUs la que se exportará. Será el return que podremos visualizar en la página Nosotros
