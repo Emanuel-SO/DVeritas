@@ -23,7 +23,7 @@ const ButtonUserConfig = () => {
  
   //Simulamos la el usuario en el sessionstorage
   const objetoJSON = {
-    "id": 14
+    "id": 1
   }
   
   // Guarda el valor de 'id' en sessionStorage

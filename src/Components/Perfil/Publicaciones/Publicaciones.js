@@ -20,7 +20,7 @@ export default function Feed() {
 
   // Obtiene el objeto JSON del servidor
     const objetoJSON = {
-      "id": 14
+      "id": 1
     }
 
   // Guarda el valor de 'id' en sessionStorage
