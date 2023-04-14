@@ -43,8 +43,8 @@ const [publicaciones, setPublicaciones] = useState(null);
     fetchData();
   }, []);
 
-console.log(publicaciones);
-// console.log(data);
+
+
 
 // function sortByLikes(data) {
 //   data.sort(function (a, b) {

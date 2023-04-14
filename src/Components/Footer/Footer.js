@@ -18,10 +18,7 @@ function Footer(){
     // verificar si hay usuario en el local storage
     useEffect(() => {
         setUsuarioActual(sessionStorage.getItem("id"));
-        if (setUsuarioActual) {
-            console.log(usuarioActual);
-
-        }
+        
     }, [usuarioActual]);
 
     return (
