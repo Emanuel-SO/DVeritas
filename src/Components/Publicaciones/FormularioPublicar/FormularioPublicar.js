@@ -1,4 +1,6 @@
-import { useState } from "react";
+import * as React from "react";
+import { useState , useEffect} from "react";
+import { API_URL } from '../../../configuracion';
 
 /* Imporaciones de componentes de Material UI */
 import { Grid, Box, TextField, Button,IconButton,Stack} from "@mui/material";
@@ -10,21 +12,47 @@ import PhotoCamera from '@mui/icons-material/PhotoCamera';
 const FormnularioPublicar = () => {
 
  
+  // Hook que revisa el usuarip en el local storage
+  const [usuarioActual, setUsuarioActual] = React.useState(null);
+
+  // verificar si hay usuario en el local storage
+  useEffect(() => {
+  setUsuarioActual (sessionStorage.getItem("id"));
+  }, [usuarioActual]);
+
 
   //Usando useState definimos los valores iniciales de los campos del formulario y como los vamos a almacenar
   const [publicacion, setPublicacion] = useState("");
-  const [imagen, setImagen] = useState('');
+  const [imagen, setImagen] = useState(null);
   
   function handleChange(event) {
     const fileName = event.target.files[0].name;
-    console.log(fileName);
+    
     setImagen(fileName);
   }
 
   // Manejador de eventos que se ejecuta cuando el usuario envía el formulario
   const handleSubmit = (e) => {
     e.preventDefault(); // Previene la acción por defecto del formulario al ser enviado
-    console.log({ publicacion, imagen }); // Imprime en la consola los valores del formulario
+    console.log({ publicacion, imagen, usuarioActual }); // Imprime en la consola los valores del formulario
+    fetch(`${API_URL}/dveritas/publicaciones/`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        descripcion: publicacion,
+        imagen: imagen,
+        usuario: {id:usuarioActual}
+      })
+    })
+    .then(
+      setTimeout(() => {
+        
+        window.location.reload();
+      }, 50)
+    )
+
   };
 
   // Es la estructura de la parte visual del formulario

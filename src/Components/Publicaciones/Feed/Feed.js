@@ -68,7 +68,7 @@ export default function Feed(props) {
       if (!liked) {
         //setLikes(likes + 1);
         setLiked(true);
-        console.log(props.usuario.nombre);
+        
       } else {
         // setLikes(likes - 1);
         setLiked(false);
@@ -78,7 +78,7 @@ export default function Feed(props) {
 
   function handleDelete(){
     //fetch delete
-    console.log(`Eliminada publicacion: ${props.id} por usuario: ${usuarioActual}`);
+    
     fetch(`${API_URL}/dveritas/publicaciones/${props.id}` ,{
       method: 'DELETE',
       headers: {
@@ -137,7 +137,7 @@ const fechaFormateada = `${dia}/${mes}/${anio} a las ${hora}:${minuto}:${segundo
         <CardHeader
           avatar={
             <Avatar
-              sx={{ bgcolor: red[500] }}
+             
               aria-label="recipe"
               src={props.usuario.avatar}
             />
