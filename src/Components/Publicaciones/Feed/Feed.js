@@ -1,6 +1,7 @@
 import * as React from "react";
 
 import { useState, useEffect } from "react";
+import { API_URL } from "../../../configuracion";
 
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -52,9 +53,10 @@ export default function Feed(props) {
 
   // verificar si hay usuario en el local storage
   useEffect(() => {
-  setUsuarioActual (localStorage.getItem("usuario"));
+  setUsuarioActual (sessionStorage.getItem("id"));
   }, [usuarioActual]);
 
+  
 
   // const [likes, setLikes] = useState(parseInt(props.likes));
   const [liked, setLiked] = useState(false);
@@ -75,7 +77,22 @@ export default function Feed(props) {
   }
 
   function handleDelete(){
-    console.log(`Eliminada publicacion: ${props.id} del usuario: ${props.usuario.nombre}`);
+    //fetch delete
+    console.log(`Eliminada publicacion: ${props.id} por usuario: ${usuarioActual}`);
+    fetch(`${API_URL}/dveritas/publicaciones/${props.id}` ,{
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(
+      setTimeout(() => {
+        window.location.reload();
+      }, 50)
+    )
+    .catch(error => {
+      console.error('Error: ', error);
+    });
   }
 
 
@@ -101,6 +118,9 @@ const minuto = fecha.getMinutes().toString().padStart(2, '0'); // Obtiene el min
 const segundo = fecha.getSeconds().toString().padStart(2, '0');
 const fechaFormateada = `${dia}/${mes}/${anio} a las ${hora}:${minuto}:${segundo}`;
 
+
+
+
   return (
     <div>
       {/* -------------------------------------- Card Sin Foto -------------------------------------- */}
@@ -123,11 +143,13 @@ const fechaFormateada = `${dia}/${mes}/${anio} a las ${hora}:${minuto}:${segundo
             />
           }
           action={
+            (usuarioActual == props.usuario.id) ?
             <IconButton aria-label="settings"
             onClick={handleDelete}>
               <HighlightOffIcon />
               {/* icono opciones */}
             </IconButton>
+            :null
           }
           title={props.usuario.nombre}
           subheader={fechaFormateada} /* Usa metodo de JS para darle formato  */
