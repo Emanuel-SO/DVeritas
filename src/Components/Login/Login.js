@@ -63,27 +63,6 @@ function Login() { //La función Login es el componente que contiene un formular
     }, 50);
   }
 
-  // const storedData = JSON.parse(localStorage.getItem('listausuarios')); //Recuperar datos de usuarios del local storage
-  // const usuarioActual = [];
-  // let match = false;
-  // for (let i = 0; i < storedData.length; i++) { //Iterar a través de los datos almacenados para verificar las credenciales ingresadas.
-  //   if (email === storedData[i].email && password === storedData[i].password) {
-  //     match = true;
-  //     // Almacenar en usuario actual y luego en el local storage 
-  //     usuarioActual.push(storedData[i]);
-  //     localStorage.setItem('usuario', JSON.stringify(usuarioActual));
-  //     break;
-  //   }
-  // }
-
-  //   if (match) { //En caso de que se encuentren las credenciales en la base de datos, se redirige al usuario a la página de perfil.
-  //     navigate("/perfil");
-  //     window.location.replace('');
-  //   } else { //En caso contrario, se muestra un mensaje de error al usuario.
-  //     setCredentialsError(true); // Se ejecuta el modal credentialsError        
-  //   }
-  // };
-
   // Función para cerrar el modal de credenciales incorrectas
   const handleClose = () => {
     setCredentialsError(false);

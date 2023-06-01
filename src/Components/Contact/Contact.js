@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography';
 import { Grid } from "@mui/material";
 import Button from '@mui/material/Button';
 import { useState, useEffect } from "react";
-import { InputAdornment, Modal } from '@mui/material';
+import { InputAdornment } from '@mui/material';
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
@@ -19,13 +19,12 @@ function Contact() { //La función Contact es el componente que contiene un form
     const [open, setOpen] = useState(false);
     const [nombre, setNombre] = useState("");
     const [email, setEmail] = useState("");
-    const [mensaje, setMensaje] = useState("");
-    const [errorMail, setErrorMail] = useState(false);
+    const [mensaje] = useState("");
+    const [errorMail] = useState(false);
     const [asunto, setAsunto] = useState("");
     const [comentario, setComentario] = useState("");
     const [isFormValid, setIsFormValid] = useState(true); //Estado para validar que los campos del formulario son validos
     // const regex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
-    const [modalMessage, setModalMessage] = useState(""); // Nuevo estado para el mensaje modal
 
     //En el componente Login, se definen dos estados utilizando el hook useState de React. El primer estado "email" se inicializa como una cadena vacía y se actualiza mediante setEmail. El segundo estado "password" también se inicializa como una cadena vacía y se actualiza mediante setPassword.
 
@@ -65,7 +64,6 @@ function Contact() { //La función Contact es el componente que contiene un form
 
         postContacto(newContacto)
             .then(() => {
-                setModalMessage('Contacto creado correctamente'); // Actualizamos el estado del mensaje modal
                 setOpen(true); // Abrimos la ventana modal
                 setTimeout(() => {
                     window.location.replace('');

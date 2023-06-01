@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-import { Box } from '@mui/material';
-import { API_URL } from '../../../configuracion';
+import Formulario from "./FormularioPublicar/FormularioPublicar"
+import { Box, Tab } from '@mui/material';
+import { TabContext, TabList, TabPanel } from '@mui/lab';
+import { API_URL } from '../../configuracion';
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
@@ -24,50 +26,134 @@ import ListItemText from "@mui/material/ListItemText";
 import ListSubheader from "@mui/material/ListSubheader";
 
 
+
+
 const style = {
-  bgcolor: "background.paper",
-  border: "2px solid #276678",
-  boxShadow: 24,
-  p: 4,
-  borderRadius: 4,
+
+    bgcolor: "background.paper",
+    border: "2px solid #276678",
+    boxShadow: 24,
+    p: 4,
+    borderRadius: 4,
+
+
 };
 
 
 
-//exportacion del componente feed para las publicaciones
-export default function UsuarioFeed() {
 
- 
-  
+const Publicaciones = () => {
 
-  const [publicaciones, setPublicaciones] = useState([]);
+    const [usuarioActual, setUsuarioActual] = React.useState(null);
+    const [value, setValue] = useState('1');
+    const [publicaciones, setPublicaciones] = useState([]);
+    const [publicacionesMasLikes, setPublicacionesMasLikes] = useState([]);
+    const [publicacionesMasComentarios, setPublicacionesMasComentarios] = useState([]);
 
-  useEffect(() => {
-    const id = sessionStorage.getItem("id");
-    const fetchData = async () => {
-      try {
-        const response = await fetch(`${API_URL}/dveritas/publicaciones/usuario/${id}`); 
-        const jsonData = await response.json();
-        setPublicaciones(jsonData);
-      } catch (error) {
-        console.error('Error al obtener los datos de la API:', error);
-      }
-    };
 
-    fetchData();
-  }, []);
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
+    }
 
-   const usuarioPublicaciones = publicaciones.map((item) => <CardsPublicaciones {...item} key={item.id}/>);
-  
 
-  return (
+    useEffect(() => {
+        setUsuarioActual(sessionStorage.getItem("id"));
+    }, [usuarioActual]);
 
-    <>
-      {usuarioPublicaciones}
-    </>
 
-  );
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch(`${API_URL}/dveritas/publicaciones/`);
+                const jsonData = await response.json();
+                setPublicaciones(jsonData);
+            } catch (error) {
+                console.error('Error al obtener los datos de la API:', error);
+            }
+        };
+
+        fetchData();
+    }, []);
+
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch(`${API_URL}/dveritas/publicaciones/likes`);
+                const jsonData = await response.json();
+                setPublicacionesMasLikes(jsonData);
+            } catch (error) {
+                console.error('Error al obtener los datos de la API:', error);
+            }
+        };
+
+        fetchData();
+    }, []);
+
+
+
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch(`${API_URL}/dveritas/publicaciones/comentarios`);
+                const jsonData = await response.json();
+                setPublicacionesMasComentarios(jsonData);
+            } catch (error) {
+                console.error('Error al obtener los datos de la API:', error);
+            }
+        };
+
+        fetchData();
+    }, []);
+
+
+    const todasPublicaciones = publicaciones.map((item) => <CardsPublicaciones key={item.id} {...item} />);
+    const publicacionesComents = publicacionesMasComentarios.map((item) => <CardsPublicaciones {...item} key={item.id} />);
+    const publicacionesLikes = publicacionesMasLikes.map((item) => <CardsPublicaciones {...item} key={item.id} />);
+
+
+
+
+
+    return (
+
+        <div>
+            <Box sx={{ width: '100%', my: "10px" }}>
+
+                <TabContext value={value}>
+                    <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+                        <TabList aria-label='Tabs-example' onChange={handleChange} centered>
+                            <Tab label='Todas' value='1' />
+                            <Tab label='+ Likes' value='2' />
+                            <Tab label='+ Comentarios' value='3' />
+                        </TabList>
+
+                    </Box>
+                    {usuarioActual
+                        ? <Formulario />
+                        : null
+                    }
+
+                    <TabPanel value='1' >
+                        {todasPublicaciones}
+                    </TabPanel>
+                    <TabPanel value='2'>
+                        {publicacionesLikes}
+                    </TabPanel>
+                    <TabPanel value='3'>
+                        {publicacionesComents}
+                    </TabPanel>
+                </TabContext>
+            </Box>
+
+
+        </div>
+    )
 }
+
+export default Publicaciones;
+
 
 
 
@@ -81,7 +167,10 @@ const CardsPublicaciones = (props) => {
 
 
     const [usuarioActual, setUsuarioActual] = React.useState(null);
-    const [existLiked, setExistLiked] = useState(false)
+    const [existLiked, setExistLiked] = useState(false);
+
+    const avatar = `${API_URL}/dveritas/usuarios/imagenes/${props.usuario.avatar}`;
+
 
     useEffect(() => {
         setUsuarioActual(sessionStorage.getItem("id"));
@@ -103,6 +192,8 @@ const CardsPublicaciones = (props) => {
             fetchData();
         }
     }, [usuarioActual, props.id]);
+
+
 
     const handleLike = () => {
         if (usuarioActual != null) {
@@ -128,10 +219,8 @@ const CardsPublicaciones = (props) => {
                     .then(() => {
                         setExistLiked(true)
                         setTotalLikes(totalLikes + 1)
-                        console.log("Publicación guardada correctamente");
                     })
                     .catch((error) => {
-                      console.log("Error al guardar la publicación:", error);
                     });
            
         } else {
@@ -184,6 +273,7 @@ useEffect(() => {
             const jsonData = await response.json();
             setTotalLikes(jsonData);
         } catch (error) {
+            //  console.error('Error al obtener los datos de la API:', error);
         }
     };
     fetchData();
@@ -251,7 +341,7 @@ return (
                         <Avatar
 
                             aria-label="recipe"
-                            src={props.usuario.avatar}
+                            src={avatar}
                         />
                     }
                     action={
@@ -437,14 +527,11 @@ const FormularioComentarios = ({ id }) => {
         })
             .then((response) => {
                 if (response.ok) {
-                    console.log("Comentario creado");
                     setComentario("");
                 } else {
-                    console.error("Error al crear el comentario");
                 }
             })
             .catch((error) => {
-                console.error("Error de red:", error);
             });
     };
 

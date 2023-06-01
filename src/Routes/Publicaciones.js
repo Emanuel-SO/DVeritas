@@ -1,9 +1,9 @@
-import NavTabs from "../Components/Publicaciones/Filtros/Filtros";
+import Publicacion from "../Components/Publicaciones/Publicaciones";
 
 function Publicaciones(){
     return (
         <>
-            <NavTabs/>
+            <Publicacion/>
         </>
     )
 }

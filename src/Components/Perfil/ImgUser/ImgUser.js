@@ -31,6 +31,8 @@ const ImgUser = () => {
       .catch((error) => console.log(error));
   }, []);
 
+  const avatar = `${API_URL}/dveritas/usuarios/imagenes/${usuario.avatar}`;
+
 
   return (
     // Contenedor principal Grid container
@@ -39,7 +41,7 @@ const ImgUser = () => {
         <Grid item xs={6} sm={6} sx={{alignItems: "right" }}>
           <Avatar
             alt="Person"
-            src={usuario.avatar}
+            src={avatar}
             sx={{
               // Estilo del avatar, ajustado según el ancho del dispositivo, si el dispositivo ya es menor que 600px que decalaramos en matches va a reducir el tamaño a 100 y tambien los margenes
               width: matches ? 100 : 150,

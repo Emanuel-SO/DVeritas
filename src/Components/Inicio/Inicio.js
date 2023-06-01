@@ -358,12 +358,6 @@ const LandingPage = () => {
               </Button>
             </CardActions>
           </Card>
-
-          {/* <img
-            className="publicacionImg publicacion"
-            src={publicationImg}
-            alt="Imagen Contenido"
-          /> */}
         </Grid>
         {/* ------------------------------- EJEMPLO DE PUBLICACIÓN SIN IMAGENES ------------------------------- */}
 
